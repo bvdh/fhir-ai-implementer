@@ -1,0 +1,14 @@
+{
+  "totalTickets": 1,
+  "newTickets": [
+    "FHIR-53788"
+  ],
+  "existingTickets": [],
+  "invocationPlan": [
+    {
+      "ticketKey": "FHIR-53788",
+      "status": "Waiting for Input",
+      "outputFile": "jira/active/FHIR-53788/FHIR-53788-resolution.md"
+    }
+  ]
+}

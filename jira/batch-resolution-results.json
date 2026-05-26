@@ -1,0 +1,32 @@
+{
+  "timestamp": "2026-05-26T12:58:37.316Z",
+  "plan": {
+    "totalTickets": 1,
+    "newTickets": [
+      "FHIR-53788"
+    ],
+    "existingTickets": [],
+    "invocationPlan": [
+      {
+        "ticketKey": "FHIR-53788",
+        "status": "Waiting for Input",
+        "outputFile": "jira/active/FHIR-53788/FHIR-53788-resolution.md"
+      }
+    ]
+  },
+  "processed": [
+    "FHIR-53788"
+  ],
+  "results": [
+    {
+      "ticket": "FHIR-53788",
+      "status": "success",
+      "file": "active/FHIR-53788/FHIR-53788-resolution.md"
+    }
+  ],
+  "summary": {
+    "successful": 1,
+    "failed": 0,
+    "total": 1
+  }
+}
