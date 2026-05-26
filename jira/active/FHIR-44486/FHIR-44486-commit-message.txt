@@ -1,0 +1,5 @@
+FHIR-44486: Correct "procss" typo in ExampleScenario short label
+
+- Update ExampleScenario.process.title short label text from "procss" to "process"
+- Keep change limited to one editorial correction in source/examplescenario/structuredefinition-ExampleScenario.xml
+- Preserve XML structure and semantic behavior
