@@ -1,0 +1,6 @@
+FHIR-54022: Standardize payer spelling in financial narrative content
+
+- Replace payor/payors with payer/payers in scoped FHIR source narrative and definition text
+- Preserve machine-facing identifiers such as <payor> elements, id values, and #payor references
+- Align financial module, eligibility, enrollment, payment, and coverage prose with consistent payer terminology
+- Made additional spelling correction
