@@ -1,0 +1,5 @@
+FHIR-51700: Correct H L7 spelling in IG titles
+
+- Replace "H L7" with "HL7" in ImplementationGuide title values under fhir-fork/source
+- Apply minimal, plan-aligned edits across 32 implementationguide-*-core.xml files
+- Verify no remaining "H L7" matches in source and no unrelated source changes
