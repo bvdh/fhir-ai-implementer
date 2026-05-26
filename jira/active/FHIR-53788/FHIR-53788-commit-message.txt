@@ -1,0 +1,5 @@
+FHIR-53788: Correct "processsing" typo in list notes
+
+- Update one sentence in list-notes.xml to fix processsing -> processing
+- Preserve surrounding XML markup and sentence structure
+- Keep implementation scope to a single editorial source correction
