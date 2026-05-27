@@ -1,0 +1,4 @@
+FHIR-55099: Apply planned wording corrections on exchanging-request
+
+- Updated `timeframe` to `time frame` in planned source scope
+- Updated `wasn't` to `was not` in planned source scope
