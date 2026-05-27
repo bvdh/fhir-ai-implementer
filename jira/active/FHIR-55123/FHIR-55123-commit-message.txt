@@ -1,0 +1,5 @@
+FHIR-55123: Apply planned wording corrections on profiling
+
+- Updated `doesn't` to `does not` in planned source scope
+- Updated `isn't,` to `is not,` in planned source scope
+- Updated `publically` to `publicly` in planned source scope
