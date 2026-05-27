@@ -1,0 +1,3 @@
+FHIR-55078: Apply planned wording corrections on genomics
+
+- Updated `timeframe.` to `time frame.` in planned source scope
