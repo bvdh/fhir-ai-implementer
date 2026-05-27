@@ -41,24 +41,26 @@ Create review-ready implementation plans for FHIR specification tickets in this 
 
 1. Collect scope inputs.
 2. Resolve ticket files in jira/open/, jira/active/, jira/closed/.
-3. Extract per-ticket essentials:
+3. If scope source is currentTickets.md, filter to unimplemented tickets only (tickets that do not already have `<ticket>-implementation-plan.md` in their ticket directory).
+4. Extract per-ticket essentials:
    - Key, summary, status, resolution
    - Affected page/module hints
    - Requested change pattern (wording, abbreviation, typo, structural)
-4. Classify the batch:
+5. Classify the batch:
    - Repetitive pattern across tickets: prepare a shared implementation approach.
    - Mixed patterns: split into grouped approaches in one plan.
-5. Map each ticket to likely edit surface under fhir-fork/source/.
-6. Write implementation steps with clear execution order.
-7. Add validation checklist, risks, and assumptions.
-8. Save each per-ticket plan to jira/active/<ticket>/.
+6. Map each ticket to likely edit surface under fhir-fork/source/.
+7. Write implementation steps with clear execution order.
+8. Add validation checklist, risks, and assumptions.
+9. Save each per-ticket plan to jira/active/<ticket>/.
+10. Report created plans and skipped tickets (with skip reason, such as already implemented).
 
 ## Decision Points
 
 - Scope source:
   - If a workgroup file is provided, use it as authoritative ticket list.
   - If only ticket keys are provided, build scope directly from ticket markdown files.
-  - If neither is provided, default to currentTickets.md.
+  - If neither is provided, default to currentTickets.md and process only unimplemented tickets.
 - Plan structure:
   - If tickets share a fix pattern, produce a consolidated table with ticket-specific page identifiers.
   - If tickets differ materially, create grouped sections per pattern.
@@ -117,6 +119,7 @@ A plan is complete only if all are true:
 - Execution steps are specific enough to implement without reinterpretation.
 - Validation checklist is actionable and repository-aware.
 - Risks/assumptions capture uncertainty and escalation points.
+- When scope is currentTickets.md, tickets with existing implementation plans are skipped and reported.
 
 ## Quick Invocation Examples
 
@@ -132,7 +135,7 @@ If input scope is ambiguous, ask first:
 - Which tickets are in scope?
 - Do you want per-ticket files (default) or one consolidated batch plan?
 
-If no scope source is provided, use currentTickets.md by default.
+If no scope source is provided, use currentTickets.md by default and generate plans only for tickets that do not already have implementation plans.
 
 Always constrain implementation targets to fhir-fork/source/ only.
 
