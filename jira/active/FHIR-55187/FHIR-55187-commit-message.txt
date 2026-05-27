@@ -1,0 +1,5 @@
+FHIR-55187: Fix Resource page wording
+
+- Correct spelling issues in resource-introduction.xml and resource-notes.xml
+- Expand the FMG abbreviation in the Resource moving-to-core guidance
+- Preserve the existing Resource page structure and meaning while cleaning up prose

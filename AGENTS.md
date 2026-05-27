@@ -19,6 +19,11 @@ This repository manages AI-assisted work for resolving Jira tickets on the FHIR 
 - Do not change build tooling, scripts, Gradle configuration, CI pipelines, or implementation code in the fork unless explicitly requested.
 - Prefer source edits over generated output edits.
 
+## Interactive Questions
+
+- Use `vscode_askQuestions` when a user needs to answer by clicking on options or when a task benefits from a constrained multiple-choice prompt.
+- Prefer click-based questions over freeform text for discrete choices in this project.
+
 ## Required Workflow (Aligned with README)
 
 When executing ticket work, follow this sequence:
