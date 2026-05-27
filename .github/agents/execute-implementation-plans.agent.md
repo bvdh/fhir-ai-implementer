@@ -21,11 +21,18 @@ Execute multiple approved implementation plans and produce separate, ticket-scop
 
 1. Resolve execution scope (ticket keys, plan paths, or currentTickets.md derived set).
 2. Build an execution queue and process tickets independently.
-3. Use safe parallelism only for independent read/analysis tasks; keep file-edit and commit steps isolated per ticket.
-4. For each ticket, run the execute-implementation-plan workflow to produce:
+3. Handle each ticket in a separate execution session (fresh per-ticket context and per-ticket git-delta calculation).
+4. Use safe parallelism only for independent read/analysis tasks; keep file-edit and commit steps isolated per ticket session.
+5. For each ticket, run the execute-implementation-plan workflow to produce:
    - source edits in `fhir-fork/source/`
    - ticket artifacts in `jira/active/<ticket>/`
-5. For each ticket, create separate commits in both repos that include only files changed by that ticket's execution.
+6. For each ticket, create separate commits in both repos that include only files changed by that ticket's execution session.
+
+## Per-Ticket Session Rule
+
+- Never execute multiple tickets inside a shared edit/commit session.
+- Start and finish one ticket session before finalizing the next ticket session.
+- Do not reuse staged changes, commit messages, or delta snapshots across ticket sessions.
 
 ## Per-Ticket Commit Isolation Rules
 
@@ -54,6 +61,7 @@ For every ticket in scope:
 Execution is complete only when all are true:
 
 - Every requested ticket was executed or explicitly reported as skipped/blocked.
+- Each ticket was handled in its own session.
 - Each executed ticket has isolated, ticket-scoped commits.
 - Repository statuses are clean except for unrelated pre-existing changes.
 - Final report includes per-ticket outcome and commit hashes for both repos.

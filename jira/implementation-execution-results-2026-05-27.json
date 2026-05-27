@@ -1,0 +1,1333 @@
+{
+  "executed": [
+    {
+      "ticket": "FHIR-55035",
+      "fork_commit": "-",
+      "outer_commit": "c857204",
+      "source_changed": false,
+      "outer_changed": true,
+      "delta_f": [],
+      "delta_o": [
+        "jira/active/FHIR-55035/FHIR-55035-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "doesn't",
+          "replacement": "does not",
+          "before": 0,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55036",
+      "fork_commit": "-",
+      "outer_commit": "29ab8e1",
+      "source_changed": false,
+      "outer_changed": true,
+      "delta_f": [],
+      "delta_o": [
+        "jira/active/FHIR-55036/FHIR-55036-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "doesn't",
+          "replacement": "does not",
+          "before": 0,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55037",
+      "fork_commit": "-",
+      "outer_commit": "c353f0d",
+      "source_changed": false,
+      "outer_changed": true,
+      "delta_f": [],
+      "delta_o": [
+        "jira/active/FHIR-55037/FHIR-55037-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "favourable",
+          "replacement": "favorable",
+          "before": 0,
+          "after": 0
+        },
+        {
+          "token": "organisation",
+          "replacement": "organization",
+          "before": 0,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55038",
+      "fork_commit": "-",
+      "outer_commit": "1e5dd37",
+      "source_changed": false,
+      "outer_changed": true,
+      "delta_f": [],
+      "delta_o": [
+        "jira/active/FHIR-55038/FHIR-55038-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "wasn't",
+          "replacement": "was not",
+          "before": 0,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55078",
+      "fork_commit": "-",
+      "outer_commit": "eeae912",
+      "source_changed": false,
+      "outer_changed": true,
+      "delta_f": [],
+      "delta_o": [
+        "jira/active/FHIR-55078/FHIR-55078-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "timeframe.",
+          "replacement": "time frame.",
+          "before": 0,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55087",
+      "fork_commit": "-",
+      "outer_commit": "d687665",
+      "source_changed": false,
+      "outer_changed": true,
+      "delta_f": [],
+      "delta_o": [
+        "jira/active/FHIR-55087/FHIR-55087-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "isn't",
+          "replacement": "is not",
+          "before": 0,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55089",
+      "fork_commit": "-",
+      "outer_commit": "2925045",
+      "source_changed": false,
+      "outer_changed": true,
+      "delta_f": [],
+      "delta_o": [
+        "jira/active/FHIR-55089/FHIR-55089-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "doesn't",
+          "replacement": "does not",
+          "before": 0,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55091",
+      "fork_commit": "-",
+      "outer_commit": "242c9ef",
+      "source_changed": false,
+      "outer_changed": true,
+      "delta_f": [],
+      "delta_o": [
+        "jira/active/FHIR-55091/FHIR-55091-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "absense",
+          "replacement": "absence",
+          "before": 0,
+          "after": 0
+        },
+        {
+          "token": "doesn't",
+          "replacement": "does not",
+          "before": 0,
+          "after": 0
+        },
+        {
+          "token": "isn\u2019t",
+          "replacement": "is not",
+          "before": 0,
+          "after": 0
+        },
+        {
+          "token": "wasn't",
+          "replacement": "was not",
+          "before": 0,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55093",
+      "fork_commit": "-",
+      "outer_commit": "c8109f9",
+      "source_changed": false,
+      "outer_changed": true,
+      "delta_f": [],
+      "delta_o": [
+        "jira/active/FHIR-55093/FHIR-55093-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "doesn't",
+          "replacement": "does not",
+          "before": 0,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55098",
+      "fork_commit": "6b3d4cc9f5",
+      "outer_commit": "06660ad",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/elementdefinition.html"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55098/FHIR-55098-commit-message.txt",
+        "jira/active/FHIR-55098/FHIR-55098-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "occurence",
+          "replacement": "occurrence",
+          "before": 1,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55099",
+      "fork_commit": "d30b168989",
+      "outer_commit": "121a1d5",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/exchanging-request.html"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55099/FHIR-55099-commit-message.txt",
+        "jira/active/FHIR-55099/FHIR-55099-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "timeframe",
+          "replacement": "time frame",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "token": "wasn't",
+          "replacement": "was not",
+          "before": 1,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55100",
+      "fork_commit": "fa62b287b6",
+      "outer_commit": "62d6454",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/exchanging.html"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55100/FHIR-55100-commit-message.txt",
+        "jira/active/FHIR-55100/FHIR-55100-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "conjuction",
+          "replacement": "conjunction",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "token": "doesn't",
+          "replacement": "does not",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "token": "isn't",
+          "replacement": "is not",
+          "before": 3,
+          "after": 0
+        },
+        {
+          "token": "managable",
+          "replacement": "manageable",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "token": "they're",
+          "replacement": "they are",
+          "before": 2,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55101",
+      "fork_commit": "dcdd430746",
+      "outer_commit": "bd71f43",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/extensibility-examples.html"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55101/FHIR-55101-commit-message.txt",
+        "jira/active/FHIR-55101/FHIR-55101-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "doesn't",
+          "replacement": "does not",
+          "before": 1,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55102",
+      "fork_commit": "01974365f6",
+      "outer_commit": "57c7c3f",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/extensibility.html"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55102/FHIR-55102-commit-message.txt",
+        "jira/active/FHIR-55102/FHIR-55102-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "doesn't",
+          "replacement": "does not",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "token": "managable,",
+          "replacement": "manageable,",
+          "before": 1,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55103",
+      "fork_commit": "3c2ee21681",
+      "outer_commit": "7f55b4e",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/fhirpath.html"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55103/FHIR-55103-commit-message.txt",
+        "jira/active/FHIR-55103/FHIR-55103-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "isn't",
+          "replacement": "is not",
+          "before": 2,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55104",
+      "fork_commit": "84c2091aca",
+      "outer_commit": "5a659ec",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/fmg.html"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55104/FHIR-55104-commit-message.txt",
+        "jira/active/FHIR-55104/FHIR-55104-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "FMG",
+          "replacement": "FHIR Management Group",
+          "before": 3,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55105",
+      "fork_commit": "160520d02a",
+      "outer_commit": "71fe18a",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/graphql.html"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55105/FHIR-55105-commit-message.txt",
+        "jira/active/FHIR-55105/FHIR-55105-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "doesn't",
+          "replacement": "does not",
+          "before": 1,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55107",
+      "fork_commit": "1fc07f9f73",
+      "outer_commit": "eade35b",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/http.html"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55107/FHIR-55107-commit-message.txt",
+        "jira/active/FHIR-55107/FHIR-55107-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "doesn't",
+          "replacement": "does not",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "token": "wasn't",
+          "replacement": "was not",
+          "before": 1,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55108",
+      "fork_commit": "c6e249b9de",
+      "outer_commit": "0eb789f",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/integrated-examples.html"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55108/FHIR-55108-commit-message.txt",
+        "jira/active/FHIR-55108/FHIR-55108-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "didn't",
+          "replacement": "did not",
+          "before": 1,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55109",
+      "fork_commit": "dbd7a50959",
+      "outer_commit": "c78bf5f",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/languages.html"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55109/FHIR-55109-commit-message.txt",
+        "jira/active/FHIR-55109/FHIR-55109-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "doesn't",
+          "replacement": "does not",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "token": "they\u2019re",
+          "replacement": "they are",
+          "before": 1,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55110",
+      "fork_commit": "83ca5d2aee",
+      "outer_commit": "995cf09",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/license.html"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55110/FHIR-55110-commit-message.txt",
+        "jira/active/FHIR-55110/FHIR-55110-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "Organisation",
+          "replacement": "Organization",
+          "before": 1,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55111",
+      "fork_commit": "7fbf446ea1",
+      "outer_commit": "ffc7d05",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/managing.html"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55111/FHIR-55111-commit-message.txt",
+        "jira/active/FHIR-55111/FHIR-55111-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "doesn't",
+          "replacement": "does not",
+          "before": 2,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55112",
+      "fork_commit": "7fe48c06ab",
+      "outer_commit": "63794be",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/mapping-language.html"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55112/FHIR-55112-commit-message.txt",
+        "jira/active/FHIR-55112/FHIR-55112-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "doesn't",
+          "replacement": "does not",
+          "before": 1,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55114",
+      "fork_commit": "656349bd5d",
+      "outer_commit": "6731a47",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/mapping-tutorial.html"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55114/FHIR-55114-commit-message.txt",
+        "jira/active/FHIR-55114/FHIR-55114-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "doesn't",
+          "replacement": "does not",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "token": "doesn't:",
+          "replacement": "does not:",
+          "before": 0,
+          "after": 0
+        },
+        {
+          "token": "isn't",
+          "replacement": "is not",
+          "before": 1,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55117",
+      "fork_commit": "81e9a800eb",
+      "outer_commit": "b489dce",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/overview-arch.html"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55117/FHIR-55117-commit-message.txt",
+        "jira/active/FHIR-55117/FHIR-55117-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "managable",
+          "replacement": "manageable",
+          "before": 1,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55119",
+      "fork_commit": "f62894ade7",
+      "outer_commit": "d137d3e",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/overview-dev.html"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55119/FHIR-55119-commit-message.txt",
+        "jira/active/FHIR-55119/FHIR-55119-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "doesn't",
+          "replacement": "does not",
+          "before": 1,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55121",
+      "fork_commit": "bcfa18a862",
+      "outer_commit": "8fc31d2",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/profiling-examples.html"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55121/FHIR-55121-commit-message.txt",
+        "jira/active/FHIR-55121/FHIR-55121-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "doesn't",
+          "replacement": "does not",
+          "before": 2,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55123",
+      "fork_commit": "1a615d046b",
+      "outer_commit": "7ff3d80",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/profiling.html"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55123/FHIR-55123-commit-message.txt",
+        "jira/active/FHIR-55123/FHIR-55123-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "doesn't",
+          "replacement": "does not",
+          "before": 3,
+          "after": 0
+        },
+        {
+          "token": "isn't,",
+          "replacement": "is not,",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "token": "publically",
+          "replacement": "publicly",
+          "before": 1,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55125",
+      "fork_commit": "f0f0fbdb86",
+      "outer_commit": "36d6474",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/pushpull.html"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55125/FHIR-55125-commit-message.txt",
+        "jira/active/FHIR-55125/FHIR-55125-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "doesn't",
+          "replacement": "does not",
+          "before": 1,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55127",
+      "fork_commit": "3cedcf0972",
+      "outer_commit": "ce29aad",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/search.html"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55127/FHIR-55127-commit-message.txt",
+        "jira/active/FHIR-55127/FHIR-55127-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "desireable",
+          "replacement": "desirable",
+          "before": 1,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55129",
+      "fork_commit": "8b005ef8d2",
+      "outer_commit": "10683f1",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/services.html"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55129/FHIR-55129-commit-message.txt",
+        "jira/active/FHIR-55129/FHIR-55129-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "doesn't",
+          "replacement": "does not",
+          "before": 1,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55130",
+      "fork_commit": "700a74e95b",
+      "outer_commit": "2c524a4",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/subscriptions.html"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55130/FHIR-55130-commit-message.txt",
+        "jira/active/FHIR-55130/FHIR-55130-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "isn't,",
+          "replacement": "is not,",
+          "before": 1,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55131",
+      "fork_commit": "d3aef253d0",
+      "outer_commit": "e2a8a9f",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/updates.html"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55131/FHIR-55131-commit-message.txt",
+        "jira/active/FHIR-55131/FHIR-55131-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "doesn't",
+          "replacement": "does not",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "token": "they're",
+          "replacement": "they are",
+          "before": 1,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55132",
+      "fork_commit": "078856d6c5",
+      "outer_commit": "98a4712",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/versioning.html"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55132/FHIR-55132-commit-message.txt",
+        "jira/active/FHIR-55132/FHIR-55132-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "doesn't",
+          "replacement": "does not",
+          "before": 1,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55133",
+      "fork_commit": "d6ce58cd6f",
+      "outer_commit": "7f2e00f",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/versions.html"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55133/FHIR-55133-commit-message.txt",
+        "jira/active/FHIR-55133/FHIR-55133-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "doesn't",
+          "replacement": "does not",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "token": "FMG",
+          "replacement": "FHIR Management Group",
+          "before": 3,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55135",
+      "fork_commit": "6513a6d051",
+      "outer_commit": "6fb3d26",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/workflow-ad-hoc.html"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55135/FHIR-55135-commit-message.txt",
+        "jira/active/FHIR-55135/FHIR-55135-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "doesn't",
+          "replacement": "does not",
+          "before": 1,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55138",
+      "fork_commit": "5c02d2ebc3",
+      "outer_commit": "d55fd19",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/workflow.html"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55138/FHIR-55138-commit-message.txt",
+        "jira/active/FHIR-55138/FHIR-55138-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "doesn't",
+          "replacement": "does not",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "token": "isn't",
+          "replacement": "is not",
+          "before": 1,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55141",
+      "fork_commit": "38c4a729a0",
+      "outer_commit": "b7d18ba",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/basic/basic-example2.xml",
+        "source/basic/basic-introduction.xml",
+        "source/basic/basic-notes.xml"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55141/FHIR-55141-commit-message.txt",
+        "jira/active/FHIR-55141/FHIR-55141-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "doesn't",
+          "replacement": "does not",
+          "before": 3,
+          "after": 0
+        },
+        {
+          "token": "isn't",
+          "replacement": "is not",
+          "before": 5,
+          "after": 0
+        },
+        {
+          "token": "managable,",
+          "replacement": "manageable,",
+          "before": 1,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55143",
+      "fork_commit": "49f43d6712",
+      "outer_commit": "f2444f2",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/bundle/bundle-notes.xml",
+        "source/bundle/bundle-references.xml",
+        "source/bundle/bundle-transaction.xml",
+        "source/bundle/structuredefinition-Bundle.xml"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55143/FHIR-55143-commit-message.txt",
+        "jira/active/FHIR-55143/FHIR-55143-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "doesn't",
+          "replacement": "does not",
+          "before": 4,
+          "after": 0
+        },
+        {
+          "token": "fullURL",
+          "replacement": "fullUrl",
+          "before": 4,
+          "after": 0
+        },
+        {
+          "token": "fullURLs",
+          "replacement": "fullUrls",
+          "before": 0,
+          "after": 0
+        },
+        {
+          "token": "fullURLs,",
+          "replacement": "fullUrls,",
+          "before": 0,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55159",
+      "fork_commit": "46666e1a43",
+      "outer_commit": "961d2ee",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/compartmentdefinition/compartmentdefinition-notes.xml"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55159/FHIR-55159-commit-message.txt",
+        "jira/active/FHIR-55159/FHIR-55159-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "doesn't",
+          "replacement": "does not",
+          "before": 1,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55162",
+      "fork_commit": "9ec2993998",
+      "outer_commit": "3d3f795",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/examplescenario/examplescenario-introduction.xml",
+        "source/examplescenario/structuredefinition-ExampleScenario.xml"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55162/FHIR-55162-commit-message.txt",
+        "jira/active/FHIR-55162/FHIR-55162-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "doesn't",
+          "replacement": "does not",
+          "before": 3,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55172",
+      "fork_commit": "7940018563",
+      "outer_commit": "57dd43d",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/list/list-example-medlist.xml",
+        "source/list/list-example.xml",
+        "source/list/list-notes.xml",
+        "source/list/structuredefinition-List.xml"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55172/FHIR-55172-commit-message.txt",
+        "jira/active/FHIR-55172/FHIR-55172-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "doesn't",
+          "replacement": "does not",
+          "before": 3,
+          "after": 0
+        },
+        {
+          "token": "isn't",
+          "replacement": "is not",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "token": "wasn't",
+          "replacement": "was not",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "token": "processsing",
+          "replacement": "processing",
+          "before": 0,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55175",
+      "fork_commit": "de6d6a7afd",
+      "outer_commit": "d32d3b2",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/operationdefinition/operationdefinition-definition-mapping-exceptions.xml",
+        "source/operationdefinition/operationdefinition-notes.xml"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55175/FHIR-55175-commit-message.txt",
+        "jira/active/FHIR-55175/FHIR-55175-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "doesn't",
+          "replacement": "does not",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "token": "wasn't",
+          "replacement": "was not",
+          "before": 2,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55180",
+      "fork_commit": "f9765bc022",
+      "outer_commit": "7ef407d",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/questionnaire/questionnaire-introduction.xml",
+        "source/questionnaire/questionnaire-notes.xml",
+        "source/questionnaire/structuredefinition-Questionnaire.xml"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55180/FHIR-55180-commit-message.txt",
+        "jira/active/FHIR-55180/FHIR-55180-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "They're",
+          "replacement": "They are",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "token": "doesn't",
+          "replacement": "does not",
+          "before": 6,
+          "after": 0
+        },
+        {
+          "token": "isn't",
+          "replacement": "is not",
+          "before": 2,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55183",
+      "fork_commit": "c585d6e6a9",
+      "outer_commit": "6be54bb",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/questionnaireresponse/questionnaireresponse-introduction.xml"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55183/FHIR-55183-commit-message.txt",
+        "jira/active/FHIR-55183/FHIR-55183-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "they're",
+          "replacement": "they are",
+          "before": 1,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55248",
+      "fork_commit": "12c7327b22",
+      "outer_commit": "eae8671",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/json.html"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55248/FHIR-55248-commit-message.txt",
+        "jira/active/FHIR-55248/FHIR-55248-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "doesn't",
+          "replacement": "does not",
+          "before": 1,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55250",
+      "fork_commit": "1b0810157a",
+      "outer_commit": "1c16725",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/rdf.html"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55250/FHIR-55250-commit-message.txt",
+        "jira/active/FHIR-55250/FHIR-55250-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "absense",
+          "replacement": "absence",
+          "before": 1,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "ticket": "FHIR-55343",
+      "fork_commit": "916735ba2f",
+      "outer_commit": "b351a15",
+      "source_changed": true,
+      "outer_changed": true,
+      "delta_f": [
+        "source/signatures.html"
+      ],
+      "delta_o": [
+        "jira/active/FHIR-55343/FHIR-55343-commit-message.txt",
+        "jira/active/FHIR-55343/FHIR-55343-implementation-change-log.md"
+      ],
+      "token_stats": [
+        {
+          "token": "avilable",
+          "replacement": "available",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "token": "occurrances",
+          "replacement": "occurrences",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "token": "seperate",
+          "replacement": "separate",
+          "before": 1,
+          "after": 0
+        }
+      ]
+    }
+  ],
+  "blocked": [
+    {
+      "ticket": "FHIR-33050",
+      "reasons": [
+        "no-target-files"
+      ],
+      "pattern": "fhir-fork/source/ (determine exact file from ticket context)",
+      "tokens": []
+    },
+    {
+      "ticket": "FHIR-42848",
+      "reasons": [
+        "no-target-files",
+        "unknown-token:SHALL"
+      ],
+      "pattern": "fhir-fork/source/ (determine exact file from ticket context)",
+      "tokens": [
+        "SHALL",
+        "SAHLL"
+      ]
+    },
+    {
+      "ticket": "FHIR-44473",
+      "reasons": [
+        "no-target-files"
+      ],
+      "pattern": "fhir-fork/source/ (determine exact file from ticket context)",
+      "tokens": []
+    },
+    {
+      "ticket": "FHIR-44486",
+      "reasons": [
+        "no-target-pattern",
+        "no-target-files"
+      ],
+      "pattern": "",
+      "tokens": []
+    },
+    {
+      "ticket": "FHIR-47049",
+      "reasons": [
+        "no-target-files"
+      ],
+      "pattern": "fhir-fork/source/ (determine exact file from ticket context)",
+      "tokens": []
+    },
+    {
+      "ticket": "FHIR-47296",
+      "reasons": [
+        "no-target-files"
+      ],
+      "pattern": "fhir-fork/source/ (determine exact file from ticket context)",
+      "tokens": []
+    },
+    {
+      "ticket": "FHIR-48872",
+      "reasons": [
+        "no-target-files"
+      ],
+      "pattern": "fhir-fork/source/ (determine exact file from ticket context)",
+      "tokens": []
+    },
+    {
+      "ticket": "FHIR-54022",
+      "reasons": [
+        "no-target-files",
+        "unknown-token:payer,payor"
+      ],
+      "pattern": "fhir-fork/source/ (determine exact file from ticket context)",
+      "tokens": [
+        "payer",
+        "payor"
+      ]
+    },
+    {
+      "ticket": "FHIR-55095",
+      "reasons": [
+        "overlap-pre-dirty:source/datatypes.html,source/datatypes/address.xml,source/datatypes/humanname.xml"
+      ],
+      "pattern": "fhir-fork/source/datatypes*",
+      "tokens": [
+        "isn't",
+        "processer"
+      ]
+    },
+    {
+      "ticket": "FHIR-55116",
+      "reasons": [
+        "overlap-pre-dirty:source/operations.html"
+      ],
+      "pattern": "fhir-fork/source/operations*",
+      "tokens": [
+        "doesn't"
+      ]
+    }
+  ]
+}
