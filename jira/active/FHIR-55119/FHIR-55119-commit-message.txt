@@ -1,0 +1,3 @@
+FHIR-55119: Apply planned wording corrections on overview-dev
+
+- Updated `doesn't` to `does not` in planned source scope
