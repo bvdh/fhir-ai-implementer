@@ -1,0 +1,3 @@
+FHIR-55129: Apply planned wording corrections on services
+
+- Updated `doesn't` to `does not` in planned source scope
