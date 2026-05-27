@@ -1,0 +1,5 @@
+FHIR-55141: Apply planned wording corrections on basic
+
+- Updated `doesn't` to `does not` in planned source scope
+- Updated `isn't` to `is not` in planned source scope
+- Updated `managable,` to `manageable,` in planned source scope
