@@ -1,0 +1,23 @@
+FHIR-40690	false	-	c2d9f4f	No-op: targeted typo/version sentence not present in current source
+FHIR-40695	true	-	8c613a9	Corrected primitive datatype token datetime -> dateTime
+FHIR-40984	false	-	f0b8243	Verification-only execution (no source diff needed)
+FHIR-41224	false	-	bb4e941	Verification-only execution (no source diff needed)
+FHIR-43356	true	-	27f341c	Added missing closing parenthesis in FHIR trademark text
+FHIR-43422	false	-	d6148c5	Verification-only execution (no source diff needed)
+FHIR-43468	false	-	2e7c328	Verification-only execution (no source diff needed)
+FHIR-43803	false	-	0642203	Verification-only execution (no source diff needed)
+FHIR-43804	false	-	397cc8c	Verification-only execution (no source diff needed)
+FHIR-43900	false	-	d8903fb	Verification-only execution (no source diff needed)
+FHIR-44050	true	-	357f46e	Removed article from targeted services sentence
+FHIR-44470	false	-	247b2f4	Verification-only execution (no source diff needed)
+FHIR-44496	true	-	4d1ab0e	Inserted missing preposition in ExampleScenario process title definition
+FHIR-45261	true	-	29a3156	Corrected operations typo ne -> one
+FHIR-45277	true	-	d8c9e1a	Corrected operations typo ne -> one
+FHIR-45281	false	-	e27ea6f	Verification-only execution (no source diff needed)
+FHIR-45952	true	-	796f537	Added RFC 2119 hyperlinks in conformance/help pages
+FHIR-46069	false	-	3f23a03	Verification-only execution (no source diff needed)
+FHIR-46567	true	-	0fbefa4	Corrected mapping language typo the -> there
+FHIR-48738	true	-	938c24d	Updated expired NSW Blue Book URL
+FHIR-55164	true	-	4bcdc54	Corrected group page spelling typo
+FHIR-55167	true	-	78feff7	Corrected implementationguide spelling typo
+FHIR-56416	true	-	38cc6aa	Clarified ElementDefinition.constraint.source wording
