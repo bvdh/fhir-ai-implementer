@@ -1,0 +1,3 @@
+FHIR-55250: Apply planned wording corrections on rdf
+
+- Updated `absense` to `absence` in planned source scope
