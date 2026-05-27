@@ -1,0 +1,3 @@
+FHIR-55159: Apply planned wording corrections on compartmentdefinition
+
+- Updated `doesn't` to `does not` in planned source scope
