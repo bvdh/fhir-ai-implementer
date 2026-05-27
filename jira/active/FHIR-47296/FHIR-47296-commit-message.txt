@@ -1,0 +1,5 @@
+FHIR-47296: Document SampledData invariant typo correction state
+
+- Verified SampledData invariant wording uses SHALL in source datatypes worksheet
+- Confirmed SAHLL token is absent in mapped datatypes targets
+- Recorded no-op implementation because source already matches ticket intent
