@@ -1,0 +1,3 @@
+FHIR-55125: Apply planned wording corrections on pushpull
+
+- Updated `doesn't` to `does not` in planned source scope
