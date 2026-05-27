@@ -1,0 +1,4 @@
+FHIR-55131: Apply planned wording corrections on updates
+
+- Updated `doesn't` to `does not` in planned source scope
+- Updated `they're` to `they are` in planned source scope
