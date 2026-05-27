@@ -1,0 +1,5 @@
+FHIR-40600: Execute approved implementation plan
+
+- Corrected typo in Key to Type Icons text (uppwer -> upper)
+- Scope limited to fhir-fork/source/formats.html
+- Added implementation evidence in ticket-local change log
