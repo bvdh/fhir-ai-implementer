@@ -1,0 +1,5 @@
+FHIR-44050: Execute approved implementation plan
+
+- Removed article from targeted services sentence
+- Scope limited to fhir-fork/source/
+- Added implementation evidence in ticket-local change log
