@@ -1,0 +1,3 @@
+FHIR-55089: Apply planned wording corrections on comparison-v2
+
+- Updated `doesn't` to `does not` in planned source scope
