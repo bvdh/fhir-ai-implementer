@@ -1,0 +1,3 @@
+FHIR-55098: Apply planned wording corrections on elementdefinition
+
+- Updated `occurence` to `occurrence` in planned source scope
