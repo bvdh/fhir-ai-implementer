@@ -1,0 +1,3 @@
+FHIR-55121: Apply planned wording corrections on profiling-examples
+
+- Updated `doesn't` to `does not` in planned source scope
