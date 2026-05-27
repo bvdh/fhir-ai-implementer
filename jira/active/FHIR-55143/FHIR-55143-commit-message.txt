@@ -1,0 +1,6 @@
+FHIR-55143: Apply planned wording corrections on bundle
+
+- Updated `doesn't` to `does not` in planned source scope
+- Updated `fullURL` to `fullUrl` in planned source scope
+- Updated `fullURLs` to `fullUrls` in planned source scope
+- Applied 1 additional ticketed term correction(s) in target scope
