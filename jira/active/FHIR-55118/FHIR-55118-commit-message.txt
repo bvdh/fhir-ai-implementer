@@ -1,0 +1,5 @@
+FHIR-55118: Expand contractions on overview-clinical
+
+- Replaced every `doesn't` occurrence on the clinician overview page with full wording.
+- Replaced the `they're` occurrence with full wording.
+- Kept the edit localized to `fhir-fork/source/overview-clinical.html`.
