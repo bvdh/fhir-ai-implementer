@@ -1,0 +1,3 @@
+FHIR-55035: Apply planned wording corrections on broken-link
+
+- Updated `doesn't` to `does not` in planned source scope
