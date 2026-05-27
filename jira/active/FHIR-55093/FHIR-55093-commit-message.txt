@@ -1,0 +1,3 @@
+FHIR-55093: Apply planned wording corrections on datatypes-examples
+
+- Updated `doesn't` to `does not` in planned source scope
