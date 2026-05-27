@@ -44,6 +44,62 @@ function isNonEmpty(value) {
   return normalize(value) !== '';
 }
 
+function cellText(cell) {
+  if (!cell) {
+    return '';
+  }
+
+  return normalize(xlsx.utils.format_cell(cell));
+}
+
+function readWorksheetRows(sheet) {
+  const ref = sheet['!ref'];
+  if (!ref) {
+    return [];
+  }
+
+  const range = xlsx.utils.decode_range(ref);
+  const headers = [];
+  let emptyHeaderCount = 0;
+
+  for (let c = range.s.c; c <= range.e.c; c += 1) {
+    const cell = sheet[xlsx.utils.encode_cell({ r: range.s.r, c })];
+    const header = cellText(cell);
+    if (header) {
+      headers.push(header);
+    } else {
+      headers.push(emptyHeaderCount === 0 ? '__EMPTY' : `__EMPTY_${emptyHeaderCount}`);
+      emptyHeaderCount += 1;
+    }
+  }
+
+  const rows = [];
+
+  for (let r = range.s.r + 1; r <= range.e.r; r += 1) {
+    const row = {};
+
+    for (let c = range.s.c; c <= range.e.c; c += 1) {
+      const value = cellText(sheet[xlsx.utils.encode_cell({ r, c })]);
+      if (!value) {
+        continue;
+      }
+
+      const field = headers[c - range.s.c];
+      if (row[field]) {
+        row[field] = `${row[field]} | ${value}`;
+      } else {
+        row[field] = value;
+      }
+    }
+
+    if (Object.keys(row).length > 0) {
+      rows.push(row);
+    }
+  }
+
+  return rows;
+}
+
 function classifyTicket(status, resolution) {
   const s = normKey(status);
   const r = normKey(resolution);
@@ -91,6 +147,77 @@ function ensureDir(targetPath) {
 
 function escapeMd(value) {
   return normalize(value).replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+}
+
+function addMetadataValue(ticket, field, value) {
+  const fieldNorm = normKey(field);
+  const valueNorm = normalize(value);
+
+  if (!fieldNorm || !valueNorm) {
+    return;
+  }
+
+  let displayField = ticket.metadataFieldByNorm.get(fieldNorm);
+  if (!displayField) {
+    displayField = field;
+    ticket.metadataFieldByNorm.set(fieldNorm, displayField);
+  }
+
+  if (!ticket.metadataValues.has(displayField)) {
+    ticket.metadataValues.set(displayField, new Set());
+  }
+  ticket.metadataValues.get(displayField).add(valueNorm);
+}
+
+function finalizeMetadata(ticket) {
+  const entries = [...ticket.metadataValues.entries()].sort((a, b) =>
+    a[0].localeCompare(b[0], undefined, { sensitivity: 'base' })
+  );
+
+  ticket.metadata = Object.fromEntries(
+    entries.map(([field, values]) => [field, [...values].join(' | ')])
+  );
+}
+
+function resolveCommentHeaders(row) {
+  const text = findHeaderKey(row, ['Comment', 'Comment body', 'Comment text']);
+  const author = findHeaderKey(row, ['Comment author', 'Comment Author']);
+  const created = findHeaderKey(row, ['Comment created', 'Comment date']);
+  const security = findHeaderKey(row, ['Comment security', 'Security level']);
+
+  if (text) {
+    return { text, author, created, security, isGridLayout: false };
+  }
+
+  const comments = findHeaderKey(row, ['Comments']);
+  const empty = findHeaderKey(row, ['__EMPTY']);
+  const empty1 = findHeaderKey(row, ['__EMPTY_1']);
+  const empty2 = findHeaderKey(row, ['__EMPTY_2']);
+
+  if (comments && empty2) {
+    return {
+      text: empty2,
+      author: empty,
+      created: comments,
+      security: empty1,
+      isGridLayout: true
+    };
+  }
+
+  if (comments) {
+    return { text: comments, author, created, security, isGridLayout: false };
+  }
+
+  return null;
+}
+
+function isGridHeaderComment(comment) {
+  return (
+    normKey(comment.text) === 'text' &&
+    normKey(comment.created) === 'date' &&
+    normKey(comment.author) === 'author' &&
+    normKey(comment.security) === 'security'
+  );
 }
 
 function renderTicketMarkdown(ticket) {
@@ -162,29 +289,33 @@ function main() {
 
   const sheetName = workbook.SheetNames[0];
   const sheet = workbook.Sheets[sheetName];
-  const rows = xlsx.utils.sheet_to_json(sheet, { defval: '' });
+  const rows = readWorksheetRows(sheet);
 
   const tickets = new Map();
 
+  let lastTicketKey = '';
+
   for (const row of rows) {
     const keyHeader = findHeaderKey(row, ['Issue key', 'Key', 'Issue Key']);
-    if (!keyHeader) {
-      continue;
-    }
+    const parsedKey = keyHeader ? normalize(row[keyHeader]) : '';
+    const commentHeaders = resolveCommentHeaders(row);
 
-    const key = normalize(row[keyHeader]);
-    if (!key || !/^FHIR-\d+$/i.test(key)) {
+    let key = '';
+    let isContinuationCommentRow = false;
+
+    if (parsedKey && /^FHIR-\d+$/i.test(parsedKey)) {
+      key = parsedKey;
+      lastTicketKey = key;
+    } else if (lastTicketKey && commentHeaders) {
+      key = lastTicketKey;
+      isContinuationCommentRow = true;
+    } else {
       continue;
     }
 
     const summaryHeader = findHeaderKey(row, ['Summary', 'Issue Summary']);
     const statusHeader = findHeaderKey(row, ['Status']);
     const resolutionHeader = findHeaderKey(row, ['Resolution']);
-
-    const commentTextHeader = findHeaderKey(row, ['Comment', 'Comment body', 'Comment text', 'Comments']);
-    const commentAuthorHeader = findHeaderKey(row, ['Comment author', 'Comment Author']);
-    const commentCreatedHeader = findHeaderKey(row, ['Comment created', 'Comment date']);
-    const commentSecurityHeader = findHeaderKey(row, ['Comment security', 'Security level']);
 
     const summary = summaryHeader ? normalize(row[summaryHeader]) : '';
     const status = statusHeader ? normalize(row[statusHeader]) : '';
@@ -197,6 +328,8 @@ function main() {
         status,
         resolution,
         metadata: {},
+        metadataValues: new Map(),
+        metadataFieldByNorm: new Map(),
         comments: []
       });
     }
@@ -213,28 +346,31 @@ function main() {
       ticket.resolution = resolution;
     }
 
-    for (const [field, value] of Object.entries(row)) {
-      const fieldNorm = normKey(field);
-      if (fieldNorm.startsWith('comment')) {
-        continue;
-      }
-      if (!isNonEmpty(value)) {
-        continue;
-      }
-      if (!ticket.metadata[field]) {
-        ticket.metadata[field] = normalize(value);
+    if (!isContinuationCommentRow) {
+      for (const [field, value] of Object.entries(row)) {
+        addMetadataValue(ticket, field, value);
       }
     }
 
-    const commentText = commentTextHeader ? normalize(row[commentTextHeader]) : '';
+    const commentText = commentHeaders ? normalize(row[commentHeaders.text]) : '';
     if (commentText) {
-      ticket.comments.push({
+      const comment = {
         text: escapeMd(commentText),
-        author: commentAuthorHeader ? normalize(row[commentAuthorHeader]) : '',
-        created: commentCreatedHeader ? normalize(row[commentCreatedHeader]) : '',
-        security: commentSecurityHeader ? normalize(row[commentSecurityHeader]) : ''
-      });
+        author: commentHeaders && commentHeaders.author ? normalize(row[commentHeaders.author]) : '',
+        created: commentHeaders && commentHeaders.created ? normalize(row[commentHeaders.created]) : '',
+        security: commentHeaders && commentHeaders.security ? normalize(row[commentHeaders.security]) : ''
+      };
+
+      if (!(commentHeaders && commentHeaders.isGridLayout && isGridHeaderComment(comment))) {
+        ticket.comments.push(comment);
+      }
     }
+  }
+
+  for (const ticket of tickets.values()) {
+    finalizeMetadata(ticket);
+    delete ticket.metadataValues;
+    delete ticket.metadataFieldByNorm;
   }
 
   ensureDir(path.join(jiraDir, 'open'));
