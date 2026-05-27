@@ -1,0 +1,3 @@
+FHIR-55130: Apply planned wording corrections on subscriptions
+
+- Updated `isn't,` to `is not,` in planned source scope
