@@ -1,0 +1,5 @@
+FHIR-55343: Apply planned wording corrections on signatures
+
+- Updated `avilable` to `available` in planned source scope
+- Updated `occurrances` to `occurrences` in planned source scope
+- Updated `seperate` to `separate` in planned source scope
