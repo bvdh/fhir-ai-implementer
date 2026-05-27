@@ -1,0 +1,4 @@
+FHIR-55175: Apply planned wording corrections on operationdefinition
+
+- Updated `doesn't` to `does not` in planned source scope
+- Updated `wasn't` to `was not` in planned source scope
