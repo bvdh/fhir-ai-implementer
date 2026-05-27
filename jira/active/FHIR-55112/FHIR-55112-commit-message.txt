@@ -1,0 +1,3 @@
+FHIR-55112: Apply planned wording corrections on mapping-language
+
+- Updated `doesn't` to `does not` in planned source scope
