@@ -1,0 +1,5 @@
+FHIR-56416: Execute approved implementation plan
+
+- Clarified ElementDefinition.constraint.source wording
+- Scope limited to fhir-fork/source/
+- Added implementation evidence in ticket-local change log
