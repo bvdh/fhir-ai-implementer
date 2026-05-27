@@ -1,0 +1,3 @@
+FHIR-55135: Apply planned wording corrections on workflow-ad-hoc
+
+- Updated `doesn't` to `does not` in planned source scope
