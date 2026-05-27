@@ -1,0 +1,5 @@
+FHIR-55180: Apply planned wording corrections on questionnaire
+
+- Updated `They're` to `They are` in planned source scope
+- Updated `doesn't` to `does not` in planned source scope
+- Updated `isn't` to `is not` in planned source scope
