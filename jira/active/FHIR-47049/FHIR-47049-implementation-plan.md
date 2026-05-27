@@ -8,27 +8,40 @@
 ## Ticket Matrix
 | Ticket | Summary | Status | Target page(s) | Change type | Notes |
 |---|---|---|---|---|---|
-| FHIR-47049 | version management paragraph mentions R5 FMM processes | Applied | `fhir-fork/source/ (determine exact file from ticket context)` | technical correction | Resolution: Persuasive. Ticket specifics: (none specified) |
+| FHIR-47049 | version management paragraph mentions R5 FMM processes | Applied | `fhir-fork/source/versions.html` (primary), `fhir-fork/source/versioning.html` (fallback check) | technical correction | Resolution: Persuasive. Remove/adapt legacy R5-only FMM implementation note in Version Management Policy content. |
 
 ## Shared Implementation Approach
-1. Locate the target content under `fhir-fork/source/`.
-2. Apply minimal edits aligned with ticket intent and terminology conventions.
+1. Start from `fhir-fork/source/versions.html` (Version Management Policy page) and verify whether the quoted R5-only FMM note still exists.
+2. If present, apply minimal text correction/removal aligned with ticket intent and terminology conventions.
 3. Keep changes traceable and avoid unrelated formatting or tooling changes.
 
 ## Execution Steps
-1. Confirm the exact source file(s) corresponding to the ticket target.
-2. Apply the planned wording/technical correction with minimal diff.
-3. Perform a localized readback around the edited section to verify meaning is preserved.
-4. Run targeted search checks for corrected terms and absence of flagged text.
+1. Confirm target files and section anchors:
+	- `cd fhir-fork`
+	- `rg -n "Version Management Policy|The FHIR Maturity Model" source/versions.html source/versioning.html`
+2. Detect the exact legacy paragraph from the ticket text:
+	- `rg -n "For this release \(R5\), please note|rules for FMM levels will be reviewed|internal process requirements|Once review is complete, FMM levels will be reflected in the CI-build" source/versions.html source/versioning.html`
+3. Primary execution path (if matches are found):
+	- Edit only `source/versions.html` to remove or adapt the R5-specific implementation note for R6 context.
+	- Keep surrounding FMM rules and policy statements intact.
+4. Already-applied fallback (if no matches are found):
+	- Treat ticket as already implemented in current branch state.
+	- Record in execution notes that targeted legacy strings are absent from `source/versions.html` and `source/versioning.html`.
+5. Localized readback check (planned post-edit verification):
+	- `rg -n "FMM 1|FMM 2|FMM 3|FMM 4|FMM 5|FMM 6" source/versions.html`
+	- Confirm only intended paragraph changed and maturity-level definitions remain coherent.
 
 ## Validation Checklist
-- [ ] Ticket mapped to at least one concrete source file/page under `fhir-fork/source/`
+- [ ] Ticket mapped to concrete source files: `fhir-fork/source/versions.html` (primary) and `fhir-fork/source/versioning.html` (fallback check)
 - [ ] Planned edits stay within `fhir-fork/source/`
 - [ ] No unrelated formatting/tooling/build changes
 - [ ] Terminology and abbreviations are consistent with ticket intent
+- [ ] Legacy R5-only note check executed:
+	- `rg -n "For this release \(R5\), please note|rules for FMM levels will be reviewed|internal process requirements|Once review is complete, FMM levels will be reflected in the CI-build" source/versions.html source/versioning.html`
+- [ ] Already-applied fallback handled when grep returns no matches (documented as no-op implementation)
 - [ ] Plan is review-ready and implementation-specific
 
 ## Risks and Assumptions
-- Risk: File/page mapping may require confirmation when ticket wording is broad.
-- Assumption: The ticket can be resolved with focused source text corrections.
-- Open questions: Should adjacent similar wording issues in the same section be corrected within this ticket or tracked separately?
+- Risk: Similar R5 wording may appear in other historical/context sections and be mistaken for the ticket target.
+- Assumption: The intended correction scope is the Version Management Policy maturity/implementation-note paragraph only.
+- Open questions: If the exact quoted text is already absent, should this ticket be closed as already applied based on grep evidence alone?

@@ -1,0 +1,5 @@
+FHIR-47049: Confirm R5 FMM note is already removed
+
+- Verified the legacy R5-specific FMM implementation note is absent from versions pages.
+- Applied the plan via already-implemented fallback with no source edits required.
+- Recorded validation evidence in the implementation change log.
