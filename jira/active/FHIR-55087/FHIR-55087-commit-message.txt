@@ -1,0 +1,3 @@
+FHIR-55087: Apply planned wording corrections on comparison-cda
+
+- Updated `isn't` to `is not` in planned source scope
