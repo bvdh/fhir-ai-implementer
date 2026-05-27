@@ -1,0 +1,3 @@
+FHIR-55248: Apply planned wording corrections on json
+
+- Updated `doesn't` to `does not` in planned source scope
