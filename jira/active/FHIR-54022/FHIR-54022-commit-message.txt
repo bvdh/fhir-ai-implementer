@@ -1,0 +1,5 @@
+FHIR-54022: Standardize payer terminology in mapped prose pages
+
+- Replaced payor wording with payer in financial-module narrative and glossary rows
+- Normalized payer terminology in help and overview-patient mapped content
+- Kept changes limited to mapped source pages under fhir-fork/source
