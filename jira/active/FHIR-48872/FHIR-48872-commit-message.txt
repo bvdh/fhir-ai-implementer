@@ -1,0 +1,5 @@
+FHIR-48872: Correct Metadata Types title labeling
+
+- Changed metadatatypes page heading from MetaDatatypes to Metadata Types
+- Updated hierarchy navigation label from MetaData Types to Metadata Types
+- Verified curating workgroup literals are not present and owner tokens remain in place
