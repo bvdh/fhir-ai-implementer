@@ -1,0 +1,3 @@
+FHIR-55111: Apply planned wording corrections on managing
+
+- Updated `doesn't` to `does not` in planned source scope
