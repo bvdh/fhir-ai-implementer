@@ -1,0 +1,5 @@
+FHIR-46567: Execute approved implementation plan
+
+- Corrected mapping language typo the -> there
+- Scope limited to fhir-fork/source/
+- Added implementation evidence in ticket-local change log
