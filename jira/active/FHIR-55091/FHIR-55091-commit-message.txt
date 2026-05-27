@@ -1,0 +1,6 @@
+FHIR-55091: Apply planned wording corrections on conformance-rules
+
+- Updated `absense` to `absence` in planned source scope
+- Updated `doesn't` to `does not` in planned source scope
+- Updated `isn’t` to `is not` in planned source scope
+- Applied 1 additional ticketed term correction(s) in target scope
