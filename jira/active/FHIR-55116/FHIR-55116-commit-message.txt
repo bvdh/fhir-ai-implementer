@@ -1,0 +1,5 @@
+FHIR-55116: Expand contraction in operations narrative text
+
+- Replaced does not contraction target in operations page narrative
+- Executed change via isolated clean worktree due pre-existing local overlap
+- Kept change limited to mapped operations source content
