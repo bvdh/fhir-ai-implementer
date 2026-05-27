@@ -1,0 +1,5 @@
+FHIR-55185: correct typo in requirements introduction
+
+- Replaced `provice` with `provide` in the requirements introduction.
+- Kept the change localized to `fhir-fork/source/requirements/requirements-introduction.xml`.
+- Verified the surrounding paragraph still reads naturally after the correction.
