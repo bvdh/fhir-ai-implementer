@@ -1,0 +1,5 @@
+FHIR-55095: Correct datatype spelling and abbreviation wording
+
+- Replace contracted "isn't" wording in datatypes text guidance
+- Correct "processer" to "processor" in datatypes identifier guidance
+- Keep edits limited to planned datatypes source scope
