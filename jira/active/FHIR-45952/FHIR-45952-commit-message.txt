@@ -1,0 +1,5 @@
+FHIR-45952: Execute approved implementation plan
+
+- Added RFC 2119 hyperlinks in conformance/help pages
+- Scope limited to fhir-fork/source/
+- Added implementation evidence in ticket-local change log
