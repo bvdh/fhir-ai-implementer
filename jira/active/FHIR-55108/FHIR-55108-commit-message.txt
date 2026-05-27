@@ -1,0 +1,3 @@
+FHIR-55108: Apply planned wording corrections on integrated-examples
+
+- Updated `didn't` to `did not` in planned source scope
