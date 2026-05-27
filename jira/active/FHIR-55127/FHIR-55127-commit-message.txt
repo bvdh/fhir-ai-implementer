@@ -1,0 +1,3 @@
+FHIR-55127: Apply planned wording corrections on search
+
+- Updated `desireable` to `desirable` in planned source scope
