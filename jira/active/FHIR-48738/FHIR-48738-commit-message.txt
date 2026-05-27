@@ -1,0 +1,5 @@
+FHIR-48738: Execute approved implementation plan
+
+- Updated expired NSW Blue Book URL
+- Scope limited to fhir-fork/source/
+- Added implementation evidence in ticket-local change log
