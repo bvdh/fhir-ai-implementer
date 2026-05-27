@@ -1,0 +1,3 @@
+FHIR-55036: Apply planned wording corrections on documentation
+
+- Updated `doesn't` to `does not` in planned source scope
