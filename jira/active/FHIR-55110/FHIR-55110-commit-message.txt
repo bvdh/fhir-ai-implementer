@@ -1,0 +1,3 @@
+FHIR-55110: Apply planned wording corrections on license
+
+- Updated `Organisation` to `Organization` in planned source scope
