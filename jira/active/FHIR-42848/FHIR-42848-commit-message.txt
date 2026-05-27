@@ -1,0 +1,5 @@
+FHIR-42848: Document SampledData SHALL spelling correction state
+
+- Verified SampledData invariant wording uses SHALL in source datatypes worksheet
+- Confirmed no remaining SAHLL token in the target invariant context
+- Recorded no-op implementation because source already reflects ticket intent
