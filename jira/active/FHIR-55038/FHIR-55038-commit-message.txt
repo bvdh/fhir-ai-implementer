@@ -1,0 +1,3 @@
+FHIR-55038: Apply planned wording corrections on history
+
+- Updated `wasn't` to `was not` in planned source scope
