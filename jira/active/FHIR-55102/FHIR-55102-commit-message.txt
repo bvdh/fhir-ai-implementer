@@ -1,0 +1,4 @@
+FHIR-55102: Apply planned wording corrections on extensibility
+
+- Updated `doesn't` to `does not` in planned source scope
+- Updated `managable,` to `manageable,` in planned source scope
