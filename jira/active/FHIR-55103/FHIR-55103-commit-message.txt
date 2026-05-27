@@ -1,0 +1,3 @@
+FHIR-55103: Apply planned wording corrections on fhirpath
+
+- Updated `isn't` to `is not` in planned source scope
