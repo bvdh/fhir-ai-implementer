@@ -1,0 +1,3 @@
+FHIR-55117: Apply planned wording corrections on overview-arch
+
+- Updated `managable` to `manageable` in planned source scope
