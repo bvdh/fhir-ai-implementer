@@ -1,0 +1,5 @@
+FHIR-44473: Record ExampleScenario spelling implementation state
+
+- Verified mapped files use canonical ExampleScenario spelling
+- Confirmed no targeted misspelling variants remain in mapped scope
+- Recorded no-op implementation because ticket intent is already present
