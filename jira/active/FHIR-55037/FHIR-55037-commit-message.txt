@@ -1,0 +1,4 @@
+FHIR-55037: Apply planned wording corrections on help
+
+- Updated `favourable` to `favorable` in planned source scope
+- Updated `organisation` to `organization` in planned source scope
