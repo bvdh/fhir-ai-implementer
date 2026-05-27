@@ -1,0 +1,4 @@
+FHIR-55133: Apply planned wording corrections on versions
+
+- Updated `doesn't` to `does not` in planned source scope
+- Updated `FMG` to `FHIR Management Group` in planned source scope
