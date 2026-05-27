@@ -1,0 +1,3 @@
+FHIR-55104: Apply planned wording corrections on fmg
+
+- Updated `FMG` to `FHIR Management Group` in planned source scope
