@@ -1,0 +1,5 @@
+FHIR-43356: Execute approved implementation plan
+
+- Added missing closing parenthesis in FHIR trademark text
+- Scope limited to fhir-fork/source/
+- Added implementation evidence in ticket-local change log
