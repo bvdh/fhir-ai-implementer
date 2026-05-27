@@ -1,0 +1,3 @@
+FHIR-55183: Apply planned wording corrections on questionnaireresponse
+
+- Updated `they're` to `they are` in planned source scope
