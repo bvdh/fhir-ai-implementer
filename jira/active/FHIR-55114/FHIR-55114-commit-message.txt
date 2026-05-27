@@ -1,0 +1,5 @@
+FHIR-55114: Apply planned wording corrections on mapping-tutorial
+
+- Updated `doesn't` to `does not` in planned source scope
+- Updated `doesn't:` to `does not:` in planned source scope
+- Updated `isn't` to `is not` in planned source scope
