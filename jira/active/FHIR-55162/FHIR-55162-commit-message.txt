@@ -1,0 +1,3 @@
+FHIR-55162: Apply planned wording corrections on examplescenario
+
+- Updated `doesn't` to `does not` in planned source scope
