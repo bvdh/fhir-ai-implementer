@@ -1,0 +1,3 @@
+FHIR-55101: Apply planned wording corrections on extensibility-examples
+
+- Updated `doesn't` to `does not` in planned source scope
