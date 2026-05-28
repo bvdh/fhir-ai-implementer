@@ -1,0 +1,6 @@
+FHIR-44645: Update Primitive Types section in datatypes-definitions
+
+- Replace Primitive Types placeholder with a concrete 4-column primitive table
+- Keep primitive names as plain text and retain compact `def` links to datatypes.html anchors
+- Add/retain required primitive anchor names used by table entries for fragment navigation
+
