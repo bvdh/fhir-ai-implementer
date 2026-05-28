@@ -1,0 +1,5 @@
+FHIR-41631: Validate datatype page owner markers for FHIR Infrastructure
+
+- Verified all in-scope datatypes and metadatatypes pages already use [%wg fhir%]/[%wgt fhir%]
+- Confirmed no MnM ownership markers remain in the planned target files
+- Recorded no-op implementation evidence and validation outcomes for ticket closure
