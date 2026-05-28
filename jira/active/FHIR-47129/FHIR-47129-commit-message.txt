@@ -1,0 +1,7 @@
+FHIR-47129: Align Duration drt-1 and fix example UCUM duration fields
+
+- update the Duration drt-1 FHIRPath expression in duration.xml
+- update the Duration drt-1 XPath expression to match the same semantics
+- restore the FHIR-28415 value-implies-code semantics for Duration
+- add UCUM system/code in example Duration instances impacted by drt-1
+- reference historical fixes from c999ceec6362 and 0fa9bbb48c1e
