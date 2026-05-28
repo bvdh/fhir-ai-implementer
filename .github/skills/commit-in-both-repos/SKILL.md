@@ -25,17 +25,24 @@ Use this skill when a task produces changes in two related worktrees:
 3. Leave unrelated local changes untouched.
 4. Verify the final status of both repos after committing.
 
+## Preconditions
+
+1. Run the boundary validation skill before any commit activity:
+	- `bash ./.github/skills/validate-fhir-fork-source-boundary/scripts/check-changed-paths.sh`
+2. If the validation fails, stop and resolve out-of-scope changes before continuing.
+
 ## Procedure
 
 1. Inspect the status of both repositories before staging anything.
 2. Identify which files belong to the outer repo and which belong to `fhir-fork`.
-3. Confirm that the source edit is limited to `fhir-fork/source/`.
-4. Use the generated `jira/active/<ticket>/<ticket>-commit-message.txt` content when creating each commit message.
-5. Stage and commit the `fhir-fork` source change first when the task includes a specification edit.
-6. Stage and commit outer-repo ticket artifacts separately.
-7. If the ticket was moved from `jira/open/` to `jira/active/`, commit the file move as part of the outer repo history.
-8. Keep commit messages short, imperative, and ticket-prefixed.
-9. Recheck `git status --short` in both repositories and confirm only unrelated pre-existing changes remain.
+3. Run the source-boundary precondition check and continue only on PASS.
+4. Confirm that the source edit is limited to `fhir-fork/source/`.
+5. Use the generated `jira/active/<ticket>/<ticket>-commit-message.txt` content when creating each commit message.
+6. Stage and commit the `fhir-fork` source change first when the task includes a specification edit.
+7. Stage and commit outer-repo ticket artifacts separately.
+8. If the ticket was moved from `jira/open/` to `jira/active/`, commit the file move as part of the outer repo history.
+9. Keep commit messages short, imperative, and ticket-prefixed.
+10. Recheck `git status --short` in both repositories and confirm only unrelated pre-existing changes remain.
 
 ## Decision Points
 
@@ -46,6 +53,7 @@ Use this skill when a task produces changes in two related worktrees:
 
 ## Completion Checks
 
+- Boundary validation precondition was executed and passed before commit.
 - The source commit is recorded in `fhir-fork`.
 - The ticket/workflow commit is recorded in the outer repository.
 - Commit messages reference the relevant ticket key.

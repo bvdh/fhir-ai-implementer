@@ -28,6 +28,9 @@ Execute an approved implementation plan for a FHIR Jira ticket, make minimal sou
   - `jira/active/<ticket>/<ticket>-commit-message.txt`
 - Change log file in ticket directory:
   - `jira/active/<ticket>/<ticket>-implementation-change-log.md`
+- Pattern proposal in the change log when a new reusable `fhir-fork` editing pattern is observed:
+  - Describe the pattern and where it appeared.
+  - Propose concrete instruction text for `.github/instructions/fhir-fork.instructions.md`.
 - No automatic `git commit` by default; this skill prepares commit text for user-driven commit flow.
 
 ## Constraints
@@ -54,10 +57,17 @@ Execute an approved implementation plan for a FHIR Jira ticket, make minimal sou
    - Files changed
    - Before/after snippets (concise)
    - Validation outcomes
-7. Write commit message file.
-8. Write implementation change log file.
-9. Do not commit automatically unless explicitly requested.
-10. Confirm completion criteria.
+7. Detect reusable pattern candidates during execution:
+  - Look for recurring edit forms (e.g., extension-link format checks, repeated ownership-token updates, recurring terminology normalization).
+  - Treat a pattern as relevant when it is likely to recur across tickets and can be turned into a clear rule.
+8. If a new relevant pattern is detected, add a proposal section to the change log:
+  - `## Proposed Instruction Update`
+  - `Pattern observed:` <short description>
+  - `Suggested addition to .github/instructions/fhir-fork.instructions.md:` <ready-to-paste bullets>
+9. Write commit message file.
+10. Write implementation change log file.
+11. Do not commit automatically unless explicitly requested.
+12. Confirm completion criteria.
 
 ## Decision Points
 
@@ -71,6 +81,9 @@ Execute an approved implementation plan for a FHIR Jira ticket, make minimal sou
 - Validation depth:
   - If plan includes explicit checks, follow them.
   - If not, run targeted search + localized content verification + diff review.
+- Pattern proposal threshold:
+  - If the pattern is one-off or purely ticket-specific, do not propose instruction changes.
+  - If the pattern is repeatable and policy-like, include the proposed instruction update in the change log.
 
 ## Commit Message File Format
 
@@ -137,3 +150,5 @@ Execution is complete only if all are true:
 If no branch is prepared, ask the user to confirm branch strategy before execution.
 
 Default log detail level is concise: summary, files changed, and validation outcomes.
+
+When present, keep `## Proposed Instruction Update` concise and actionable so it can be reviewed and applied directly.
