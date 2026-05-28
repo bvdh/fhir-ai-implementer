@@ -1,0 +1,59 @@
+# Other
+
+Ticket count: 44
+
+## Triaged (19)
+
+- FHIR-51728: Compliant compartment deviation is unclear | [Jira](https://jira.hl7.org/browse/FHIR-51728) | [Source](../open/FHIR-51728/FHIR-51728.md)
+- FHIR-51730: Remove chaining support in CompartmentDefinition | [Jira](https://jira.hl7.org/browse/FHIR-51730) | [Source](../open/FHIR-51730/FHIR-51730.md)
+- FHIR-53110: Clarify role of SearchParameter.target | [Jira](https://jira.hl7.org/browse/FHIR-53110) | [Source](../open/FHIR-53110/FHIR-53110.md)
+- FHIR-53590: Need a version algorithm for CDA | [Jira](https://jira.hl7.org/browse/FHIR-53590) | [Source](../open/FHIR-53590/FHIR-53590.md)
+- FHIR-53641: use of .profile vs .supportedProfile is not clear enough | [Jira](https://jira.hl7.org/browse/FHIR-53641) | [Source](../open/FHIR-53641/FHIR-53641.md)
+- FHIR-53690: Requirements.actor.key should be mandatory | [Jira](https://jira.hl7.org/browse/FHIR-53690) | [Source](../open/FHIR-53690/FHIR-53690.md)
+- FHIR-54015: Requirements.statement.category definition is comments | [Jira](https://jira.hl7.org/browse/FHIR-54015) | [Source](../open/FHIR-54015/FHIR-54015.md)
+- FHIR-54016: Requirements.statement.category should have a binding | [Jira](https://jira.hl7.org/browse/FHIR-54016) | [Source](../open/FHIR-54016/FHIR-54016.md)
+- FHIR-54031: OperationOutcome limited-filter needs clarification with regard to self link | [Jira](https://jira.hl7.org/browse/FHIR-54031) | [Source](../open/FHIR-54031/FHIR-54031.md)
+- FHIR-54049: SubscriptionTopic cannot indicate required filters or required payload | [Jira](https://jira.hl7.org/browse/FHIR-54049) | [Source](../open/FHIR-54049/FHIR-54049.md)
+- FHIR-54059: Usage of Subscription.filterBy.event is unclear | [Jira](https://jira.hl7.org/browse/FHIR-54059) | [Source](../open/FHIR-54059/FHIR-54059.md)
+- FHIR-54070: Subscription.filterBy.comparator seems redundant | [Jira](https://jira.hl7.org/browse/FHIR-54070) | [Source](../open/FHIR-54070/FHIR-54070.md)
+- FHIR-54250: Link to GraphDefinition does not resolve | [Jira](https://jira.hl7.org/browse/FHIR-54250) | [Source](../open/FHIR-54250/FHIR-54250.md)
+- FHIR-54708: $transform operation - add or describe support for runtime parameters | [Jira](https://jira.hl7.org/browse/FHIR-54708) | [Source](../open/FHIR-54708/FHIR-54708.md)
+- FHIR-54856: Subscription optional coded elements need to describe default behavior | [Jira](https://jira.hl7.org/browse/FHIR-54856) | [Source](../open/FHIR-54856/FHIR-54856.md)
+- FHIR-55439: Remove deprecated MetadataResource.topic | [Jira](https://jira.hl7.org/browse/FHIR-55439) | [Source](../open/FHIR-55439/FHIR-55439.md)
+- FHIR-55445: Remove deprecated StructureDefinition.keyword | [Jira](https://jira.hl7.org/browse/FHIR-55445) | [Source](../open/FHIR-55445/FHIR-55445.md)
+- FHIR-57432: Can globals apply for logical models? | [Jira](https://jira.hl7.org/browse/FHIR-57432) | [Source](../open/FHIR-57432/FHIR-57432.md)
+- FHIR-57433: Clarify global inheritance expectations | [Jira](https://jira.hl7.org/browse/FHIR-57433) | [Source](../open/FHIR-57433/FHIR-57433.md)
+
+## Waiting for Input (5)
+
+- FHIR-39503: FHIR Package: Specifications to enable private package registries | [Jira](https://jira.hl7.org/browse/FHIR-39503) | [Source](../open/FHIR-39503/FHIR-39503.md)
+- FHIR-41187: R5 missing StructureDefinition metadata for elementdefinition allowedUnits and question | [Jira](https://jira.hl7.org/browse/FHIR-41187) | [Source](../open/FHIR-41187/FHIR-41187.md)
+- FHIR-43601: Extension array is defined differently in Address and Patient | [Jira](https://jira.hl7.org/browse/FHIR-43601) | [Source](../open/FHIR-43601/FHIR-43601.md)
+- FHIR-47614: Need a functional TestReport | [Jira](https://jira.hl7.org/browse/FHIR-47614) | [Source](../open/FHIR-47614/FHIR-47614.md)
+- FHIR-48768: Define terminology so that authors can use usageContext to categorise profiles and IGs | [Jira](https://jira.hl7.org/browse/FHIR-48768) | [Source](../open/FHIR-48768/FHIR-48768.md)
+
+## Submitted (6)
+
+- FHIR-55418: Event.partOf as a reference to same type | [Jira](https://jira.hl7.org/browse/FHIR-55418) | [Source](../open/FHIR-55418/FHIR-55418.md)
+- FHIR-55477: Possible need for invariant on Bundle.identifier | [Jira](https://jira.hl7.org/browse/FHIR-55477) | [Source](../open/FHIR-55477/FHIR-55477.md)
+- FHIR-57216: Structure Map target list mode should be single cardinality | [Jira](https://jira.hl7.org/browse/FHIR-57216) | [Source](../open/FHIR-57216/FHIR-57216.md)
+- FHIR-57219: Target List Mode first/last/single don't make sense | [Jira](https://jira.hl7.org/browse/FHIR-57219) | [Source](../open/FHIR-57219/FHIR-57219.md)
+- FHIR-57356: Restore Bundle.link.relation to allow extension URIs (align with RFC 8288) | [Jira](https://jira.hl7.org/browse/FHIR-57356) | [Source](../open/FHIR-57356/FHIR-57356.md)
+- FHIR-57383: Resource.id / Patient.id `structuredefinition-fhir-type` Regression | [Jira](https://jira.hl7.org/browse/FHIR-57383) | [Source](../open/FHIR-57383/FHIR-57383.md)
+
+## Resolved - change required (14)
+
+- FHIR-43177: StructureMap.const.name description is wrong | [Jira](https://jira.hl7.org/browse/FHIR-43177) | [Source](../open/FHIR-43177/FHIR-43177.md)
+- FHIR-51651: OperationDefinition.resource should be a URI to allow operations on logical models | [Jira](https://jira.hl7.org/browse/FHIR-51651) | [Source](../open/FHIR-51651/FHIR-51651.md)
+- FHIR-51700: Correct "H L7" spelling | [Jira](https://jira.hl7.org/browse/FHIR-51700) | [Source](../open/FHIR-51700/FHIR-51700.md)
+- FHIR-53722: Deprecated elements should be withdrawn where applicable in R6 | [Jira](https://jira.hl7.org/browse/FHIR-53722) | [Source](../open/FHIR-53722/FHIR-53722.md)
+- FHIR-53766: jurisdiction elements are no longer deprecated, but still have a "deprecation note" | [Jira](https://jira.hl7.org/browse/FHIR-53766) | [Source](../open/FHIR-53766/FHIR-53766.md)
+- FHIR-54046: SubscriptionTopic.trigger.event should be 0..* | [Jira](https://jira.hl7.org/browse/FHIR-54046) | [Source](../open/FHIR-54046/FHIR-54046.md)
+- FHIR-54110: VisitNumber as patient identifier is not specified in FHIR | [Jira](https://jira.hl7.org/browse/FHIR-54110) | [Source](../open/FHIR-54110/FHIR-54110.md)
+- FHIR-54482: The default value only has string datatype (R4 had lots of types) | [Jira](https://jira.hl7.org/browse/FHIR-54482) | [Source](../open/FHIR-54482/FHIR-54482.md)
+- FHIR-54748: ExampleScenario.actor overlaps with Actor | [Jira](https://jira.hl7.org/browse/FHIR-54748) | [Source](../open/FHIR-54748/FHIR-54748.md)
+- FHIR-55645: List of link types isn't up-to-date | [Jira](https://jira.hl7.org/browse/FHIR-55645) | [Source](../open/FHIR-55645/FHIR-55645.md)
+- FHIR-55975: Add best practice invariants that warn about missing code (and system?) on codings | [Jira](https://jira.hl7.org/browse/FHIR-55975) | [Source](../open/FHIR-55975/FHIR-55975.md)
+- FHIR-56197: StructureDefinition.context additional documentation | [Jira](https://jira.hl7.org/browse/FHIR-56197) | [Source](../open/FHIR-56197/FHIR-56197.md)
+- FHIR-56402: Clarify what's allowed for implicitRules | [Jira](https://jira.hl7.org/browse/FHIR-56402) | [Source](../open/FHIR-56402/FHIR-56402.md)
+- FHIR-57354: Remove restriction on Parameters in Bundle.entry.resource requiring reference from another entry | [Jira](https://jira.hl7.org/browse/FHIR-57354) | [Source](../open/FHIR-57354/FHIR-57354.md)

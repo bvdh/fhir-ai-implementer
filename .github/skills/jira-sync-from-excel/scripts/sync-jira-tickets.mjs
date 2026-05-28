@@ -104,14 +104,20 @@ function classifyTicket(status, resolution) {
   const s = normKey(status);
   const r = normKey(resolution);
 
+  // Tickets requiring change remain actionable and must stay open.
+  const changeRequiredPattern = /\bchange\s*-?\s*required\b|\bchanged\s*-?\s*required\b/;
+  if (changeRequiredPattern.test(s) || changeRequiredPattern.test(r)) {
+    return 'open';
+  }
+
   const closed = new Set([
     'applied',
     'duplicate',
     'deferred',
     'resolved',
     'closed',
+    'published',
     'resolved - no change',
-    'resolved - change required',
     'done'
   ]);
 
@@ -143,6 +149,71 @@ function removeIfExists(targetPath) {
 
 function ensureDir(targetPath) {
   fs.mkdirSync(targetPath, { recursive: true });
+}
+
+function listNonOverviewEntries(ticketDir, ticketKey) {
+  if (!fs.existsSync(ticketDir) || !fs.statSync(ticketDir).isDirectory()) {
+    return [];
+  }
+
+  return fs
+    .readdirSync(ticketDir, { withFileTypes: true })
+    .filter((entry) => entry.name !== `${ticketKey}.md`)
+    .map((entry) => entry.name);
+}
+
+function hasExtraArtifacts(ticketDir, ticketKey) {
+  return listNonOverviewEntries(ticketDir, ticketKey).length > 0;
+}
+
+function migrateExtraArtifacts(sourceDir, targetDir, ticketKey) {
+  if (!hasExtraArtifacts(sourceDir, ticketKey)) {
+    return;
+  }
+
+  ensureDir(targetDir);
+
+  for (const entry of fs.readdirSync(sourceDir, { withFileTypes: true })) {
+    if (entry.name === `${ticketKey}.md`) {
+      continue;
+    }
+
+    const fromPath = path.join(sourceDir, entry.name);
+    const toPath = path.join(targetDir, entry.name);
+
+    if (fs.existsSync(toPath)) {
+      console.warn(`WARN: Preserving conflicting artifact, leaving in place: ${fromPath}`);
+      continue;
+    }
+
+    fs.renameSync(fromPath, toPath);
+  }
+}
+
+function removeStaleTicketDirectories(baseDir, validTicketKeysUpper) {
+  if (!fs.existsSync(baseDir) || !fs.statSync(baseDir).isDirectory()) {
+    return;
+  }
+
+  for (const entry of fs.readdirSync(baseDir, { withFileTypes: true })) {
+    if (!entry.isDirectory()) {
+      continue;
+    }
+
+    if (!/^FHIR-\d+$/i.test(entry.name)) {
+      continue;
+    }
+
+    if (!validTicketKeysUpper.has(entry.name.toUpperCase())) {
+      const ticketDir = path.join(baseDir, entry.name);
+      if (hasExtraArtifacts(ticketDir, entry.name)) {
+        console.warn(`WARN: Preserving stale ticket directory with extra artifacts: ${ticketDir}`);
+        continue;
+      }
+
+      removeIfExists(ticketDir);
+    }
+  }
 }
 
 function escapeMd(value) {
@@ -373,9 +444,16 @@ function main() {
     delete ticket.metadataFieldByNorm;
   }
 
+  const ticketKeysUpper = new Set([...tickets.keys()].map((key) => key.toUpperCase()));
+
   ensureDir(path.join(jiraDir, 'open'));
   ensureDir(path.join(jiraDir, 'active'));
   ensureDir(path.join(jiraDir, 'closed'));
+
+  removeStaleTicketDirectories(path.join(jiraDir, 'open'), ticketKeysUpper);
+  removeStaleTicketDirectories(path.join(jiraDir, 'active'), ticketKeysUpper);
+  removeStaleTicketDirectories(path.join(jiraDir, 'closed'), ticketKeysUpper);
+  removeStaleTicketDirectories(jiraDir, ticketKeysUpper);
 
   const counts = { open: 0, active: 0, closed: 0 };
 
@@ -394,7 +472,8 @@ function main() {
     ];
 
     for (const location of possibleOldLocations) {
-      if (path.resolve(location) !== path.resolve(targetDir)) {
+      if (path.resolve(location) !== path.resolve(targetDir) && fs.existsSync(location)) {
+        migrateExtraArtifacts(location, targetDir, ticket.key);
         removeIfExists(location);
       }
     }

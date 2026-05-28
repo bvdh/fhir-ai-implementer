@@ -53,8 +53,9 @@ Closed includes statuses or resolutions such as:
 - Deferred
 - Resolved
 - Closed
+- Published
 - Resolved - No Change
-- Resolved - change required
+- Done
 
 ### Active
 Active includes only tickets listed in `currentTickets.md`.
@@ -65,6 +66,9 @@ If a ticket is not listed in `currentTickets.md`, it is moved out of `jira/activ
 
 ### Open
 Any ticket not in `currentTickets.md` and not classified as closed defaults to open.
+
+Published tickets must never remain in `jira/open/`; they are classified as `closed` during sync.
+Tickets with status/resolution indicating change required (for example `Resolved - change required` or `resolved-changed-required`) are classified as `open`.
 
 ## Output Format
 Each `FHIR-XXXXX.md` file includes:
@@ -78,3 +82,5 @@ Each `FHIR-XXXXX.md` file includes:
 - Requires the `xlsx` npm package available to Node.js execution context.
 - Existing ticket directories in the wrong state folder are moved by regeneration (old location removed, new location written).
 - Root-level `jira/FHIR-XXXXX` directories are also migrated to status folders when encountered.
+- Ticket directories that contain files other than `FHIR-XXXXX.md` are never deleted by sync.
+- When a ticket changes state, extra files in its old directory are moved to the new state directory with the ticket.
