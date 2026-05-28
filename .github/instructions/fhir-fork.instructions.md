@@ -17,6 +17,13 @@ applyTo: "fhir-fork/**"
 - https://confluence.hl7.org/spaces/FHIR/pages/79507295/Maintaining+FHIR+Core
 - https://confluence.hl7.org/spaces/FHIR/pages/35718548/FHIR+Spreadsheet+Authoring
 
+## Previous versions of the specification
+- R4: https://hl7.org/fhir/R4/
+- R4B: https://hl7.org/fhir/R4B/
+- R5: https://hl7.org/fhir/R5/
+
+Other versions can be found at https://hl7.org/fhir/directory.html.
+
 ## Source repo holding the code called when building and publishing the FHIR specification:
 - https://github.com/HL7/kindling.
 
