@@ -1,5 +1,5 @@
 FHIR-46202: Correct code datatype regex documentation
 
 - Update code primitive regex in datatypes source to the approved expression
-- Align the [%regex code%] source value with ^[^\s]+(\s[^\s]+)*$
+- Align the [%regex code%] source value with ^[^\s]+( [^\s]+)*$
 - Keep scope limited to a single source definition row in primitives.xml

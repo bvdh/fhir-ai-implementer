@@ -10,7 +10,7 @@
 
 ## Changes Applied
 1. Located the authoritative source for `[%regex code%]` in the primitive datatype table at `fhir-fork/source/datatypes/primitives.xml`.
-2. Updated the `code` primitive regex value from `[^\s]+( [^\s]+)*` to `^[^\s]+(\s[^\s]+)*$`.
+2. Updated the `code` primitive regex value to `^[^\s]+( [^\s]+)*$` to align with the prose requirement of single internal spaces only.
 3. Verified that the `code` primitive named row is uniquely defined in this source file, preventing conflicting source definitions for this ticket.
 
 ## Validation Performed
@@ -21,5 +21,5 @@
 - Rendered Datatypes output check via `./gradlew publish`: FAIL (execution skipped by host; unable to verify regenerated `publish/datatypes.html` in this run)
 
 ## Notes
-- The existing published output still shows the prior regex form until a successful publish is executed.
+- This implementation intentionally uses a literal space separator instead of `\s` so tabs/newlines are not accepted between code tokens.
 - No reusable new editing pattern was identified beyond established primitive-regex source updates.
