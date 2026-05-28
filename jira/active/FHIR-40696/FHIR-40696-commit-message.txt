@@ -1,0 +1,5 @@
+FHIR-40696: Fix timezone extension link in datatypes instant section
+
+- Replaced broken literal timezone extension text in datatypes instant value-domain note
+- Applied required extension anchor format using [%extensions-location%]StructureDefinition-timezone.html
+- Kept implementation scope to fhir-fork/source/datatypes.html only
