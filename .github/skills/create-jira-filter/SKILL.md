@@ -24,6 +24,7 @@ This skill generates a Jira JQL filter that shows all tickets listed in `current
    project = FHIR AND Specification = "FHIR Core (FHIR) [FHIR-core]" AND key in (FHIR-33050, FHIR-40580, ...)
    ```
 4. Creates a URL-encoded Jira filter link
+5. Stores both of them in the file `pr/<branch>/jira-filter.md` directory for easy access
 
 ## Usage
 
