@@ -1,0 +1,5 @@
+FHIR-54058: Correct Timing table start/end offset examples
+
+- Add endOffset column to the Timing criteria examples table
+- Correct "Every second day" and "Every second day starting on Day 2" values to avoid every-day semantics
+- Add explicit endOffset example for a 28-day cycle with a 7-day off interval
