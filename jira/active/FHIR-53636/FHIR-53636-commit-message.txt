@@ -1,0 +1,5 @@
+FHIR-53636: Clarify id whitespace prohibition
+
+- Clarified id primitive description to explicitly prohibit all whitespace characters
+- Added matching id datatype clarification in datatypes narrative and notes
+- Verified id regex and [%regex id%] token wiring remain unchanged
