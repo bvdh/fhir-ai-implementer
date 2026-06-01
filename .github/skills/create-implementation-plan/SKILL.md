@@ -12,7 +12,7 @@ Create review-ready implementation plans for FHIR specification tickets in this 
 ## Use When
 
 - Preparing a plan before editing spec content in fhir-fork/source/.
-- Converting Jira ticket scope into actionable implementation steps.
+- Converting Jira ticket scope into detailed actionable implementation steps.
 - Handling repetitive ticket batches where one shared approach applies.
 - Needing a clear validation checklist and risk/assumption log for workgroup review.
 
@@ -116,6 +116,8 @@ A plan is complete only if all are true:
 
 - Every in-scope ticket appears in the ticket matrix.
 - The likely edit surface is identified for each ticket.
+- The files and line-numbers likely impacted by the change have been identified.
+- Implementation steps are logically ordered and actionable.
 - Execution steps are specific enough to implement without reinterpretation.
 - Validation checklist is actionable and repository-aware.
 - Risks/assumptions capture uncertainty and escalation points.
