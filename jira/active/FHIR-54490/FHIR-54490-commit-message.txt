@@ -1,0 +1,4 @@
+FHIR-54490: Clarify Attachment.url relative reference format
+
+- Clarify that Attachment.url relative references resolve against the FHIR service base URL
+- Add explicit relative vs absolute example (Patient/123 vs full http URL)
