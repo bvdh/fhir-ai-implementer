@@ -1,0 +1,5 @@
+FHIR-50260: Clarify SampledData limit semantics
+
+- Clarified SampledData datatype description to state lowerLimit/upperLimit are measured and not scaled
+- Added explicit unscaled wording for SampledData.lowerLimit detection bound text
+- Added explicit unscaled wording for SampledData.upperLimit detection bound text
