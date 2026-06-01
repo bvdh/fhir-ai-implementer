@@ -1,0 +1,5 @@
+FHIR-51735: Confirm decimal regex correction state
+
+- Verified decimal regex in source/datatypes/primitives.xml has no trailing extra brace
+- Confirmed stale trailing-brace variant is absent and expected regex appears once
+- Confirmed datatypes.html remains wired via [%regex decimal%] placeholder
