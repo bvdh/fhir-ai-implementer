@@ -1,0 +1,5 @@
+FHIR-56000: Add approximate quantity comparator support
+
+- Add comparator code ~ to the QuantityComparator code list in datatypes/quantity.xml
+- Update Quantity.comparator allowed-code hint text to include ~
+- Clarify Quantity.comparator narrative wording to include approximately equal semantics
