@@ -1,0 +1,5 @@
+FHIR-57408: Allow SampledData offsets fallback to interval
+
+- Allow SampledData to have interval and/or offsets instead of requiring XOR
+- Clarify that interval applies when offsets run out
+- Relax offsets data-count rule when interval is present
