@@ -26,7 +26,7 @@ Build a PR message for the current FHIR batch that:
 - Source branch for implementation commits: current checked out branch in `fhir-fork`.
 - Output directory: `jira/pullrequest/<branch-name>/` where `<branch-name>` is the current `fhir-fork` branch name.
 - Full output file path: `jira/pullrequest/<branch-name>/pull-request-message-full.md` (default).
-- Trimmed output file path: `jira/pullrequest/<branch-name>/pull-request-message.md` (default, no commit coverage or validation sections).
+- Trimmed output file path: `jira/pullrequest/<branch-name>/pull-request-message.md` (default, includes only `## Scope`, `## Per-Ticket Change Summary`, and `## Notes on Overlaps`).
 - Ticket snapshot path: `jira/pullrequest/<branch-name>/currentTickets.md` (copy of ticket scope used to generate the PR message).
 - Preferred summary artifacts (in order):
 1. `<ticket>-commit-message.txt` first bullet line under title
@@ -65,7 +65,7 @@ Build a PR message for the current FHIR batch that:
 2. Ensure directory `jira/pullrequest/<branch-name>/` exists.
 3. Copy `currentTickets.md` to `jira/pullrequest/<branch-name>/currentTickets.md`.
 4. Write the complete PR markdown (including `## Commit Coverage Check` and `## Validation Notes`) to `jira/pullrequest/<branch-name>/pull-request-message-full.md` unless caller supplied a different full-output path.
-5. Create a trimmed PR markdown that keeps `## Scope`, `## Tickets Addressed`, and `## Notes on Overlaps`, and excludes `## Commit Coverage Check` and `## Validation Notes`.
+5. Create a trimmed PR markdown that keeps only `## Scope`, `## Per-Ticket Change Summary`, and `## Notes on Overlaps`.
 6. Write the trimmed markdown to `jira/pullrequest/<branch-name>/pull-request-message.md`.
 7. Return the trimmed markdown in chat, and mention where the full report and copied `currentTickets.md` snapshot are stored.
 8. Validate final output:
@@ -127,6 +127,6 @@ Default write targets for this output:
 - Any missing commit is classified as verification-only/no-op or unresolved.
 - Commit coverage is evaluated only against `fhir-fork` branch commits.
 - Full PR report is written to `jira/pullrequest/<branch-name>/pull-request-message-full.md`.
-- Trimmed PR text is written to `jira/pullrequest/<branch-name>/pull-request-message.md` and excludes commit coverage and validation sections.
+- Trimmed PR text is written to `jira/pullrequest/<branch-name>/pull-request-message.md` and includes only `## Scope`, `## Per-Ticket Change Summary`, and `## Notes on Overlaps`.
 - `currentTickets.md` snapshot is copied to `jira/pullrequest/<branch-name>/currentTickets.md`.
 - Output is concise and ready to paste into PR description.

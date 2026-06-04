@@ -1,0 +1,13 @@
+# Jira Filter
+
+## Summary
+- Source file: currentTickets.md
+- Branch: datatypes
+- Ticket count: 13
+
+## JQL
+
+
+
+## URL
+https://jira.hl7.org/issues/?filter=22928&jql=project%20%3D%20FHIR%20AND%20Specification%20%3D%20%22FHIR%20Core%20%28FHIR%29%20%5BFHIR-core%5D%22%20AND%20key%20in%20%28%20FHIR-41631%2CFHIR-40696%2CFHIR-44645%2CFHIR-46202%2CFHIR-47129%2CFHIR-53636%2CFHIR-51735%2CFHIR-54058%2CFHIR-54062%2CFHIR-54490%2CFHIR-56000%2CFHIR-57408%2CFHIR-50260%20%29

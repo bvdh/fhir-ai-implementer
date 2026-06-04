@@ -1,15 +1,17 @@
 # Check: FHIR-50260
 
 ## Verdict
-- Status: NEEDS ATTENTION
+- Status: PASS
 
 ## Assessment
-- Resolution description is specific: lowerLimit/upperLimit comments should state scaling by factor+origin, and datatype description should include guidance about using multiple SampledData instances for differing dimensions.
-- Current plan/changelog summary states validation and broad semantics, but does not clearly confirm the exact approved wording/guidance was implemented verbatim.
+- Resolution description requirements are now explicitly reflected in implementation evidence.
+- Plan and change log are aligned with the approved resolution wording and include direct text excerpts with source references.
 
 ## Evidence
-- Resolution text includes two concrete additions that should be directly traceable in implementation evidence.
-- Change log currently reports confirmation statements without quoting/pointing to the exact newly required language.
+- `fhir-fork/source/datatypes/sampleddata.xml` (`SampledData.lowerLimit`) includes: "scaled in the same manner as the data values... multiply this value by the factor and add the origin."
+- `fhir-fork/source/datatypes/sampleddata.xml` (`SampledData.upperLimit`) includes: "scaled in the same manner as the data values... multiply this value by the factor and add the origin."
+- `fhir-fork/source/datatypes/sampleddata.xml` (datatype narrative) includes: "multiple SampledData instances - one in each Observation.component..."
+- `jira/active/FHIR-50260/FHIR-50260-implementation-change-log.md` now records direct excerpts and traceability.
 
 ## Attention
-- Add explicit proof in plan/changelog that both required resolution-description additions are present (with direct text excerpts and file references).
+- None.
