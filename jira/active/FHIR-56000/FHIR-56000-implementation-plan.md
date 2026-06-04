@@ -3,7 +3,7 @@
 ## Scope Summary
 - Workgroup/source: Direct ticket scope (FHIR-56000)
 - Tickets in scope: FHIR-56000
-- Primary fix pattern: Terminology and datatype clarification/update for representing approximate quantity semantics via Quantity.comparator using comparator code `~` (not `ap`)
+- Primary fix pattern: Terminology and datatype clarification/update for representing approximate quantity semantics via Quantity.comparator using comparator code `~` (not `ap`), including the resolution recommendation text (10% guidance and Quantity Confidence Interval extension reference)
 
 ## Ticket Matrix
 | Ticket | Summary | Status | Target page(s) | Change type | Notes |
@@ -27,6 +27,7 @@
 3. Update comparator code list worksheet in `fhir-fork/source/datatypes/quantity.xml`:
    - `quantity-comparator` table around lines 6362-6430.
    - Add or revise code/display/definition to express "approximately" in line with ticket intent using code `~`, while preserving existing comparator semantics.
+   - Include the resolution-specific recommendation text for approximation (10% guidance) and reference the Quantity Confidence Interval extension (`http://hl7.org/fhir/StructureDefinition/quantity-confidenceInterval`).
 4. Verify generated/rendered narrative alignment:
    - Check Quantity narrative in `fhir-fork/source/datatypes.html` around lines 929-935 for consistency with comparator semantics.
    - Optionally add/update an explicit approximate example in `fhir-fork/source/datatypes-examples.html` around lines 758-768 if needed for clarity.
@@ -46,6 +47,7 @@
 - [ ] Ticket is mapped to at least one concrete source edit location in `fhir-fork/source/`.
 - [ ] Planned edits remain within `fhir-fork/source/` only.
 - [ ] Quantity.comparator and `quantity-comparator` code list are updated in canonical source (`datatypes/quantity.xml`) using code `~` for approximate semantics.
+- [ ] Resolution recommendation text is represented in canonical source for approximate comparator semantics, including 10% guidance and the Quantity Confidence Interval extension reference.
 - [ ] Comparator code `ap` is not introduced for this ticket.
 - [ ] `valueset-quantity-comparator` rendered artifacts are updated and verified in `fhir-fork/publish/`.
 - [ ] Approximate semantics are unambiguous in code display/definition and narrative wording.
