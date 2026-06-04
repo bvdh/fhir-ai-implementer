@@ -1,6 +1,6 @@
-FHIR-44645: Update Primitive Types section in datatypes-definitions
+FHIR-44645: Re-evaluate HumanName anchor behavior and align ticket artifacts
 
-- Replace Primitive Types placeholder with a concrete 4-column primitive table
-- Keep primitive names as plain text and retain compact `def` links to datatypes.html anchors
-- Add/retain required primitive anchor names used by table entries for fragment navigation
+- Re-execute ticket validation against source and published output for HumanName anchors
+- Confirm `HumanName` and `humanname` anchors exist and inbound links resolve as expected
+- Update plan/check/change-log to reflect anchor-focused no-op outcome in current branch state
 

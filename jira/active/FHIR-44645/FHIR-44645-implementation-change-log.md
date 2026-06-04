@@ -1,25 +1,37 @@
 # Implementation Change Log: FHIR-44645
 
 ## Summary
+
 - Plan: jira/active/FHIR-44645/FHIR-44645-implementation-plan.md
 - Ticket: jira/active/FHIR-44645/FHIR-44645.md
-- Execution date: 2026-05-28
+- Execution date: 2026-06-04 (re-execution)
 
 ## Files Changed
-- fhir-fork/source/datatypes-definitions.html
+
+- jira/active/FHIR-44645/FHIR-44645-implementation-plan.md
+- jira/active/FHIR-44645/FHIR-44645-implementation-change-log.md
+- jira/active/FHIR-44645/FHIR-44645-check.md
+- jira/active/FHIR-44645/FHIR-44645-commit-message.txt
 
 ## Changes Applied
-1. Replaced the Primitive Types placeholder (`<i>todo</i>`) in `source/datatypes-definitions.html` with a concrete reference section.
-2. Added a 4-column Primitive Types table and removed separate definition columns.
-3. Kept primitive type names as plain text in table cells and retained compact `def` links to `datatypes.html` anchors.
-4. Added/retained primitive anchor names used by the table entries (`canonical`, `integer64`, `markdown`, `positiveInt`, `unsignedInt`, `url`) to preserve fragment navigation.
-5. Incorporated the additional AI+human table refinements made in this thread into the final recorded ticket implementation.
+
+1. Re-evaluated ticket intent against Jira summary: "HumanName anchor isn't working".
+2. Replaced prior plan narrative (which referenced primitive-table work) with an anchor-focused validation and minimal-fix plan.
+3. Re-executed validation against source and generated output:
+   - Verified source/datatypes-definitions.html contains both name="HumanName" and name="humanname".
+   - Verified publish/datatypes-definitions.html contains both name="HumanName" and name="humanname".
+   - Verified publish/datatypes.html includes inbound linking to datatypes-definitions.html#HumanName.
+4. Determined no source change in fhir-fork/source/ was required for current branch state.
 
 ## Validation Performed
-- File diagnostics for `source/datatypes-definitions.html`: PASS (no errors)
-- Primitive table structure check (4 Primitive Type columns): PASS
-- Primitive name hyperlink removal check (names rendered as text, `def` links retained): PASS
+
+- Source HumanName anchor presence in source/datatypes-definitions.html: PASS
+- Source HumanName anchor presence in source/datatypes.html: PASS
+- Published HumanName anchor presence in publish/datatypes-definitions.html: PASS
+- Published inbound link from publish/datatypes.html to datatypes-definitions.html#HumanName: PASS
+- Required source correction identified: NO
 
 ## Notes
-- This change log now reflects the final combined AI + human edits completed in this thread.
-- Edit scope remained within `fhir-fork/source/`.
+
+- This re-execution supersedes the previous off-scope narrative for this ticket.
+- No fhir-fork/source/ edits were made during this re-execution because the anchor defect was not reproducible in current source and publish artifacts.
