@@ -1,5 +1,5 @@
-FHIR-54062: Tighten Timing offset constraints for repeat cycles
+FHIR-54062: Align Timing offset notes with repeat-cycle constraints
 
-- Require period with frequency > 1 when startOffset is used
-- Require period with frequency > 1 when endOffset is used
-- Align Timing.repeat start/end offset descriptions with repeat-cycle requirements
+- Add Timing notes section for periods with start or end offsets
+- Point startOffset and endOffset comments to the new notes section
+- Align offset narrative with period-required and effective-period semantics

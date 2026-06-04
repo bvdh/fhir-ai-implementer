@@ -1,76 +1,73 @@
-# Implementation Plan: FHIR-54062
+# Implementation Plan: FHIR-54062 (Forced Refresh)
 
 ## Scope Summary
 - Workgroup/source: Direct ticket scope from FHIR-54062
 - Tickets in scope: FHIR-54062
-- Primary fix pattern: Structural constraint rework plus explanatory wording alignment for Timing.repeat startOffset and endOffset
+- Primary fix pattern: Verify and complete Timing.repeat startOffset/endOffset constraint + narrative alignment in datatypes content
 
 ## Ticket Matrix
 | Ticket | Summary | Status | Target page(s) | Change type | Notes |
 |---|---|---|---|---|---|
-| FHIR-54062 | Rework startOffset/endOffset constraint | Resolved - change required | Datatypes, Timing section | Constraint logic + supporting narrative/examples | Existing tim-11/tim-12 only require frequency > 1 and do not enforce period/frequency/offset coherence for unambiguous schedules |
+| FHIR-54062 | Rework startOffset/endOffset constraint | Resolved - change required | Datatypes (Timing), Dosage examples | Constraint/narrative consistency | Current branch already includes period-required invariant logic; plan focuses on closure against resolution text |
 
 ## Shared Implementation Approach
-1. Locate Timing.repeat element definitions and invariant rows in fhir-fork/source/datatypes/timing.xml.
-2. Rework tim-11 and tim-12 constraint text and expressions so startOffset/endOffset use is clearly bounded by repeat-cycle semantics.
-3. Align Timing narrative and examples so they match revised invariants and intended interpretation.
-4. Keep edits minimal, traceable, and limited to files under fhir-fork/source.
+1. Confirm what is already implemented in `timing.xml` invariants and element comments.
+2. Close any remaining gaps from the approved resolution wording (especially notes/section references).
+3. Keep edits minimal and constrained to `fhir-fork/source/`.
 
 ## Likely Edit Surface (Files and Lines)
-- fhir-fork/source/datatypes/timing.xml:1181
-  - Timing.repeat.startOffset element row; short/definition/comment may require clarification to match revised constraints.
-- fhir-fork/source/datatypes/timing.xml:1206
-  - Timing.repeat.endOffset element row; short/definition/comment may require clarification to match revised constraints.
+- fhir-fork/source/datatypes/timing.xml:1194
+  - `Timing.repeat.startOffset` definition already states period+frequency requirement; verify final wording against resolution text.
+- fhir-fork/source/datatypes/timing.xml:1218
+  - `Timing.repeat.endOffset` short text already uses "stop once" language; verify this is the intended final wording.
+- fhir-fork/source/datatypes/timing.xml:1219
+  - `Timing.repeat.endOffset` definition already states period+frequency requirement; verify consistency with notes text.
 - fhir-fork/source/datatypes/timing.xml:3723
-  - tim-11 English text currently tied only to frequency > 1.
+  - Invariant #11 English text currently: startOffset requires `frequency > 1` and `period` present.
 - fhir-fork/source/datatypes/timing.xml:3725
-  - tim-11 FHIRPath currently startOffset.exists() implies (frequency > 1).
+  - Invariant #11 FHIRPath currently: `startOffset.exists() implies (frequency > 1 and period.exists())`.
+- fhir-fork/source/datatypes/timing.xml:3730
+  - Invariant name currently `endOffset1`; verify naming expectation for ticket narrative/reference clarity.
 - fhir-fork/source/datatypes/timing.xml:3733
-  - tim-12 English text currently tied only to frequency > 1.
+  - Invariant #12 English text currently: endOffset requires `frequency > 1` and `period` present.
 - fhir-fork/source/datatypes/timing.xml:3735
-  - tim-12 FHIRPath currently endOffset.exists() implies (frequency > 1).
-- fhir-fork/source/datatypes.html:1667
-  - Timing criteria table includes startOffset/endOffset examples that should remain coherent with new rules.
+  - Invariant #12 FHIRPath currently: `endOffset.exists() implies (frequency > 1 and period.exists())`.
 - fhir-fork/source/datatypes.html:1691
-  - Explanatory paragraph describing offset vs startOffset/endOffset semantics.
+  - Offset explanation paragraph; verify it aligns with "effective period" explanation from ticket resolution.
 - fhir-fork/source/dosage-examples.html:1351
-  - End-offset dosage cycle example that may need minor wording adjustment for consistency with reworked constraints.
+  - 28-day cycle example with `endOffset = 7 d`; verify narrative matches period-minus-offset interpretation.
 
 ## Execution Steps
-1. Confirm intended normative behavior from ticket context:
-   - Ensure offsets are only allowed when frequency and period define an interpretable repeat cycle.
-   - Decide whether constraints require period when startOffset or endOffset is present.
-   - Decide whether additional integer-divisibility or boundary checks are desired versus narrative guidance.
-2. Update tim-11 and tim-12 English statements in fhir-fork/source/datatypes/timing.xml to reflect the approved rule logic.
-3. Update tim-11 and tim-12 FHIRPath expressions in fhir-fork/source/datatypes/timing.xml to match approved logic.
-4. If invariant identifiers or names are adjusted, keep naming stable or explicitly justified to avoid downstream confusion.
-5. Update Timing.repeat.startOffset and Timing.repeat.endOffset descriptive text in fhir-fork/source/datatypes/timing.xml to align with revised invariants.
-6. Review Timing narrative in fhir-fork/source/datatypes.html around the criteria table and offset explanation paragraph; revise wording only where needed for consistency.
-7. Review dosage cycle example in fhir-fork/source/dosage-examples.html for alignment with revised constraint semantics; adjust wording/example only if mismatch exists.
-8. Run source-level consistency checks:
-   - Search for stale frequency > 1-only wording tied to startOffset/endOffset rules.
-   - Verify no unrelated datatypes or non-source files are modified.
-9. Validate build output:
-   - Run ./gradlew publish from fhir-fork.
-   - Confirm generated Timing constraints and narrative in publish output reflect intended updates.
+1. Reconcile the ticket resolution text with current content:
+   - Confirm period-required invariants are present for both `startOffset` and `endOffset`.
+   - Confirm endOffset short text correction ("stop once") is present and typo-free.
+2. Add or adjust notes text for "Periods with start or end offsets" if not yet explicitly represented in the Timing narrative/comment fields.
+3. Ensure startOffset/endOffset comments point readers to the relevant notes section (or equivalent canonical explanatory location).
+4. Review invariant display names/labels for consistency and reviewer clarity (including whether `endOffset1` should remain or be normalized).
+5. Re-check dosage narrative examples so they reflect:
+   - Frequency over full period when no offsets are present.
+   - Frequency over effective period (`period - offsets`) when offsets are present.
+6. Run focused consistency checks in source:
+   - Search for stale wording that implies only frequency is required.
+   - Confirm all modified files remain under `fhir-fork/source/`.
+7. Validate rendered output with a publish build (`./gradlew publish`) and inspect generated datatypes/dosage pages for the updated wording.
 
 ## Validation Checklist
-- [ ] FHIR-54062 is mapped to concrete source files and line targets.
-- [ ] Planned edits are confined to fhir-fork/source.
-- [ ] tim-11 and tim-12 English and FHIRPath remain semantically aligned.
-- [ ] Timing element definitions and narrative text are consistent with revised constraints.
-- [ ] Example content remains valid under revised constraints (or is updated accordingly).
-- [ ] No unrelated formatting/tooling/build-script changes are introduced.
-- [ ] ./gradlew publish completes successfully.
-- [ ] Published Timing pages reflect the approved constraint behavior.
+- [ ] Ticket intent mapped to concrete source lines in `timing.xml`, `datatypes.html`, and `dosage-examples.html`.
+- [ ] `tim-11` and `tim-12` English and FHIRPath rows remain semantically aligned.
+- [ ] `startOffset` and `endOffset` definitions explicitly support period-required repeat-cycle interpretation.
+- [ ] Notes/guidance text for "Periods with start or end offsets" is present or equivalently represented and discoverable.
+- [ ] End-offset wording uses the approved "stop once" meaning.
+- [ ] Example narrative remains consistent with the effective-period interpretation.
+- [ ] No non-source or unrelated files are modified.
+- [ ] `./gradlew publish` succeeds and rendered pages reflect the final text.
 
 ## Risks and Assumptions
-- Risk: Over-constraining offsets could invalidate existing legitimate schedules.
-- Risk: Under-constraining offsets could preserve ambiguity the ticket intends to remove.
-- Risk: Constraint changes may require synchronized updates in examples and explanatory prose to avoid mixed guidance.
-- Assumption: Ticket intent is to increase semantic clarity for schedules using startOffset/endOffset, not just wording polish.
-- Assumption: timing.xml remains authoritative for Timing invariant definitions rendered in published artifacts.
+- Risk: Over-editing may duplicate or conflict with already-implemented wording now present in `timing.xml`.
+- Risk: Changing invariant labels (for clarity) could affect references in downstream discussions or tooling.
+- Risk: Narrative updates without synchronized example text can reintroduce ambiguity.
+- Assumption: This ticket is near-complete in current branch, and remaining work is primarily consistency/traceability closure.
+- Assumption: Timing guidance may be split between XML element comments and datatypes narrative, and both must align.
 - Open questions:
-  - Should both frequency and period be mandatory when either startOffset or endOffset is present?
-  - Should offset-based schedules require evenly divisible active windows, or should non-divisible cases be allowed with guidance only?
-  - Should constraints enforce lower/upper bounds on offsets relative to period, or remain descriptive in narrative text?
+  - Should the notes section title literally be "Periods with start or end offsets", or is equivalent prose acceptable?
+  - Should invariant display name `endOffset1` be renamed for readability, or retained to avoid churn?
