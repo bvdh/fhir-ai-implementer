@@ -1,0 +1,5 @@
+FHIR-54057: Deprecate conditional CapabilityStatement fields
+
+- Add read-conditional-modified-since and read-conditional-not-match interaction codes
+- Mark conditionalCreate, conditionalRead, conditionalUpdate, conditionalPatch, and conditionalDelete as deprecated with migration guidance
+- Deprecate conditional read/delete status code systems and value sets in favor of interaction codes

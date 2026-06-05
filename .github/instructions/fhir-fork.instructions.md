@@ -42,6 +42,15 @@ Other versions can be found at https://hl7.org/fhir/directory.html.
 	- Verify the visible hyperlink text matches the extension name in the URL (e.g., `artifact-author` for `StructureDefinition-artifact-author.html`).
 	- If URL and label do not correspond, update both to the correct matching extension.
 
+## Deprecation Pattern Rules
+- When deprecating elements, concepts, code systems, or value sets, use the `structuredefinition-standards-status` extension with `valueCode="deprecated"`.
+- Provide a deprecation reason using `http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status-reason` when there is a clear replacement or migration path.
+- Prefer the nested pattern used in existing content:
+	- `structuredefinition-standards-status` -> `valueCode value="deprecated"` -> nested `structuredefinition-standards-status-reason` with `valueMarkdown`.
+- If the surrounding artifact already uses a slightly different but valid ordering for the reason extension, follow the local file style for consistency.
+- Pair metadata deprecation with explicit migration wording in nearby `short`, `definition`, or `comment` text when applicable (for example: "Use <replacement> instead").
+- When deprecating capability flags in favor of interaction codes, ensure replacement codes are present in the relevant code system/value set before or alongside the deprecation update.
+
 
 ## Placeholder For Additional FHIR-Fork Rules
 - Add future fork-specific conventions here as they are agreed.
