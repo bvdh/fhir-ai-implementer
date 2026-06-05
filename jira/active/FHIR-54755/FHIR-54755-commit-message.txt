@@ -1,0 +1,5 @@
+FHIR-54755: Clarify narrative resource-link guidance
+
+- Add References to other resources section with relative/absolute href guidance
+- Add explicit Patient/example anchor example for narrative-to-resource links
+- Move Linking between Data and Narrative up and remove Internal Id References section body
