@@ -1,0 +1,5 @@
+FHIR-55156: Add other to system REST interactions
+
+- Add other to ValueSet/system-restful-interaction compose include list
+- Add matching other narrative row in system interaction value set table
+- Update CapabilityStatement.rest.interaction.code short list to include other
