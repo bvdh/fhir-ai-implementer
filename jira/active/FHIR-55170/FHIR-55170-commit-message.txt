@@ -1,0 +1,5 @@
+FHIR-55170: Remove ig-3 and document generation fallback
+
+- Remove ig-3 invariant from ImplementationGuide.definition.page and drop ig-3 conditions from related child elements
+- Add guidance on ImplementationGuide.definition.page.generation to use generated plus extension for future mechanisms
+- Preserve required binding to GuidePageGeneration without expanding value set concepts
