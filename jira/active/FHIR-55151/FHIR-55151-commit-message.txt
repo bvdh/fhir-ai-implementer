@@ -1,0 +1,5 @@
+FHIR-55151: Clarify version-independent fhirVersion binding
+
+- Add explicit version-independent binding guidance to CapabilityStatement.fhirVersion
+- Add binding-definition extension text for FHIR-version binding semantics
+- Add tooling narrative to versioning.html for prior-release version-independent behavior
