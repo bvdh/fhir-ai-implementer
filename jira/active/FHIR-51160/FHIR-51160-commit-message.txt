@@ -1,0 +1,5 @@
+FHIR-51160: Correct rest.searchParam comment wording
+
+- Replace incorrect resource-specific phrase in rest.searchParam comment
+- Keep remaining system-level comment guidance unchanged
+- Leave rest.resource.searchParam comment text unchanged
