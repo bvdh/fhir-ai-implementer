@@ -1,0 +1,5 @@
+FHIR-55169: Bind ImplementationGuide.global.type to cross-version resource types
+
+- Replace the required binding ValueSet with version-independent-resource-types
+- Update binding description to reflect current and prior FHIR resource types
+- Keep the implementation diff localized to the ImplementationGuide structure definition
