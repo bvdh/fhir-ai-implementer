@@ -1,0 +1,5 @@
+FHIR-53684: Add conformance declaration guidance to IG notes
+
+- Add a new "Declaring conformance to guides" subsection in ImplementationGuide notes
+- Clarify when to reference child CapabilityStatement and ActorDefinition resources for conformance claims
+- Add guidance that ImplementationGuide.useContext can express intended guide purpose in a computable way
