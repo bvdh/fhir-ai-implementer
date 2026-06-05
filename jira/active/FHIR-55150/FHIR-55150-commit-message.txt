@@ -1,0 +1,5 @@
+FHIR-55150: Clarify CapabilityStatement.kind fallback guidance
+
+- Update CapabilityStatement.kind definition to describe general implementation expectations
+- Add explicit comment to use requirements when specific system knowledge is unavailable
+- Keep CapabilityStatementKind value set and code system concepts unchanged
