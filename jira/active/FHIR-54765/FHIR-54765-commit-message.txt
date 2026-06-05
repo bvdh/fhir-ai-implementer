@@ -1,0 +1,5 @@
+FHIR-54765: Clarify narrative image references in bundles
+
+- Add fullUrl option to narrative image source guidance for document bundles
+- Add Bundle-based example showing img src resolved via entry fullUrl
+- Add implementer note for same-bundle constraint and resource tracking
