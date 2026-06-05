@@ -1,0 +1,5 @@
+FHIR-48338: Consolidate narrative id-reference guidance
+
+- Consolidate internal id-reference guidance into the linking section
+- Clarify that cross-resource narrative links use resource references, not XML ID/IDREF
+- Clarify Bundle scope rules for narrative fragment ids and preserve existing anchors
