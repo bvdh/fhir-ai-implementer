@@ -11,6 +11,7 @@ disable-model-invocation: false
 Build a PR message for the current FHIR batch that:
 - lists all tickets in scope
 - gives a single-line summary per ticket
+- includes Jira hyperlinks for each ticket key in rendered PR sections
 - calls out duplicate/overlapping ticket implementations clearly
 - verifies ticket-to-commit coverage on the current `fhir-fork` branch
 - requires ticket implementation commits only in `fhir-fork` (outer repo commits are optional and not part of commit-coverage pass/fail)
@@ -55,11 +56,14 @@ Build a PR message for the current FHIR batch that:
 5. If commit is missing and no no-op evidence exists, flag as missing implementation commit and include in validation notes.
 6. Build PR markdown with these sections:
 1. `## Scope`
-2. `## Tickets Addressed` (bullet list of ticket keys)
-3. `## Per-Ticket Change Summary` (one line per ticket)
+2. `## Tickets Addressed` (bullet list with each ticket key hyperlinked to Jira)
+3. `## Per-Ticket Change Summary` (one line per ticket, with each ticket key hyperlinked to Jira)
 4. `## Notes on Overlaps` (only when duplicates/overlaps detected)
 5. `## Commit Coverage Check`
 6. `## Validation Notes` (artifact completeness and any missing summaries)
+7. Jira hyperlink format requirements:
+1. Use Markdown links in the form `[FHIR-XXXXX](https://jira.hl7.org/browse/FHIR-XXXXX)`.
+2. Apply this format consistently in `## Tickets Addressed`, `## Per-Ticket Change Summary`, `## Notes on Overlaps`, `## Commit Coverage Check`, and `## Validation Notes` whenever ticket keys are shown.
 7. Persist output:
 1. Resolve the current `fhir-fork` branch name and map it to a safe directory segment (replace `/` with `-`).
 2. Ensure directory `jira/pullrequest/<branch-name>/` exists.
@@ -84,19 +88,19 @@ Use this structure in the generated PR message:
 One or more commits addressing the tickets listed below.
 
 ## Tickets Addressed
-- FHIR-XXXXX: <single-line change summary>
-- FHIR-YYYYY: <single-line change summary>
+- [FHIR-XXXXX](https://jira.hl7.org/browse/FHIR-XXXXX): <single-line change summary>
+- [FHIR-YYYYY](https://jira.hl7.org/browse/FHIR-YYYYY): <single-line change summary>
 
 ## Notes on Overlaps
-- FHIR-AAAAA and FHIR-BBBBB map to the same source-location fix; implemented once and tracked for both tickets in this PR.
+- [FHIR-AAAAA](https://jira.hl7.org/browse/FHIR-AAAAA) and [FHIR-BBBBB](https://jira.hl7.org/browse/FHIR-BBBBB) map to the same source-location fix; implemented once and tracked for both tickets in this PR.
 
 ## Commit Coverage Check
-- Branch commit tickets detected: FHIR-XXXXX, FHIR-YYYYY.
-- Tickets without branch commit: FHIR-QQQQQ (verification-only/no-op confirmed).
+- Branch commit tickets detected: [FHIR-XXXXX](https://jira.hl7.org/browse/FHIR-XXXXX), [FHIR-YYYYY](https://jira.hl7.org/browse/FHIR-YYYYY).
+- Tickets without branch commit: [FHIR-QQQQQ](https://jira.hl7.org/browse/FHIR-QQQQQ) (verification-only/no-op confirmed).
 
 ## Validation Notes
 - Summary artifacts present for N/M tickets.
-- Missing summary artifacts: FHIR-ZZZZZ.
+- Missing summary artifacts: [FHIR-ZZZZZ](https://jira.hl7.org/browse/FHIR-ZZZZZ).
 ```
 
 Default write targets for this output:
@@ -121,6 +125,7 @@ Default write targets for this output:
 ## Completion Checks
 - PR message includes all tickets from `currentTickets.md`.
 - One-line summary exists for each ticket.
+- Every rendered ticket key includes a Jira hyperlink using `https://jira.hl7.org/browse/<ticket-key>`.
 - Duplicate/overlap cases are explicitly disclosed.
 - Commit coverage check section is included and complete.
 - Any commit-ticket mismatch has an explicit action decision (add to scope or defer).
