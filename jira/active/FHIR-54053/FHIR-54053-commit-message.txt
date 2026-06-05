@@ -1,0 +1,5 @@
+FHIR-54053: Remove obsolete CapabilityStatement messaging rules note
+
+- Remove the Messaging CapabilityStatement rules subsection from capabilitystatement-notes.xml
+- Eliminate outdated draft-status wording for MessageDefinition and supportedMessage/event transition
+- Keep adjacent RESTful and Document CapabilityStatement notes intact
