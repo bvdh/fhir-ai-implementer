@@ -51,6 +51,14 @@ Other versions can be found at https://hl7.org/fhir/directory.html.
 - Pair metadata deprecation with explicit migration wording in nearby `short`, `definition`, or `comment` text when applicable (for example: "Use <replacement> instead").
 - When deprecating capability flags in favor of interaction codes, ensure replacement codes are present in the relevant code system/value set before or alongside the deprecation update.
 
+## Escape Valve Terminology Sync Rules
+- When adding a required-binding escape-valve code (for example `other`), update all of the following together:
+	- the canonical CodeSystem concept (`code`, `display`, and ticket-approved `definition`),
+	- the bound ValueSet compose include list (and maintained narrative table where present), and
+	- the corresponding StructureDefinition element `short` enumeration if it lists allowed codes inline.
+- Preserve ticket intent for allowed escape-valve values (for example, add `other` without adding `unknown` when resolution says unknown is not appropriate).
+- Keep value set canonical references unchanged unless the ticket explicitly requires canonical remapping.
+
 
 ## Placeholder For Additional FHIR-Fork Rules
 - Add future fork-specific conventions here as they are agreed.

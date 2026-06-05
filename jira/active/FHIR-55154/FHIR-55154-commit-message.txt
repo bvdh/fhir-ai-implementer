@@ -1,0 +1,5 @@
+FHIR-55154: Add other to type REST interaction binding
+
+- Add `other` concept to `restful-interaction` code system with ticket-defined meaning
+- Include `other` in `ValueSet/type-restful-interaction` compose and narrative table
+- Update CapabilityStatement.rest.resource.interaction.code short list to include `other`
