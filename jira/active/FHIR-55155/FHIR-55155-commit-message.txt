@@ -1,0 +1,5 @@
+FHIR-55155: Clarify searchParam.type down-conversion guidance
+
+- Add comment on CapabilityStatement.searchParam.type for down-conversion behavior
+- Specify that additional future search parameter types map to `special`
+- Keep SearchParamType terminology and required binding canonical unchanged
