@@ -1,6 +1,10 @@
 # request
 
-Ticket count: 2
+Ticket count: 3
+
+## Triaged (1)
+
+- FHIR-57502: Replace Request.replaces with Request.releatesTo (instead of the changes in FHIR-54876) | [Jira](https://jira.hl7.org/browse/FHIR-57502) | [Source](../open/FHIR-57502/FHIR-57502.md)
 
 ## Submitted (1)
 

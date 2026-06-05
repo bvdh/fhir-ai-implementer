@@ -1,8 +1,8 @@
 # Other
 
-Ticket count: 44
+Ticket count: 46
 
-## Triaged (19)
+## Triaged (22)
 
 - FHIR-51728: Compliant compartment deviation is unclear | [Jira](https://jira.hl7.org/browse/FHIR-51728) | [Source](../open/FHIR-51728/FHIR-51728.md)
 - FHIR-51730: Remove chaining support in CompartmentDefinition | [Jira](https://jira.hl7.org/browse/FHIR-51730) | [Source](../open/FHIR-51730/FHIR-51730.md)
@@ -21,8 +21,11 @@ Ticket count: 44
 - FHIR-54856: Subscription optional coded elements need to describe default behavior | [Jira](https://jira.hl7.org/browse/FHIR-54856) | [Source](../open/FHIR-54856/FHIR-54856.md)
 - FHIR-55439: Remove deprecated MetadataResource.topic | [Jira](https://jira.hl7.org/browse/FHIR-55439) | [Source](../open/FHIR-55439/FHIR-55439.md)
 - FHIR-55445: Remove deprecated StructureDefinition.keyword | [Jira](https://jira.hl7.org/browse/FHIR-55445) | [Source](../open/FHIR-55445/FHIR-55445.md)
+- FHIR-57216: Structure Map target list mode should be single cardinality | [Jira](https://jira.hl7.org/browse/FHIR-57216) | [Source](../open/FHIR-57216/FHIR-57216.md)
 - FHIR-57432: Can globals apply for logical models? | [Jira](https://jira.hl7.org/browse/FHIR-57432) | [Source](../open/FHIR-57432/FHIR-57432.md)
 - FHIR-57433: Clarify global inheritance expectations | [Jira](https://jira.hl7.org/browse/FHIR-57433) | [Source](../open/FHIR-57433/FHIR-57433.md)
+- FHIR-57495: Derived OperationDefinition parameter.type issue | [Jira](https://jira.hl7.org/browse/FHIR-57495) | [Source](../open/FHIR-57495/FHIR-57495.md)
+- FHIR-57501: Fix conflicting definition of ImplementationGuide.global | [Jira](https://jira.hl7.org/browse/FHIR-57501) | [Source](../open/FHIR-57501/FHIR-57501.md)
 
 ## Waiting for Input (5)
 
@@ -32,11 +35,10 @@ Ticket count: 44
 - FHIR-47614: Need a functional TestReport | [Jira](https://jira.hl7.org/browse/FHIR-47614) | [Source](../open/FHIR-47614/FHIR-47614.md)
 - FHIR-48768: Define terminology so that authors can use usageContext to categorise profiles and IGs | [Jira](https://jira.hl7.org/browse/FHIR-48768) | [Source](../open/FHIR-48768/FHIR-48768.md)
 
-## Submitted (6)
+## Submitted (5)
 
 - FHIR-55418: Event.partOf as a reference to same type | [Jira](https://jira.hl7.org/browse/FHIR-55418) | [Source](../open/FHIR-55418/FHIR-55418.md)
 - FHIR-55477: Possible need for invariant on Bundle.identifier | [Jira](https://jira.hl7.org/browse/FHIR-55477) | [Source](../open/FHIR-55477/FHIR-55477.md)
-- FHIR-57216: Structure Map target list mode should be single cardinality | [Jira](https://jira.hl7.org/browse/FHIR-57216) | [Source](../open/FHIR-57216/FHIR-57216.md)
 - FHIR-57219: Target List Mode first/last/single don't make sense | [Jira](https://jira.hl7.org/browse/FHIR-57219) | [Source](../open/FHIR-57219/FHIR-57219.md)
 - FHIR-57356: Restore Bundle.link.relation to allow extension URIs (align with RFC 8288) | [Jira](https://jira.hl7.org/browse/FHIR-57356) | [Source](../open/FHIR-57356/FHIR-57356.md)
 - FHIR-57383: Resource.id / Patient.id `structuredefinition-fhir-type` Regression | [Jira](https://jira.hl7.org/browse/FHIR-57383) | [Source](../open/FHIR-57383/FHIR-57383.md)

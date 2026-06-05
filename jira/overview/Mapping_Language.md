@@ -1,8 +1,8 @@
 # Mapping Language
 
-Ticket count: 31
+Ticket count: 33
 
-## Triaged (24)
+## Triaged (25)
 
 - FHIR-46284: FML Grammar for target rules is inconsistent with the spec | [Jira](https://jira.hl7.org/browse/FHIR-46284) | [Source](../open/FHIR-46284/FHIR-46284.md)
 - FHIR-54474: Source should be able to be a fhirpath expression | [Jira](https://jira.hl7.org/browse/FHIR-54474) | [Source](../open/FHIR-54474/FHIR-54474.md)
@@ -28,12 +28,14 @@ Ticket count: 31
 - FHIR-55380: Tutorial has many technical errors | [Jira](https://jira.hl7.org/browse/FHIR-55380) | [Source](../open/FHIR-55380/FHIR-55380.md)
 - FHIR-55501: Issues in mapping transforms table | [Jira](https://jira.hl7.org/browse/FHIR-55501) | [Source](../open/FHIR-55501/FHIR-55501.md)
 - FHIR-57205: FML constants use of fhirpath | [Jira](https://jira.hl7.org/browse/FHIR-57205) | [Source](../open/FHIR-57205/FHIR-57205.md)
+- FHIR-57524: FML grammar doesn't support `evaluate` fhirpath parameter | [Jira](https://jira.hl7.org/browse/FHIR-57524) | [Source](../open/FHIR-57524/FHIR-57524.md)
 
-## Submitted (3)
+## Submitted (4)
 
 - FHIR-57207: FML doesn't document how to represent embedded concept maps | [Jira](https://jira.hl7.org/browse/FHIR-57207) | [Source](../open/FHIR-57207/FHIR-57207.md)
 - FHIR-57436: Introduce an `otherwise` clause to source rules in FML | [Jira](https://jira.hl7.org/browse/FHIR-57436) | [Source](../open/FHIR-57436/FHIR-57436.md)
 - FHIR-57465: FML metadata markdown processing """ doesn't describe if there are any escaping capabilities | [Jira](https://jira.hl7.org/browse/FHIR-57465) | [Source](../open/FHIR-57465/FHIR-57465.md)
+- FHIR-57473: Document the @search() capability | [Jira](https://jira.hl7.org/browse/FHIR-57473) | [Source](../open/FHIR-57473/FHIR-57473.md)
 
 ## Resolved - change required (4)
 

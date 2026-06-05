@@ -1,8 +1,8 @@
 # FHIRPath (fluentpath)
 
-Ticket count: 40
+Ticket count: 41
 
-## Triaged (35)
+## Triaged (36)
 
 - FHIR-37861: FHIRPath is and as samples use improper case for System datatypes | [Jira](https://jira.hl7.org/browse/FHIR-37861) | [Source](../open/FHIR-37861/FHIR-37861.md)
 - FHIR-38631: Which FHIR types are available from FHIRPath? | [Jira](https://jira.hl7.org/browse/FHIR-38631) | [Source](../open/FHIR-38631/FHIR-38631.md)
@@ -39,6 +39,7 @@ Ticket count: 40
 - FHIR-55417: missing ".where" in fhirpath example | [Jira](https://jira.hl7.org/browse/FHIR-55417) | [Source](../open/FHIR-55417/FHIR-55417.md)
 - FHIR-55495: fhirpath pages refers to System.string instead of System.string | [Jira](https://jira.hl7.org/browse/FHIR-55495) | [Source](../open/FHIR-55495/FHIR-55495.md)
 - FHIR-55637: FHIRPath FHIR.date maps to System.Date not System.DateTime | [Jira](https://jira.hl7.org/browse/FHIR-55637) | [Source](../open/FHIR-55637/FHIR-55637.md)
+- FHIR-57259: Clarify "complex types" in discussion of equality for structured values | [Jira](https://jira.hl7.org/browse/FHIR-57259) | [Source](../open/FHIR-57259/FHIR-57259.md)
 
 ## Waiting for Input (1)
 
