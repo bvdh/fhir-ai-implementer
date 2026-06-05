@@ -1,0 +1,5 @@
+FHIR-42868: Mark narrative-status as normative
+
+- Add explicit NarrativeStatus standards status metadata as normative
+- Add first normative version metadata for NarrativeStatus
+- Keep narrative-status binding and code list definitions unchanged
