@@ -1,0 +1,5 @@
+FHIR-46564: Replace asynchronous REST messaging subsection content
+
+- Replace the subsection text with the resolution-driven asynchronous application response guidance
+- Add delayed-response guidance using MessageDefinition.allowedResponse and HTTP 200 with no body for $submit-message
+- Remove legacy step-by-step REST polling/search walkthrough text from the replaced subsection
