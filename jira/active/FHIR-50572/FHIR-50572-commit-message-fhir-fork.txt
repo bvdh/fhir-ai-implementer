@@ -1,0 +1,5 @@
+FHIR-50572: Tighten conformance wording for additional resources rule
+
+- Replace must with SHALL in the third Additional Resources rule sentence
+- Limit the edit to source/resource/resource-introduction.xml for minimal scope
+- Align rule language with ticket-approved normative requirement strength

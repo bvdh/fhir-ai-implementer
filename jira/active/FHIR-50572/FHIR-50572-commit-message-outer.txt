@@ -1,0 +1,5 @@
+FHIR-50572: Move ticket to active and record implementation artifacts
+
+- Move FHIR-50572 ticket file from jira/open to jira/active for execution tracking
+- Add implementation plan and change log for the conformance-language update
+- Add repository-scoped commit messages for outer and fhir-fork commits
