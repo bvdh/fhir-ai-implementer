@@ -1,0 +1,5 @@
+FHIR-57565: Document implementation artifacts for canonical-space rule update
+
+- Add ticket implementation change log with execution evidence and plan-conformance mapping
+- Add repository-scoped commit message for fhir-fork source edits
+- Add repository-scoped commit message for outer repository workflow tracking

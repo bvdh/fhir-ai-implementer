@@ -1,0 +1,5 @@
+FHIR-57565: Require hl7.org canonical space for additional resource definitions
+
+- Update additional-resource canonical URL rule in structuredefinition notes to require http://hl7.org/fhir
+- Align the embedded StructureDefinition example url value with the revised canonical-space rule
+- Align the embedded StructureDefinition example type value with the revised canonical-space rule
