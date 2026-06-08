@@ -39,37 +39,64 @@ Execute an approved implementation plan for a FHIR Jira ticket, make minimal sou
 - Do not change build tooling, scripts, Gradle config, CI pipelines, or implementation code unless explicitly requested.
 - Keep edits minimal and tied directly to ticket intent and plan scope.
 - If plan scope is ambiguous, stop and clarify before editing.
+- Do not execute this skill unless the ticket metadata has a non-empty `Resolution` and `Status` is `Resolved - change required` (equivalently normalized as `Resolved-change-required`).
 
 ## Workflow
 
 1. Resolve ticket and plan paths.
-2. Read the implementation plan and extract:
+2. Read ticket metadata and verify execution eligibility:
+  - `Resolution` must be present and not `Unresolved`.
+  - `Status` must be `Resolved - change required` (or normalized equivalent `Resolved-change-required`).
+  - If either check fails, stop immediately and report that the skill cannot execute for this ticket state.
+3. Read the implementation plan and extract:
    - Target files
    - Intended changes
    - Validation steps
-3. Validate target files are under `fhir-fork/source/`.
-4. Apply edits exactly as planned with minimal diff.
-5. Run plan-specified validation (or targeted checks when not specified), such as:
+4. Validate target files are under `fhir-fork/source/`.
+5. Apply edits exactly as planned with minimal diff.
+6. Run plan-specified validation (or targeted checks when not specified), such as:
    - String/term searches for expected replacement
    - Spot checks around edited sections
    - Diff review for scope control
-6. Gather implementation evidence:
+7. Gather implementation evidence:
    - Files changed
    - Before/after snippets (concise)
    - Validation outcomes
-7. Detect reusable pattern candidates during execution:
+8. Detect reusable pattern candidates during execution:
   - Look for recurring edit forms (e.g., extension-link format checks, repeated ownership-token updates, recurring terminology normalization).
   - Treat a pattern as relevant when it is likely to recur across tickets and can be turned into a clear rule.
-8. If a new relevant pattern is detected, add a proposal section to the change log:
+9. If a new relevant pattern is detected, add a proposal section to the change log:
   - `## Proposed Instruction Update`
   - `Pattern observed:` <short description>
   - `Suggested addition to .github/instructions/fhir-fork.instructions.md:` <ready-to-paste bullets>
-9. Write commit message file.
-10. Write implementation change log file.
-11. Do not commit automatically unless explicitly requested.
-12. Confirm completion criteria.
+10. Write commit message file.
+11. Write implementation change log file.
+12. Do not commit automatically unless explicitly requested.
+13. Confirm completion criteria.
+
+## Plan Conformance Guardrails (Required)
+
+Before applying edits, build an execution manifest from the implementation plan:
+- Ticket key in scope
+- Allowed file paths
+- Allowed edit intents per file
+- Required evidence source for wording (resolution text or explicit user-approved sentence)
+
+Hard stop rules:
+- If ticket `Resolution` is missing/`Unresolved` or `Status` is not `Resolved - change required`, do not execute this skill.
+- If ticket metadata shows `Resolution: Unresolved` and no explicit approved wording is provided, do not edit source.
+- If a proposed edit introduces content not listed in the plan's edit intent, stop and ask to revise the plan first.
+- If changed text semantically matches a different ticket's resolution/comments more than the in-scope ticket, stop and ask whether scope changed.
+
+Post-edit conformance checks (must pass):
+- Every diff hunk maps to a specific plan step.
+- Every changed file is listed in the plan.
+- If any hunk is unmapped, revert that hunk and request plan update/approval.
 
 ## Decision Points
+
+- Ticket eligibility gate:
+  - If `Resolution` is missing/`Unresolved` or `Status` is not `Resolved - change required`, stop and report non-executable state.
 
 - Plan path resolution:
   - If ticket key is provided, use `jira/active/<ticket>/<ticket>-implementation-plan.md`.
@@ -125,6 +152,10 @@ Write `jira/active/<ticket>/<ticket>-implementation-change-log.md` with:
 - <check 1>: PASS/FAIL
 - <check 2>: PASS/FAIL
 
+## Plan Conformance
+- Mapped hunks: <X>/<Y>
+- <file>:<line> -> <plan step> -> <evidence source>
+
 ## Notes
 - <assumptions/limits/open follow-ups>
 ```
@@ -134,8 +165,10 @@ Write `jira/active/<ticket>/<ticket>-implementation-change-log.md` with:
 Execution is complete only if all are true:
 
 - Plan and ticket were resolved to the same ticket key.
+- Ticket `Resolution` was present and `Status` was `Resolved - change required` before execution started.
 - All implementation edits are inside `fhir-fork/source/`.
 - Diff contains only intended plan-aligned changes.
+- Every diff hunk is mapped to a plan step and evidence source in `## Plan Conformance`.
 - Validation checks are documented with outcomes.
 - Commit message file exists in `jira/active/<ticket>/`.
 - Implementation change log file exists in `jira/active/<ticket>/`.

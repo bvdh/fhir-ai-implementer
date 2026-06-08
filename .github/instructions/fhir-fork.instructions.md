@@ -59,6 +59,11 @@ Other versions can be found at https://hl7.org/fhir/directory.html.
 - Preserve ticket intent for allowed escape-valve values (for example, add `other` without adding `unknown` when resolution says unknown is not appropriate).
 - Keep value set canonical references unchanged unless the ticket explicitly requires canonical remapping.
 
+## Normative Language Approval Rule
+- Any change to mandatory language terms in specification text (SHALL, MUST, SHOULD, MAY, and their negatives) requires explicit user approval before editing source.
+- If explicit approval is not present, do not apply normative-language edits; instead, stop and ask for approval.
+- When approval is granted, keep the change minimal and limited to the approved sentence(s).
+
 
 ## Placeholder For Additional FHIR-Fork Rules
 - Add future fork-specific conventions here as they are agreed.

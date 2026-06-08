@@ -36,27 +36,34 @@ Create review-ready implementation plans for FHIR specification tickets in this 
 - Do not create resolution/disposition artifacts in this step.
 - Keep plan scope tied to ticket intent and local repository workflow.
 - Default to per-ticket plans; only consolidate when explicitly requested.
+- Do not execute this skill for a ticket unless ticket metadata has a non-empty `Resolution` and `Status` is `Resolved - change required` (equivalently normalized as `Resolved-change-required`).
 
 ## Workflow
 
 1. Collect scope inputs.
 2. Resolve ticket files in jira/open/, jira/active/, jira/closed/.
-3. If scope source is currentTickets.md, filter to unimplemented tickets only (tickets that do not already have `<ticket>-implementation-plan.md` in their ticket directory).
-4. Extract per-ticket essentials:
+3. Apply ticket eligibility gate before planning:
+  - Ticket `Resolution` must be present and not `Unresolved`.
+  - Ticket `Status` must be `Resolved - change required` (or normalized equivalent `Resolved-change-required`).
+  - If a ticket fails eligibility, do not create/update a plan for it; report it as skipped with reason `not in resolved-change-required state`.
+4. If scope source is currentTickets.md, filter to unimplemented tickets only (tickets that do not already have `<ticket>-implementation-plan.md` in their ticket directory).
+5. Extract per-ticket essentials:
    - Key, summary, status, resolution
    - Affected page/module hints
    - Requested change pattern (wording, abbreviation, typo, structural)
-5. Classify the batch:
+6. Classify the batch:
    - Repetitive pattern across tickets: prepare a shared implementation approach.
    - Mixed patterns: split into grouped approaches in one plan.
-6. Map each ticket to likely edit surface under fhir-fork/source/.
-7. Write implementation steps with clear execution order.
-8. Add validation checklist, risks, and assumptions.
-9. Save each per-ticket plan to jira/active/<ticket>/.
-10. Report created plans and skipped tickets (with skip reason, such as already implemented).
+7. Map each ticket to likely edit surface under fhir-fork/source/.
+8. Write implementation steps with clear execution order.
+9. Add validation checklist, risks, and assumptions.
+10. Save each per-ticket plan to jira/active/<ticket>/.
+11. Report created plans and skipped tickets (with skip reason, such as already implemented or not in resolved-change-required state).
 
 ## Decision Points
 
+- Ticket eligibility gate:
+  - If `Resolution` is missing/`Unresolved` or `Status` is not `Resolved - change required`, do not execute planning for that ticket.
 - Scope source:
   - If a workgroup file is provided, use it as authoritative ticket list.
   - If only ticket keys are provided, build scope directly from ticket markdown files.
@@ -115,6 +122,7 @@ Use this structure in generated plans:
 A plan is complete only if all are true:
 
 - Every in-scope ticket appears in the ticket matrix.
+- Every planned ticket satisfied eligibility (`Resolution` present and `Status` = `Resolved - change required`) at planning time.
 - The likely edit surface is identified for each ticket.
 - The files and line-numbers likely impacted by the change have been identified.
 - Implementation steps are logically ordered and actionable.
