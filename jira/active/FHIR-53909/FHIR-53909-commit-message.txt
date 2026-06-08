@@ -1,0 +1,5 @@
+FHIR-53909: Clarify reference search support for additionalReference
+
+- Add a reference-search note for extension-based references in search.html
+- Use repository-consistent hyperlink markup for additionalReference extension
+- Keep the change scoped to the reference search type section
