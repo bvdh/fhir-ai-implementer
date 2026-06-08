@@ -1,0 +1,5 @@
+FHIR-54000: Update SearchParameter base/target for additional resources
+
+- Change SearchParameter.base datatype from code to uri
+- Change SearchParameter.target datatype from code to uri
+- Bind both elements to ValueSet/extended-resource-types with additional-resource wording

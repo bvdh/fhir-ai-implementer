@@ -1,0 +1,5 @@
+FHIR-54000: Record execution artifacts
+
+- Add implementation change log for FHIR-54000 execution
+- Add repository-scoped commit message for fhir-fork changes
+- Add repository-scoped commit message for outer ticket artifacts
