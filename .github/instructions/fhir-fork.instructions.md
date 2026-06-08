@@ -12,6 +12,8 @@ applyTo: "fhir-fork/**"
 ## Scope Notes
 - Treat this as a strict safety boundary for normal ticket implementation work.
 - Keep edits minimal, traceable to ticket intent, and limited to specification content.
+- FHIR core extensions are stored in the `fhir-extensions-fork` repository.
+- If a ticket primarily changes FHIR core extensions, make that change in `fhir-extensions-fork` rather than `fhir-fork` unless the user explicitly overrides this.
 
 ## Additional sources for guidance
 - https://confluence.hl7.org/spaces/FHIR/pages/79507295/Maintaining+FHIR+Core

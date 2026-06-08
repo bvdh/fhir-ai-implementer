@@ -1,3 +1,6 @@
 {
-    "java.compile.nullAnalysis.mode": "disabled"
+    "java.compile.nullAnalysis.mode": "disabled",
+    "git.autoRepositoryDetection": "subFolders",
+    "git.repositoryScanMaxDepth": 4,
+    "git.ignoredRepositories": []
 }

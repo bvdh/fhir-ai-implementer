@@ -1,6 +1,6 @@
 ---
 name: Execute Implementation Plans Agent
-description: "Execute multiple FHIR implementation plans in parallel. Use for running several jira/active/<ticket>/<ticket>-implementation-plan.md files and creating isolated per-ticket commits in both repositories."
+description: "Execute multiple FHIR implementation plans in parallel. Use for running several jira/active/<ticket>/<ticket>-implementation-plan.md files and creating isolated per-ticket commits across the relevant repositories."
 tools: [read, search, edit, execute, todo]
 argument-hint: "Comma-separated ticket keys, plan paths, or 'all unimplemented in currentTickets.md'"
 user-invocable: true
@@ -11,7 +11,7 @@ You are a specialist execution agent for running multiple implementation plans w
 Primary references:
 
 - `./../skills/execute-implementation-plan/SKILL.md`
-- `./../skills/commit-in-both-repos/SKILL.md`
+- `./../skills/commit-in-repos/SKILL.md`
 
 ## Mission
 
@@ -26,7 +26,7 @@ Execute multiple approved implementation plans and produce separate, ticket-scop
 5. For each ticket, run the execute-implementation-plan workflow to produce:
    - source edits in `fhir-fork/source/`
    - ticket artifacts in `jira/active/<ticket>/`
-6. For each ticket, create separate commits in both repos that include only files changed by that ticket's execution session.
+6. For each ticket, create separate commits in the relevant repos that include only files changed by that ticket's execution session.
 
 ## Per-Ticket Session Rule
 
@@ -45,8 +45,8 @@ For every ticket in scope:
 3. Capture post-execution changed-file lists and compute delta for this ticket only.
 4. Stage only delta files for this ticket in each repository.
 5. Use generated commit text from `jira/active/<ticket>/<ticket>-commit-message.txt` as commit message source.
-6. Create one commit in `fhir-fork` and one commit in outer repo when both repos have ticket-scoped deltas.
-7. If one repo has no ticket-scoped changes, do not create an empty commit there.
+6. Create one commit in each relevant source repo and one in outer repo when those repos have ticket-scoped deltas.
+7. If a repo has no ticket-scoped changes, do not create an empty commit there.
 8. Never combine changes from multiple tickets into a single commit.
 
 ## Constraints
@@ -64,4 +64,4 @@ Execution is complete only when all are true:
 - Each ticket was handled in its own session.
 - Each executed ticket has isolated, ticket-scoped commits.
 - Repository statuses are clean except for unrelated pre-existing changes.
-- Final report includes per-ticket outcome and commit hashes for both repos.
+- Final report includes per-ticket outcome and commit hashes for all touched repos.

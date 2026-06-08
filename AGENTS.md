@@ -7,6 +7,8 @@ This repository manages AI-assisted work for resolving Jira tickets on the FHIR 
 - The FHIR fork used by this project is git@github.com:bvdh/fhir-bvdh.git.
 - It is a fork of https://github.com/HL7/fhir.git.
 - The fork is expected in fhir-fork/.
+- FHIR core extensions are stored in the `fhir-extensions-fork` repository.
+- Tickets that primarily change FHIR core extensions should typically be implemented in `fhir-extensions-fork` rather than `fhir-fork`.
 
 ## Scope and Allowed Changes in the Fork
 
@@ -18,6 +20,7 @@ This repository manages AI-assisted work for resolving Jira tickets on the FHIR 
 - Treat upstream HL7 FHIR conventions as authoritative for specification content.
 - Do not change build tooling, scripts, Gradle configuration, CI pipelines, or implementation code in the fork unless explicitly requested.
 - Prefer source edits over generated output edits.
+- When ticket scope relates to FHIR core extensions, prefer making the change in `fhir-extensions-fork` unless the user explicitly directs otherwise.
 
 ## Interactive Questions
 

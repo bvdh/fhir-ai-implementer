@@ -1,0 +1,9 @@
+FHIR-55462: Allow normal references for additional resources
+
+Refs:
+- Confluence minutes topic (WedQ3): https://confluence.hl7.org/spaces/FHIRI/pages/358879917/FHIR+Infrastructure+Minutes+WGM+202509+-+Pittsburgh#FHIRInfrastructureMinutesWGM202509Pittsburgh-WedQ3
+
+- Update additional-reference guidance in references section to separate scenarios
+- Clarify that normal Reference.reference can be used for additional resources when declared in StructureDefinition
+- Align wording with the Confluence-approved target-declaration/approval topic for additional-resource references
+- Keep alternate-reference guidance for future/past-version target scenarios

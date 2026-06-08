@@ -40,6 +40,7 @@ Execute an approved implementation plan for a FHIR Jira ticket, make minimal sou
 - Keep edits minimal and tied directly to ticket intent and plan scope.
 - If plan scope is ambiguous, stop and clarify before editing.
 - Do not execute this skill unless the ticket metadata has a non-empty `Resolution` and `Status` is `Resolved - change required` (equivalently normalized as `Resolved-change-required`).
+- If the implementation plan is owned by `fhir-extensions-fork`, use the same working branch name there as the current `fhir-fork` branch unless the user explicitly overrides this.
 
 ## Workflow
 
@@ -52,32 +53,40 @@ Execute an approved implementation plan for a FHIR Jira ticket, make minimal sou
    - Target files
    - Intended changes
    - Validation steps
-4. Validate target files are under `fhir-fork/source/`.
-5. Apply edits exactly as planned with minimal diff.
-6. Run plan-specified validation (or targeted checks when not specified), such as:
+4. Determine the owning source repository from the plan:
+  - If the plan targets `fhir-fork/source/`, execute there.
+  - If the plan targets `fhir-extensions-fork`, execute there.
+  - If both repos are involved, map each planned edit to its owning repo before editing.
+5. If `fhir-extensions-fork` is involved, compare its current branch name to `fhir-fork`:
+  - If `fhir-fork` already has a non-default working branch, create or switch `fhir-extensions-fork` to the same branch name before editing unless the user explicitly requests otherwise.
+  - If no working branch exists yet, ask the user to confirm branch strategy before execution.
+6. Validate target files are under the allowed source area for the owning repo.
+7. Apply edits exactly as planned with minimal diff.
+8. Run plan-specified validation (or targeted checks when not specified), such as:
    - String/term searches for expected replacement
    - Spot checks around edited sections
    - Diff review for scope control
-7. Gather implementation evidence:
+9. Gather implementation evidence:
    - Files changed
    - Before/after snippets (concise)
    - Validation outcomes
-8. Detect reusable pattern candidates during execution:
+10. Detect reusable pattern candidates during execution:
   - Look for recurring edit forms (e.g., extension-link format checks, repeated ownership-token updates, recurring terminology normalization).
   - Treat a pattern as relevant when it is likely to recur across tickets and can be turned into a clear rule.
-9. If a new relevant pattern is detected, add a proposal section to the change log:
+11. If a new relevant pattern is detected, add a proposal section to the change log:
   - `## Proposed Instruction Update`
   - `Pattern observed:` <short description>
   - `Suggested addition to .github/instructions/fhir-fork.instructions.md:` <ready-to-paste bullets>
-10. Write commit message file.
-11. Write implementation change log file.
-12. Do not commit automatically unless explicitly requested.
-13. Confirm completion criteria.
+12. Write commit message file.
+13. Write implementation change log file.
+14. Do not commit automatically unless explicitly requested.
+15. Confirm completion criteria.
 
 ## Plan Conformance Guardrails (Required)
 
 Before applying edits, build an execution manifest from the implementation plan:
 - Ticket key in scope
+- Owning repository per changed file
 - Allowed file paths
 - Allowed edit intents per file
 - Required evidence source for wording (resolution text or explicit user-approved sentence)
@@ -85,6 +94,7 @@ Before applying edits, build an execution manifest from the implementation plan:
 Hard stop rules:
 - If ticket `Resolution` is missing/`Unresolved` or `Status` is not `Resolved - change required`, do not execute this skill.
 - If ticket metadata shows `Resolution: Unresolved` and no explicit approved wording is provided, do not edit source.
+- If `fhir-extensions-fork` is part of the task and is not on the same working branch name as `fhir-fork`, switch/create the matching branch first unless the user explicitly overrides this.
 - If a proposed edit introduces content not listed in the plan's edit intent, stop and ask to revise the plan first.
 - If changed text semantically matches a different ticket's resolution/comments more than the in-scope ticket, stop and ask whether scope changed.
 
@@ -101,6 +111,9 @@ Post-edit conformance checks (must pass):
 - Plan path resolution:
   - If ticket key is provided, use `jira/active/<ticket>/<ticket>-implementation-plan.md`.
   - If explicit plan path is provided, infer ticket key from path/content.
+- Branch alignment:
+  - If the plan is executed in `fhir-extensions-fork` and `fhir-fork` is already on a task branch, use that same branch name in `fhir-extensions-fork` by default.
+  - If the user explicitly asks for a different branch strategy, follow the user override and document it in the change log notes.
 - Missing plan:
   - If plan file is missing, stop and ask whether to generate the plan first.
 - Non-active ticket directory:
@@ -166,7 +179,8 @@ Execution is complete only if all are true:
 
 - Plan and ticket were resolved to the same ticket key.
 - Ticket `Resolution` was present and `Status` was `Resolved - change required` before execution started.
-- All implementation edits are inside `fhir-fork/source/`.
+- All implementation edits are inside the planned owning source area (`fhir-fork/source/` or the planned `fhir-extensions-fork` location).
+- If `fhir-extensions-fork` was used, its branch name matched the active `fhir-fork` task branch unless the user explicitly overrode that rule.
 - Diff contains only intended plan-aligned changes.
 - Every diff hunk is mapped to a plan step and evidence source in `## Plan Conformance`.
 - Validation checks are documented with outcomes.
@@ -180,7 +194,9 @@ Execution is complete only if all are true:
 
 ## Notes
 
-If no branch is prepared, ask the user to confirm branch strategy before execution.
+If `fhir-fork` already has a task branch and the plan also uses `fhir-extensions-fork`, use the same branch name in `fhir-extensions-fork` unless the user explicitly asks for a different strategy.
+
+If no branch is prepared in either fork, ask the user to confirm branch strategy before execution.
 
 Default log detail level is concise: summary, files changed, and validation outcomes.
 

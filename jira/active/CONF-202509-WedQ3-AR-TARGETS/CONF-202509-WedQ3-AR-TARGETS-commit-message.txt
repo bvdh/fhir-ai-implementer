@@ -1,0 +1,6 @@
+CONF-202509-WedQ3-AR-TARGETS: Define additional resource reference target extension
+
+Refs: CONF-202509-WedQ3-AR-TARGETS (Confluence topic)
+
+- Add StructureDefinition-additional-resource-reference-target extension in fhir-extensions-fork
+- Model repeatable target declarations with profile and elementId slices
