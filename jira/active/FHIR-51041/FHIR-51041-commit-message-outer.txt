@@ -1,0 +1,5 @@
+FHIR-51041: Record validation-only execution artifacts
+
+- Update implementation change log to document validation-only execution outcome
+- Confirm required heading and conformance paragraph are already present in source
+- Keep source unchanged and capture ticket evidence in active workflow artifacts
