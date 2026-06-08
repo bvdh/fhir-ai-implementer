@@ -72,10 +72,13 @@ Example alignment proposal format:
 3. If both nested forks are involved, compare branch names and align `fhir-extensions-fork` to the active `fhir-fork` branch name before committing unless the user explicitly requested otherwise.
 4. Run the source-boundary precondition check(s) and continue only on PASS.
 5. Confirm that each source edit is limited to its allowed source area (for example `fhir-fork/source/` or the planned `fhir-extensions-fork` path).
-6. Run a ticket consistency check across ticket-related files (at minimum: `jira/active/<ticket>/<ticket>.md`, `jira/active/<ticket>/<ticket>-implementation-plan.md`, `jira/active/<ticket>/<ticket>-implementation-change-log.md`, and `jira/active/<ticket>/<ticket>-commit-message.txt`) to ensure they reflect the implemented source change.
+6. Run a ticket consistency check across ticket-related files (at minimum: `jira/active/<ticket>/<ticket>.md`, `jira/active/<ticket>/<ticket>-implementation-plan.md`, `jira/active/<ticket>/<ticket>-implementation-change-log.md`, and any repo-scoped commit message files) to ensure they reflect the implemented source change.
 7. If inconsistencies are found, stop and ask the user whether to proceed as-is or align files now. Use a constrained confirmation prompt when possible.
 8. When inconsistencies are found, propose a concrete update alternative before continuing, including exact files and the specific text/value adjustments to make.
-9. Use the generated `jira/active/<ticket>/<ticket>-commit-message.txt` content when creating each commit message.
+9. Invoke `create-commit-message` for the ticket and use the generated repository-scoped files when creating commits:
+	- `jira/active/<ticket>/<ticket>-commit-message-fhir-fork.txt`
+	- `jira/active/<ticket>/<ticket>-commit-message-fhir-extensions-fork.txt`
+	- `jira/active/<ticket>/<ticket>-commit-message-outer.txt`
 10. Stage and commit the `fhir-fork` source change first when the task includes a specification edit there.
 11. If `fhir-extensions-fork` has ticket-scoped changes, stage and commit those changes as a separate repo commit as well.
 12. Stage and commit outer-repo ticket artifacts separately.
@@ -101,6 +104,7 @@ Example alignment proposal format:
 - If mismatches were found, user approval was captured and a concrete alignment alternative was proposed.
 - The source commit is recorded in each touched source repository (`fhir-fork` and/or `fhir-extensions-fork`).
 - The ticket/workflow commit is recorded in the outer repository.
+- Repository-scoped commit message files were generated for each touched repository.
 - Commit messages reference the relevant ticket key.
 - Validation artifacts, if any, are already written in the ticket directory.
 - Final status checks show no unintended files staged or committed.

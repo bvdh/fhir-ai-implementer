@@ -24,8 +24,10 @@ Execute an approved implementation plan for a FHIR Jira ticket, make minimal sou
 ## Outputs
 
 - Source edits limited to `fhir-fork/source/`.
-- Commit message file in ticket directory:
-  - `jira/active/<ticket>/<ticket>-commit-message.txt`
+- Repository-scoped commit message files in ticket directory (generated via `create-commit-message`):
+  - `jira/active/<ticket>/<ticket>-commit-message-outer.txt` (when outer repo is touched)
+  - `jira/active/<ticket>/<ticket>-commit-message-fhir-fork.txt` (when `fhir-fork` is touched)
+  - `jira/active/<ticket>/<ticket>-commit-message-fhir-extensions-fork.txt` (when `fhir-extensions-fork` is touched)
 - Change log file in ticket directory:
   - `jira/active/<ticket>/<ticket>-implementation-change-log.md`
 - Pattern proposal in the change log when a new reusable `fhir-fork` editing pattern is observed:
@@ -39,16 +41,19 @@ Execute an approved implementation plan for a FHIR Jira ticket, make minimal sou
 - Do not change build tooling, scripts, Gradle config, CI pipelines, or implementation code unless explicitly requested.
 - Keep edits minimal and tied directly to ticket intent and plan scope.
 - If plan scope is ambiguous, stop and clarify before editing.
-- Do not execute this skill unless the ticket metadata has a non-empty `Resolution` and `Status` is `Resolved - change required` (equivalently normalized as `Resolved-change-required`).
+- Execution gate for ticket metadata:
+  - Standard rule: `Resolution` must be non-empty and not `Unresolved`, and `Status` must be `Resolved - change required` (equivalently normalized as `Resolved-change-required`).
+  - Technical Correction exception (direct resolution): if `Issue Type` is `Technical Correction`, execution may proceed with `Resolution: Unresolved` only when wording to apply is explicit in the approved plan or ticket description.
 - If the implementation plan is owned by `fhir-extensions-fork`, use the same working branch name there as the current `fhir-fork` branch unless the user explicitly overrides this.
 
 ## Workflow
 
 1. Resolve ticket and plan paths.
 2. Read ticket metadata and verify execution eligibility:
-  - `Resolution` must be present and not `Unresolved`.
   - `Status` must be `Resolved - change required` (or normalized equivalent `Resolved-change-required`).
-  - If either check fails, stop immediately and report that the skill cannot execute for this ticket state.
+  - For non-Technical-Correction tickets: `Resolution` must be present and not `Unresolved`.
+  - For `Issue Type: Technical Correction`: allow `Resolution: Unresolved` only when wording to apply is explicit in the approved plan or ticket description.
+  - If these checks fail, stop immediately and report that the skill cannot execute for this ticket state.
 3. Read the implementation plan and extract:
    - Target files
    - Intended changes
@@ -77,7 +82,7 @@ Execute an approved implementation plan for a FHIR Jira ticket, make minimal sou
   - `## Proposed Instruction Update`
   - `Pattern observed:` <short description>
   - `Suggested addition to .github/instructions/fhir-fork.instructions.md:` <ready-to-paste bullets>
-12. Write commit message file.
+12. Invoke `create-commit-message` to generate repository-scoped commit message file(s).
 13. Write implementation change log file.
 14. Do not commit automatically unless explicitly requested.
 15. Confirm completion criteria.
@@ -89,11 +94,12 @@ Before applying edits, build an execution manifest from the implementation plan:
 - Owning repository per changed file
 - Allowed file paths
 - Allowed edit intents per file
-- Required evidence source for wording (resolution text or explicit user-approved sentence)
+- Required evidence source for wording (resolution text, or explicit wording in approved plan or ticket description)
 
 Hard stop rules:
-- If ticket `Resolution` is missing/`Unresolved` or `Status` is not `Resolved - change required`, do not execute this skill.
-- If ticket metadata shows `Resolution: Unresolved` and no explicit approved wording is provided, do not edit source.
+- If `Status` is not `Resolved - change required`, do not execute this skill.
+- If ticket is not `Technical Correction` and `Resolution` is missing/`Unresolved`, do not execute this skill.
+- If ticket is `Technical Correction` with `Resolution: Unresolved` and no explicit approved wording is provided by plan or ticket description, do not edit source.
 - If `fhir-extensions-fork` is part of the task and is not on the same working branch name as `fhir-fork`, switch/create the matching branch first unless the user explicitly overrides this.
 - If a proposed edit introduces content not listed in the plan's edit intent, stop and ask to revise the plan first.
 - If changed text semantically matches a different ticket's resolution/comments more than the in-scope ticket, stop and ask whether scope changed.
@@ -106,7 +112,9 @@ Post-edit conformance checks (must pass):
 ## Decision Points
 
 - Ticket eligibility gate:
-  - If `Resolution` is missing/`Unresolved` or `Status` is not `Resolved - change required`, stop and report non-executable state.
+  - If `Status` is not `Resolved - change required`, stop and report non-executable state.
+  - If ticket is not `Technical Correction` and `Resolution` is missing/`Unresolved`, stop and report non-executable state.
+  - If ticket is `Technical Correction` with `Resolution: Unresolved`, allow execution only when direct-resolution wording is explicit in the approved plan or ticket description.
 
 - Plan path resolution:
   - If ticket key is provided, use `jira/active/<ticket>/<ticket>-implementation-plan.md`.
@@ -125,9 +133,9 @@ Post-edit conformance checks (must pass):
   - If the pattern is one-off or purely ticket-specific, do not propose instruction changes.
   - If the pattern is repeatable and policy-like, include the proposed instruction update in the change log.
 
-## Commit Message File Format
+## Commit Message Artifact Format
 
-Write `jira/active/<ticket>/<ticket>-commit-message.txt` as:
+Generate repository-scoped commit message files via `create-commit-message` using this format per touched repository:
 
 ```text
 FHIR-XXXXX: <short imperative summary>
@@ -139,8 +147,8 @@ FHIR-XXXXX: <short imperative summary>
 
 Guidance:
 - First line starts with ticket key.
-- Keep subject concise and action-oriented.
-- Bullet points summarize only implemented plan items.
+- Keep subject concise, action-oriented, and repository-scoped.
+- Bullet points summarize only implemented items in that repository.
 
 ## Change Log File Format
 
@@ -178,13 +186,16 @@ Write `jira/active/<ticket>/<ticket>-implementation-change-log.md` with:
 Execution is complete only if all are true:
 
 - Plan and ticket were resolved to the same ticket key.
-- Ticket `Resolution` was present and `Status` was `Resolved - change required` before execution started.
+- Ticket `Status` was `Resolved - change required` before execution started.
+- One of the following was true before execution started:
+  - `Resolution` was present and not `Unresolved`; or
+  - Ticket `Issue Type` was `Technical Correction` and direct-resolution wording was explicit in plan or ticket description.
 - All implementation edits are inside the planned owning source area (`fhir-fork/source/` or the planned `fhir-extensions-fork` location).
 - If `fhir-extensions-fork` was used, its branch name matched the active `fhir-fork` task branch unless the user explicitly overrode that rule.
 - Diff contains only intended plan-aligned changes.
 - Every diff hunk is mapped to a plan step and evidence source in `## Plan Conformance`.
 - Validation checks are documented with outcomes.
-- Commit message file exists in `jira/active/<ticket>/`.
+- Repository-scoped commit message file(s) exist in `jira/active/<ticket>/` for each touched repository.
 - Implementation change log file exists in `jira/active/<ticket>/`.
 
 ## Quick Invocation Examples

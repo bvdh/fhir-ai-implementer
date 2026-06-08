@@ -30,9 +30,10 @@ Build a PR message for the current FHIR batch that:
 - Trimmed output file path: `jira/pullrequest/<branch-name>/pull-request-message.md` (default, includes only `## Scope`, `## Per-Ticket Change Summary`, and `## Notes on Overlaps`).
 - Ticket snapshot path: `jira/pullrequest/<branch-name>/currentTickets.md` (copy of ticket scope used to generate the PR message).
 - Preferred summary artifacts (in order):
-1. `<ticket>-commit-message.txt` first bullet line under title
-2. `<ticket>-implementation-change-log.md` first item under `## Changes Applied`
-3. `<ticket>.md` `Summary` field (ticket summary, used as fallback)
+1. `<ticket>-commit-message-fhir-fork.txt` first bullet line under title
+2. `<ticket>-commit-message.txt` first bullet line under title (legacy fallback)
+3. `<ticket>-implementation-change-log.md` first item under `## Changes Applied`
+4. `<ticket>.md` `Summary` field (ticket summary, used as fallback)
 
 ## Procedure
 1. Read ticket keys from `currentTickets.md`.
@@ -41,9 +42,10 @@ Build a PR message for the current FHIR batch that:
 2. `jira/closed/<ticket>/`
 3. `jira/open/<ticket>/`
 3. Derive one-line summary using precedence:
-1. Commit message bullet from `<ticket>-commit-message.txt`
-2. First numbered change from `<ticket>-implementation-change-log.md`
-3. `Summary` metadata line from `<ticket>.md`
+1. Commit message bullet from `<ticket>-commit-message-fhir-fork.txt`
+2. Commit message bullet from `<ticket>-commit-message.txt` (legacy fallback)
+3. First numbered change from `<ticket>-implementation-change-log.md`
+4. `Summary` metadata line from `<ticket>.md`
 4. If no summary source exists, emit: `No execution summary artifact found (needs follow-up).`
 4. Detect likely duplicate implementation across tickets:
 1. If two tickets have identical normalized summary text, mark as potential overlap.
