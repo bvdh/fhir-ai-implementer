@@ -1,0 +1,5 @@
+FHIR-54055: Record implementation artifacts for CapabilityStatement wording fix
+
+- Add active ticket implementation plan for FHIR-54055
+- Add implementation change log with validation and conformance mapping
+- Add repository-scoped commit message artifacts for commit workflow

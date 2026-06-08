@@ -1,0 +1,5 @@
+FHIR-54055: Update CapabilityStatement notes wording
+
+- Change linked phrase in `source/capabilitystatement/capabilitystatement-notes.xml` from "additional resource" to "additional resources"
+- Update the sentence under "Using additional resources in CapabilityStatements"
+- Matches the typo correction requested in FHIR-54055

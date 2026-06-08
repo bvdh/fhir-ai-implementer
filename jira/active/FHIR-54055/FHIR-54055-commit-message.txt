@@ -1,0 +1,5 @@
+FHIR-54055: Fix additional resources wording in CapabilityStatement notes
+
+- Update CapabilityStatement notes sentence to use plural "additional resources"
+- Keep edit limited to one planned line in capabilitystatement-notes.xml
+- Validate replacement text, old-text removal, and diff scope
