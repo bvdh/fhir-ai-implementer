@@ -1,5 +1,8 @@
 # CONF-202509-WedQ3-AR-TARGETS: Define extension to declare allowed targets for additional resources
 
+Covered by Jira ticket: [FHIR-57567](https://jira.hl7.org/browse/FHIR-57567)
+
+
 ## Metadata
 
 - **Source Type**: Confluence Minutes
@@ -13,7 +16,7 @@
 - **Issue Type**: Confluence Motion
 - **Key**: CONF-202509-WedQ3-AR-TARGETS
 - **Related Artifact(s)**: Additional Resources
-- **Related Jira Ticket(s)**: FHIR-55462
+- **Related Jira Ticket(s)**: FHIR-55462; FHIR-57567
 - **Related Confluence Ticket(s)**: CONF-202509-WedQ3-AR-DEFINITION-SPACE
 - **Related Page(s)**: References
 - **Related Section(s)**: Additional References; additional resource target declaration
@@ -39,6 +42,7 @@
 - This file is intentionally structured to mirror Jira ticket markdown so it can be planned, tracked, and documented using the same repository workflow patterns.
 - This item is Confluence-based rather than Jira-based and should retain explicit source references to the originating WGM minutes.
 - Closely related Jira ticket: [FHIR-55462](https://jira.hl7.org/browse/FHIR-55462), which captures the core-specification text change allowing normal references to additional resources when declared in `StructureDefinition`.
+- Covered-by Jira ticket: [FHIR-57567](../../active/FHIR-57567/FHIR-57567.md), which tracks this Confluence motion as a Jira work item.
 - Closely related Confluence ticket: [CONF-202509-WedQ3-AR-DEFINITION-SPACE](../../active/CONF-202509-WedQ3-AR-DEFINITION-SPACE/CONF-202509-WedQ3-AR-DEFINITION-SPACE.md), which tracks the motion to require `http://hl7.org/fhir` as the additional-resource definition space.
 - Based on current project instructions, implementation work for core extension definitions should typically occur in `fhir-extensions-fork` if extension-source changes are required.
 

@@ -1,5 +1,7 @@
 # CONF-202509-WedQ3-AR-DEFINITION-SPACE: Change additional resource definition space to http://hl7.org/fhir
 
+Covered by Jira [FHIR-57565](https://jira.hl7.org/browse/FHIR-57565)
+
 ## Metadata
 
 - **Source Type**: Confluence Minutes
@@ -12,7 +14,7 @@
 - **Issue Type**: Confluence Motion
 - **Key**: CONF-202509-WedQ3-AR-DEFINITION-SPACE
 - **Related Artifact(s)**: Additional Resources
-- **Related Jira Ticket(s)**: FHIR-55462
+- **Related Jira Ticket(s)**: FHIR-55462; FHIR-57565
 - **Related Confluence Ticket(s)**: CONF-202509-WedQ3-AR-TARGETS
 - **Related Page(s)**: references.html; resource.html
 - **Related Section(s)**: Additional Resources Defined Outside This Specification; Additional References
@@ -39,6 +41,7 @@
 - This item is Confluence-based rather than Jira-based.
 - Potential overlap exists with existing items:
   - [CONF-202509-WedQ3-AR-TARGETS](../../active/CONF-202509-WedQ3-AR-TARGETS/CONF-202509-WedQ3-AR-TARGETS.md)
+  - [FHIR-57565](../../active/FHIR-57565/FHIR-57565.md)
   - [FHIR-55462](../../active/FHIR-55462/FHIR-55462.md)
 - User explicitly confirmed creating a new Confluence-derived ticket anyway.
 - Implementation ownership is expected primarily in `fhir-fork` because this motion targets core specification text/rules.
