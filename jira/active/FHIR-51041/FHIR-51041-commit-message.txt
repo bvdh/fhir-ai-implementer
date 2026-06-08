@@ -1,0 +1,5 @@
+FHIR-51041: Clarify Additional Resources heading and custom-resource conformance
+
+- Capitalize "Defined" in the Additional Resources heading
+- Add conformance clarification for custom resources outside the registration process
+- Keep the edit scoped to resource introduction content only
