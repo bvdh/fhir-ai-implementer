@@ -15,6 +15,7 @@ Build a PR message for the current FHIR batch that:
 - calls out duplicate/overlapping ticket implementations clearly
 - verifies ticket-to-commit coverage on the current `fhir-fork` branch
 - requires ticket implementation commits only in `fhir-fork` (outer repo commits are optional and not part of commit-coverage pass/fail)
+- supports separate PR message outputs for `fhir-fork` and `fhir-extensions-fork` when requested
 
 ## When To Use
 - You are preparing a PR from the current batch in `currentTickets.md`.
@@ -25,10 +26,14 @@ Build a PR message for the current FHIR batch that:
 - Ticket list source: `currentTickets.md` (default).
 - Ticket directories: `jira/active/<ticket>/`, with fallback to `jira/closed/<ticket>/` then `jira/open/<ticket>/`.
 - Source branch for implementation commits: current checked out branch in `fhir-fork`.
+- Source branch for extension commits: current checked out branch in `fhir-extensions-fork`.
 - Output directory: `jira/pullrequest/<branch-name>/` where `<branch-name>` is the current `fhir-fork` branch name.
 - Full output file path: `jira/pullrequest/<branch-name>/pull-request-message-full.md` (default).
 - Trimmed output file path: `jira/pullrequest/<branch-name>/pull-request-message.md` (default, includes only `## Scope`, `## Per-Ticket Change Summary`, and `## Notes on Overlaps`).
 - Ticket snapshot path: `jira/pullrequest/<branch-name>/currentTickets.md` (copy of ticket scope used to generate the PR message).
+- Optional split outputs when requested:
+1. `jira/pullrequest/<branch-name>/pull-request-message-fhir-fork.md`
+2. `jira/pullrequest/<branch-name>/pull-request-message-fhir-extensions-fork.md`
 - Preferred summary artifacts (in order):
 1. `<ticket>-commit-message-fhir-fork.txt` first bullet line under title
 2. `<ticket>-commit-message.txt` first bullet line under title (legacy fallback)
@@ -74,6 +79,10 @@ Build a PR message for the current FHIR batch that:
 5. Create a trimmed PR markdown that keeps only `## Scope`, `## Per-Ticket Change Summary`, and `## Notes on Overlaps`.
 6. Write the trimmed markdown to `jira/pullrequest/<branch-name>/pull-request-message.md`.
 7. Return the trimmed markdown in chat, and mention where the full report and copied `currentTickets.md` snapshot are stored.
+8. If separate messages are requested, also write repository-specific outputs:
+1. `pull-request-message-fhir-fork.md` for core-spec updates and `fhir-fork` commit coverage.
+2. `pull-request-message-fhir-extensions-fork.md` for extension-pack content, using the extension template below.
+3. For extension-repo output, include explicit `New extension` vs `Updated extension` attestations per extension.
 8. Validate final output:
 1. Every ticket from `currentTickets.md` appears exactly once.
 2. Every ticket has exactly one summary line.
@@ -81,6 +90,42 @@ Build a PR message for the current FHIR batch that:
 4. Every ticket requiring source change has a corresponding `fhir-fork` ticket commit.
 5. Tickets without commits are explicitly marked verification-only/no-op, or flagged for follow-up.
 6. Missing-artifact tickets are listed in validation notes.
+
+## Extension Repo PR Template
+When generating a PR message for `fhir-extensions-fork`, include the following template (repeat per extension if answers differ):
+
+```markdown
+# Extensions Pack Pull Request
+NOTE: In the check-lists below, work groups are asked to attest that they've checked for overlapping functionality.  This means that they've checked that the extension either does not overlap functionality of other existing core elements or extensions (including HL7 IG-published extensions) or clearly defines how to manage such overlap such that it's clear when implementers should use this extension in preference to other approaches.
+
+_(If there's more than one extension, repeat the following one for each that has different answers)_
+
+**Extension Name**: ________________ _(not needed if only one extension or all answers are the same for all extensions)_
+[ ] **-** New extension  _(complete 'new extension' section below)_
+[ ] **-** Updated extension  _(complete 'updated extension' section below)_
+
+### New extension
+**Approving Work Group**: ____________
+**Approval Minutes (link)**: ____________
+_Indicate the work group(s) that are responsible for the extension context(s) if different from above work group_
+| Work Group | Extension context(s) | Approval Minutes Link | Overlap checked? |
+| ---------- | -------------------- | --------------------- |------------------|
+|            |                      |                       |                  |
+
+(FHIR-I is the work group if the context is Resource, DomainResource, or Element)_
+
+### Updated extension
+Please attest to one of the following:
+[ ] **-** This PR contains **no breaking changes** from the previous version of the extension
+[ ] **-** This extension is marked as 'draft' and is not referenced in any known published specifications or used in any implementations.
+[ ] **-** This PR does not meet ether of the above, but has received FMG approval as documented in their minutes here: _____
+
+If the extension revision adds or removes scopes for content not owned by the work group requesting the change,
+please indicate the approvals of the impacted work group(s) below:
+| Work Group | Extension context(s) | Approval Minutes Link | Overlap checked? |
+| ---------- | -------------------- | --------------------- |------------------|
+|            |                      |                       |                  |
+```
 
 ## Output Template
 Use this structure in the generated PR message:
@@ -123,6 +168,8 @@ Default write targets for this output:
   Check ticket artifacts for explicit verification-only/no-op/already-applied execution. If absent, flag the ticket as unresolved for PR readiness.
 - If an outer-repo commit exists without a `fhir-fork` commit for a change-required ticket:
   Do not count the outer commit toward commit coverage. Require either a matching `fhir-fork` ticket commit or explicit no-op/verification evidence.
+- If separate `fhir-fork` and `fhir-extensions-fork` messages are requested:
+  Generate both files and apply the extension-repo template to the extension message.
 
 ## Completion Checks
 - PR message includes all tickets from `currentTickets.md`.
@@ -137,3 +184,4 @@ Default write targets for this output:
 - Trimmed PR text is written to `jira/pullrequest/<branch-name>/pull-request-message.md` and includes only `## Scope`, `## Per-Ticket Change Summary`, and `## Notes on Overlaps`.
 - `currentTickets.md` snapshot is copied to `jira/pullrequest/<branch-name>/currentTickets.md`.
 - Output is concise and ready to paste into PR description.
+- If split-output mode is used, both repository-specific message files are written and internally consistent with ticket artifacts.
