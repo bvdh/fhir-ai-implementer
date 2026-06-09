@@ -1,8 +1,8 @@
 # Signatures
 
-Ticket count: 26
+Ticket count: 27
 
-## Triaged (25)
+## Triaged (26)
 
 - FHIR-52811: The use of # in Provenance in Bundles is unclear | [Jira](https://jira.hl7.org/browse/FHIR-52811) | [Source](../open/FHIR-52811/FHIR-52811.md)
 - FHIR-52812: Do we need additional canonical rules for singing the whole bundle | [Jira](https://jira.hl7.org/browse/FHIR-52812) | [Source](../open/FHIR-52812/FHIR-52812.md)
@@ -28,6 +28,7 @@ Ticket count: 26
 - FHIR-54081: Edit text and Clarify using a single Provenence for multiple signatures | [Jira](https://jira.hl7.org/browse/FHIR-54081) | [Source](../open/FHIR-54081/FHIR-54081.md)
 - FHIR-54082: Rewrite Signatures Page | [Jira](https://jira.hl7.org/browse/FHIR-54082) | [Source](../open/FHIR-54082/FHIR-54082.md)
 - FHIR-55573: Clarify signature base64 encoding note proposed in JIRA | [Jira](https://jira.hl7.org/browse/FHIR-55573) | [Source](../open/FHIR-55573/FHIR-55573.md)
+- FHIR-57443: Confusion about how Provenance.target of Bundle/id should work | [Jira](https://jira.hl7.org/browse/FHIR-57443) | [Source](../open/FHIR-57443/FHIR-57443.md)
 - FHIR-57483: Canonicalization rules for JSON-XML are incomplete | [Jira](https://jira.hl7.org/browse/FHIR-57483) | [Source](../open/FHIR-57483/FHIR-57483.md)
 
 ## Resolved - change required (1)

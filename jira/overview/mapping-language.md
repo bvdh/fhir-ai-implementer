@@ -2,14 +2,12 @@
 
 Ticket count: 33
 
-## Triaged (25)
+## Triaged (23)
 
 - FHIR-46284: FML Grammar for target rules is inconsistent with the spec | [Jira](https://jira.hl7.org/browse/FHIR-46284) | [Source](../open/FHIR-46284/FHIR-46284.md)
 - FHIR-54474: Source should be able to be a fhirpath expression | [Jira](https://jira.hl7.org/browse/FHIR-54474) | [Source](../open/FHIR-54474/FHIR-54474.md)
-- FHIR-54477: Simple Identity transform - no FML grammar support, and heading improvement | [Jira](https://jira.hl7.org/browse/FHIR-54477) | [Source](../open/FHIR-54477/FHIR-54477.md)
 - FHIR-54478: How can groups produce collections? | [Jira](https://jira.hl7.org/browse/FHIR-54478) | [Source](../open/FHIR-54478/FHIR-54478.md)
 - FHIR-54479: Dependent Group parameter variable restrictions | [Jira](https://jira.hl7.org/browse/FHIR-54479) | [Source](../open/FHIR-54479/FHIR-54479.md)
-- FHIR-54480: FML grammar doesn't support the super simple form, neither does structuremap resource | [Jira](https://jira.hl7.org/browse/FHIR-54480) | [Source](../open/FHIR-54480/FHIR-54480.md)
 - FHIR-54481: There is no official mapping from the FML text format to the StructureMap resource | [Jira](https://jira.hl7.org/browse/FHIR-54481) | [Source](../open/FHIR-54481/FHIR-54481.md)
 - FHIR-54483: How should error messages be reported - FML or StructureMap location? | [Jira](https://jira.hl7.org/browse/FHIR-54483) | [Source](../open/FHIR-54483/FHIR-54483.md)
 - FHIR-54484: Transform Functions issues (collection of them) | [Jira](https://jira.hl7.org/browse/FHIR-54484) | [Source](../open/FHIR-54484/FHIR-54484.md)
@@ -28,7 +26,7 @@ Ticket count: 33
 - FHIR-55380: Tutorial has many technical errors | [Jira](https://jira.hl7.org/browse/FHIR-55380) | [Source](../open/FHIR-55380/FHIR-55380.md)
 - FHIR-55501: Issues in mapping transforms table | [Jira](https://jira.hl7.org/browse/FHIR-55501) | [Source](../open/FHIR-55501/FHIR-55501.md)
 - FHIR-57205: FML constants use of fhirpath | [Jira](https://jira.hl7.org/browse/FHIR-57205) | [Source](../open/FHIR-57205/FHIR-57205.md)
-- FHIR-57524: FML grammar doesn't support `evaluate` fhirpath parameter | [Jira](https://jira.hl7.org/browse/FHIR-57524) | [Source](../open/FHIR-57524/FHIR-57524.md)
+- FHIR-57536: FML append transform parameters supporting whitespace only | [Jira](https://jira.hl7.org/browse/FHIR-57536) | [Source](../open/FHIR-57536/FHIR-57536.md)
 
 ## Submitted (4)
 
@@ -37,9 +35,11 @@ Ticket count: 33
 - FHIR-57465: FML metadata markdown processing """ doesn't describe if there are any escaping capabilities | [Jira](https://jira.hl7.org/browse/FHIR-57465) | [Source](../open/FHIR-57465/FHIR-57465.md)
 - FHIR-57473: Document the @search() capability | [Jira](https://jira.hl7.org/browse/FHIR-57473) | [Source](../open/FHIR-57473/FHIR-57473.md)
 
-## Resolved - change required (4)
+## Resolved - change required (6)
 
 - FHIR-42980: Remove TODO from FML spec | [Jira](https://jira.hl7.org/browse/FHIR-42980) | [Source](../open/FHIR-42980/FHIR-42980.md)
 - FHIR-54473: FHIR Mapping Language not ready for normative | [Jira](https://jira.hl7.org/browse/FHIR-54473) | [Source](../open/FHIR-54473/FHIR-54473.md)
 - FHIR-54476: StructureMap doesn't happily represent the chaining of properties in source or target | [Jira](https://jira.hl7.org/browse/FHIR-54476) | [Source](../open/FHIR-54476/FHIR-54476.md)
+- FHIR-54477: Simple Identity transform - no FML grammar support, and heading improvement | [Jira](https://jira.hl7.org/browse/FHIR-54477) | [Source](../open/FHIR-54477/FHIR-54477.md)
 - FHIR-55113: Incomplete content indicated on: mapping-language | [Jira](https://jira.hl7.org/browse/FHIR-55113) | [Source](../open/FHIR-55113/FHIR-55113.md)
+- FHIR-57524: FML grammar doesn't support `evaluate` fhirpath parameter | [Jira](https://jira.hl7.org/browse/FHIR-57524) | [Source](../open/FHIR-57524/FHIR-57524.md)

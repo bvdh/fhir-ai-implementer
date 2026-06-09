@@ -1,6 +1,6 @@
 # Datatypes
 
-Ticket count: 52
+Ticket count: 39
 
 ## Triaged (13)
 
@@ -25,7 +25,7 @@ Ticket count: 52
 - FHIR-51098: Add a new element for the canoncaization algorithm to Signature | [Jira](https://jira.hl7.org/browse/FHIR-51098) | [Source](../open/FHIR-51098/FHIR-51098.md)
 - FHIR-51218: Add concepts to the Identifier-type value set http://hl7.org/fhir/ValueSet/identifier-type | [Jira](https://jira.hl7.org/browse/FHIR-51218) | [Source](../open/FHIR-51218/FHIR-51218.md)
 
-## Submitted (11)
+## Submitted (10)
 
 - FHIR-53068: Clarify conformance language of Coding.display | [Jira](https://jira.hl7.org/browse/FHIR-53068) | [Source](../open/FHIR-53068/FHIR-53068.md)
 - FHIR-54520: Error in example table "Every second day" | [Jira](https://jira.hl7.org/browse/FHIR-54520) | [Source](../open/FHIR-54520/FHIR-54520.md)
@@ -37,31 +37,18 @@ Ticket count: 52
 - FHIR-55092: Incomplete content indicated on: datatypes-definitions | [Jira](https://jira.hl7.org/browse/FHIR-55092) | [Source](../open/FHIR-55092/FHIR-55092.md)
 - FHIR-55094: Incomplete content indicated on: datatypes-examples | [Jira](https://jira.hl7.org/browse/FHIR-55094) | [Source](../open/FHIR-55094/FHIR-55094.md)
 - FHIR-55681: Incorrect data type labels | [Jira](https://jira.hl7.org/browse/FHIR-55681) | [Source](../open/FHIR-55681/FHIR-55681.md)
-- FHIR-57292: xhtml baseDefinition should be PrimitiveType | [Jira](https://jira.hl7.org/browse/FHIR-57292) | [Source](../open/FHIR-57292/FHIR-57292.md)
 
-## Resolved - change required (24)
+## Resolved - change required (12)
 
 - FHIR-26023: Create a recommended set of timing choice datatypes | [Jira](https://jira.hl7.org/browse/FHIR-26023) | [Source](../open/FHIR-26023/FHIR-26023.md)
 - FHIR-40405: Need profile on Identifer datatype that is holding a User identity | [Jira](https://jira.hl7.org/browse/FHIR-40405) | [Source](../open/FHIR-40405/FHIR-40405.md)
-- FHIR-40696: Broken link to time zone extension | [Jira](https://jira.hl7.org/browse/FHIR-40696) | [Source](../open/FHIR-40696/FHIR-40696.md)
 - FHIR-41191: Regex for base64 datatype does not comply with RFC | [Jira](https://jira.hl7.org/browse/FHIR-41191) | [Source](../open/FHIR-41191/FHIR-41191.md)
-- FHIR-41631: Modeling and Methodology is incorrectly stated as the curating work group for the datatypes page | [Jira](https://jira.hl7.org/browse/FHIR-41631) | [Source](../open/FHIR-41631/FHIR-41631.md)
 - FHIR-44049: Format on data types page is faulty | [Jira](https://jira.hl7.org/browse/FHIR-44049) | [Source](../open/FHIR-44049/FHIR-44049.md)
 - FHIR-44639: Datatype diagrams and some references need fixing | [Jira](https://jira.hl7.org/browse/FHIR-44639) | [Source](../open/FHIR-44639/FHIR-44639.md)
-- FHIR-44645: HumanName anchor isn't working | [Jira](https://jira.hl7.org/browse/FHIR-44645) | [Source](../open/FHIR-44645/FHIR-44645.md)
 - FHIR-44988: Add an identifier type for FHIR resource id's | [Jira](https://jira.hl7.org/browse/FHIR-44988) | [Source](../open/FHIR-44988/FHIR-44988.md)
-- FHIR-46202: Correct regex in the documentation for code type | [Jira](https://jira.hl7.org/browse/FHIR-46202) | [Source](../open/FHIR-46202/FHIR-46202.md)
 - FHIR-46453: dateTime RegEx allows to specify a date & time without timezone | [Jira](https://jira.hl7.org/browse/FHIR-46453) | [Source](../open/FHIR-46453/FHIR-46453.md)
-- FHIR-47129: Duration description and expression conflict | [Jira](https://jira.hl7.org/browse/FHIR-47129) | [Source](../open/FHIR-47129/FHIR-47129.md)
 - FHIR-48493: UseageContext should be sliced to match valueCodeableConcept domains to code | [Jira](https://jira.hl7.org/browse/FHIR-48493) | [Source](../open/FHIR-48493/FHIR-48493.md)
-- FHIR-50260: clarify SampledData limits | [Jira](https://jira.hl7.org/browse/FHIR-50260) | [Source](../open/FHIR-50260/FHIR-50260.md)
 - FHIR-50586: "constraints" box is missing for RelativeTime and SampledData | [Jira](https://jira.hl7.org/browse/FHIR-50586) | [Source](../open/FHIR-50586/FHIR-50586.md)
 - FHIR-51236: Handling of Attachment.hash | [Jira](https://jira.hl7.org/browse/FHIR-51236) | [Source](../open/FHIR-51236/FHIR-51236.md)
-- FHIR-51735: Extra '}' in decimal regex | [Jira](https://jira.hl7.org/browse/FHIR-51735) | [Source](../open/FHIR-51735/FHIR-51735.md)
-- FHIR-53636: Clarify that Element.id prohibits all whitespace, not just the space character | [Jira](https://jira.hl7.org/browse/FHIR-53636) | [Source](../open/FHIR-53636/FHIR-53636.md)
-- FHIR-54058: Update Timing example table for start/endOffset | [Jira](https://jira.hl7.org/browse/FHIR-54058) | [Source](../open/FHIR-54058/FHIR-54058.md)
-- FHIR-54062: Rework startOffset/endOffset constraint | [Jira](https://jira.hl7.org/browse/FHIR-54062) | [Source](../open/FHIR-54062/FHIR-54062.md)
-- FHIR-54490: Attachment url to relative references should be clarified | [Jira](https://jira.hl7.org/browse/FHIR-54490) | [Source](../open/FHIR-54490/FHIR-54490.md)
-- FHIR-56000: Represent approximate comparator in quantity | [Jira](https://jira.hl7.org/browse/FHIR-56000) | [Source](../open/FHIR-56000/FHIR-56000.md)
+- FHIR-57292: xhtml baseDefinition should be PrimitiveType | [Jira](https://jira.hl7.org/browse/FHIR-57292) | [Source](../open/FHIR-57292/FHIR-57292.md)
 - FHIR-57405: Restore the note to balloters about the change to Ratio.denominator | [Jira](https://jira.hl7.org/browse/FHIR-57405) | [Source](../open/FHIR-57405/FHIR-57405.md)
-- FHIR-57408: We need to resolve the problem on SampledData.offsets running out | [Jira](https://jira.hl7.org/browse/FHIR-57408) | [Source](../open/FHIR-57408/FHIR-57408.md)

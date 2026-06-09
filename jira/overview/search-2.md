@@ -1,6 +1,6 @@
 # Search
 
-Ticket count: 35
+Ticket count: 36
 
 ## Triaged (18)
 
@@ -23,7 +23,7 @@ Ticket count: 35
 - FHIR-54851: Review Search Time Zone Content | [Jira](https://jira.hl7.org/browse/FHIR-54851) | [Source](../open/FHIR-54851/FHIR-54851.md)
 - FHIR-54853: Finalize the 'not' search modifier | [Jira](https://jira.hl7.org/browse/FHIR-54853) | [Source](../open/FHIR-54853/FHIR-54853.md)
 
-## Submitted (12)
+## Submitted (13)
 
 - FHIR-51913: Clarify use of search against Canonical resources | [Jira](https://jira.hl7.org/browse/FHIR-51913) | [Source](../open/FHIR-51913/FHIR-51913.md)
 - FHIR-52964: typo on the Search page | [Jira](https://jira.hl7.org/browse/FHIR-52964) | [Source](../open/FHIR-52964/FHIR-52964.md)
@@ -37,6 +37,7 @@ Ticket count: 35
 - FHIR-56014: _summary=count overlaps with _count=0&_total=accurate | [Jira](https://jira.hl7.org/browse/FHIR-56014) | [Source](../open/FHIR-56014/FHIR-56014.md)
 - FHIR-56015: Values for _summary differ | [Jira](https://jira.hl7.org/browse/FHIR-56015) | [Source](../open/FHIR-56015/FHIR-56015.md)
 - FHIR-56813: Clarify what types of parameters should be in Bundle self links for search-set | [Jira](https://jira.hl7.org/browse/FHIR-56813) | [Source](../open/FHIR-56813/FHIR-56813.md)
+- FHIR-57556: Update Search examples due to datatype change | [Jira](https://jira.hl7.org/browse/FHIR-57556) | [Source](../open/FHIR-57556/FHIR-57556.md)
 
 ## Resolved - change required (5)
 

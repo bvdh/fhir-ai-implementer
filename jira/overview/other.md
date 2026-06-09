@@ -1,8 +1,8 @@
 # Other
 
-Ticket count: 46
+Ticket count: 56
 
-## Triaged (22)
+## Triaged (25)
 
 - FHIR-51728: Compliant compartment deviation is unclear | [Jira](https://jira.hl7.org/browse/FHIR-51728) | [Source](../open/FHIR-51728/FHIR-51728.md)
 - FHIR-51730: Remove chaining support in CompartmentDefinition | [Jira](https://jira.hl7.org/browse/FHIR-51730) | [Source](../open/FHIR-51730/FHIR-51730.md)
@@ -21,6 +21,9 @@ Ticket count: 46
 - FHIR-54856: Subscription optional coded elements need to describe default behavior | [Jira](https://jira.hl7.org/browse/FHIR-54856) | [Source](../open/FHIR-54856/FHIR-54856.md)
 - FHIR-55439: Remove deprecated MetadataResource.topic | [Jira](https://jira.hl7.org/browse/FHIR-55439) | [Source](../open/FHIR-55439/FHIR-55439.md)
 - FHIR-55445: Remove deprecated StructureDefinition.keyword | [Jira](https://jira.hl7.org/browse/FHIR-55445) | [Source](../open/FHIR-55445/FHIR-55445.md)
+- FHIR-56001: Expand Rendered Value to Ratio | [Jira](https://jira.hl7.org/browse/FHIR-56001) | [Source](../open/FHIR-56001/FHIR-56001.md)
+- FHIR-56413: ObligationProfileFlag and InheritObligations are inconsistent | [Jira](https://jira.hl7.org/browse/FHIR-56413) | [Source](../open/FHIR-56413/FHIR-56413.md)
+- FHIR-56953: Large value extension should use int64 | [Jira](https://jira.hl7.org/browse/FHIR-56953) | [Source](../open/FHIR-56953/FHIR-56953.md)
 - FHIR-57216: Structure Map target list mode should be single cardinality | [Jira](https://jira.hl7.org/browse/FHIR-57216) | [Source](../open/FHIR-57216/FHIR-57216.md)
 - FHIR-57432: Can globals apply for logical models? | [Jira](https://jira.hl7.org/browse/FHIR-57432) | [Source](../open/FHIR-57432/FHIR-57432.md)
 - FHIR-57433: Clarify global inheritance expectations | [Jira](https://jira.hl7.org/browse/FHIR-57433) | [Source](../open/FHIR-57433/FHIR-57433.md)
@@ -35,17 +38,21 @@ Ticket count: 46
 - FHIR-47614: Need a functional TestReport | [Jira](https://jira.hl7.org/browse/FHIR-47614) | [Source](../open/FHIR-47614/FHIR-47614.md)
 - FHIR-48768: Define terminology so that authors can use usageContext to categorise profiles and IGs | [Jira](https://jira.hl7.org/browse/FHIR-48768) | [Source](../open/FHIR-48768/FHIR-48768.md)
 
-## Submitted (5)
+## Submitted (7)
 
+- FHIR-51491: The work group extension's binding should be changed to the THO value set for HL7 workgroups; and the extensions pack value set and code system should be deprecated or retired | [Jira](https://jira.hl7.org/browse/FHIR-51491) | [Source](../open/FHIR-51491/FHIR-51491.md)
 - FHIR-55418: Event.partOf as a reference to same type | [Jira](https://jira.hl7.org/browse/FHIR-55418) | [Source](../open/FHIR-55418/FHIR-55418.md)
 - FHIR-55477: Possible need for invariant on Bundle.identifier | [Jira](https://jira.hl7.org/browse/FHIR-55477) | [Source](../open/FHIR-55477/FHIR-55477.md)
+- FHIR-56879: Define how translatable behaves for extensions | [Jira](https://jira.hl7.org/browse/FHIR-56879) | [Source](../open/FHIR-56879/FHIR-56879.md)
 - FHIR-57219: Target List Mode first/last/single don't make sense | [Jira](https://jira.hl7.org/browse/FHIR-57219) | [Source](../open/FHIR-57219/FHIR-57219.md)
 - FHIR-57356: Restore Bundle.link.relation to allow extension URIs (align with RFC 8288) | [Jira](https://jira.hl7.org/browse/FHIR-57356) | [Source](../open/FHIR-57356/FHIR-57356.md)
 - FHIR-57383: Resource.id / Patient.id `structuredefinition-fhir-type` Regression | [Jira](https://jira.hl7.org/browse/FHIR-57383) | [Source](../open/FHIR-57383/FHIR-57383.md)
 
-## Resolved - change required (14)
+## Resolved - change required (19)
 
 - FHIR-43177: StructureMap.const.name description is wrong | [Jira](https://jira.hl7.org/browse/FHIR-43177) | [Source](../open/FHIR-43177/FHIR-43177.md)
+- FHIR-50952: The FMM extension contexts should be Element not Resource | [Jira](https://jira.hl7.org/browse/FHIR-50952) | [Source](../open/FHIR-50952/FHIR-50952.md)
+- FHIR-51643: Fix contextInvariant to be version-specific | [Jira](https://jira.hl7.org/browse/FHIR-51643) | [Source](../open/FHIR-51643/FHIR-51643.md)
 - FHIR-51651: OperationDefinition.resource should be a URI to allow operations on logical models | [Jira](https://jira.hl7.org/browse/FHIR-51651) | [Source](../open/FHIR-51651/FHIR-51651.md)
 - FHIR-51700: Correct "H L7" spelling | [Jira](https://jira.hl7.org/browse/FHIR-51700) | [Source](../open/FHIR-51700/FHIR-51700.md)
 - FHIR-53722: Deprecated elements should be withdrawn where applicable in R6 | [Jira](https://jira.hl7.org/browse/FHIR-53722) | [Source](../open/FHIR-53722/FHIR-53722.md)
@@ -54,8 +61,11 @@ Ticket count: 46
 - FHIR-54110: VisitNumber as patient identifier is not specified in FHIR | [Jira](https://jira.hl7.org/browse/FHIR-54110) | [Source](../open/FHIR-54110/FHIR-54110.md)
 - FHIR-54482: The default value only has string datatype (R4 had lots of types) | [Jira](https://jira.hl7.org/browse/FHIR-54482) | [Source](../open/FHIR-54482/FHIR-54482.md)
 - FHIR-54748: ExampleScenario.actor overlaps with Actor | [Jira](https://jira.hl7.org/browse/FHIR-54748) | [Source](../open/FHIR-54748/FHIR-54748.md)
+- FHIR-55397: Definition of Obligation applicable-number extension is ambiguous | [Jira](https://jira.hl7.org/browse/FHIR-55397) | [Source](../open/FHIR-55397/FHIR-55397.md)
+- FHIR-55398: Provide means for obligations to be dependent on clinical context and relevance use cases | [Jira](https://jira.hl7.org/browse/FHIR-55398) | [Source](../open/FHIR-55398/FHIR-55398.md)
 - FHIR-55645: List of link types isn't up-to-date | [Jira](https://jira.hl7.org/browse/FHIR-55645) | [Source](../open/FHIR-55645/FHIR-55645.md)
 - FHIR-55975: Add best practice invariants that warn about missing code (and system?) on codings | [Jira](https://jira.hl7.org/browse/FHIR-55975) | [Source](../open/FHIR-55975/FHIR-55975.md)
 - FHIR-56197: StructureDefinition.context additional documentation | [Jira](https://jira.hl7.org/browse/FHIR-56197) | [Source](../open/FHIR-56197/FHIR-56197.md)
 - FHIR-56402: Clarify what's allowed for implicitRules | [Jira](https://jira.hl7.org/browse/FHIR-56402) | [Source](../open/FHIR-56402/FHIR-56402.md)
+- FHIR-56447: The package source extension should not propogate to derived profiles | [Jira](https://jira.hl7.org/browse/FHIR-56447) | [Source](../open/FHIR-56447/FHIR-56447.md)
 - FHIR-57354: Remove restriction on Parameters in Bundle.entry.resource requiring reference from another entry | [Jira](https://jira.hl7.org/browse/FHIR-57354) | [Source](../open/FHIR-57354/FHIR-57354.md)

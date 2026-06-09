@@ -1,6 +1,6 @@
 # Narrative
 
-Ticket count: 13
+Ticket count: 10
 
 ## Triaged (2)
 
@@ -16,10 +16,7 @@ Ticket count: 13
 - FHIR-55680: Not all data types have the "used in the following places:" data | [Jira](https://jira.hl7.org/browse/FHIR-55680) | [Source](../open/FHIR-55680/FHIR-55680.md)
 - FHIR-57374: Update Guidance on Text Linking | [Jira](https://jira.hl7.org/browse/FHIR-57374) | [Source](../open/FHIR-57374/FHIR-57374.md)
 
-## Resolved - change required (5)
+## Resolved - change required (2)
 
 - FHIR-24884: Define best practices for narrative for a resource | [Jira](https://jira.hl7.org/browse/FHIR-24884) | [Source](../open/FHIR-24884/FHIR-24884.md)
 - FHIR-42868: Narrative-status should be normative | [Jira](https://jira.hl7.org/browse/FHIR-42868) | [Source](../open/FHIR-42868/FHIR-42868.md)
-- FHIR-48338: Update narrative for id/idref | [Jira](https://jira.hl7.org/browse/FHIR-48338) | [Source](../open/FHIR-48338/FHIR-48338.md)
-- FHIR-54755: Narrative - please explain more clearly how to refer from a narrative to a resource | [Jira](https://jira.hl7.org/browse/FHIR-54755) | [Source](../open/FHIR-54755/FHIR-54755.md)
-- FHIR-54765: Links from images in narrative | [Jira](https://jira.hl7.org/browse/FHIR-54765) | [Source](../open/FHIR-54765/FHIR-54765.md)

@@ -1,6 +1,6 @@
 # References
 
-Ticket count: 16
+Ticket count: 15
 
 ## Triaged (8)
 
@@ -20,9 +20,8 @@ Ticket count: 16
 - FHIR-53292: Multiple typos in references page | [Jira](https://jira.hl7.org/browse/FHIR-53292) | [Source](../open/FHIR-53292/FHIR-53292.md)
 - FHIR-55126: Incomplete content indicated on: references | [Jira](https://jira.hl7.org/browse/FHIR-55126) | [Source](../open/FHIR-55126/FHIR-55126.md)
 
-## Resolved - change required (4)
+## Resolved - change required (3)
 
 - FHIR-48692: Clarification on the Use of Identifiers in FHIR Specification | [Jira](https://jira.hl7.org/browse/FHIR-48692) | [Source](../open/FHIR-48692/FHIR-48692.md)
 - FHIR-53900: Contained Resources, Note to Implementers | [Jira](https://jira.hl7.org/browse/FHIR-53900) | [Source](../open/FHIR-53900/FHIR-53900.md)
 - FHIR-53909: How do reference search params interact with the alternate-reference extension? | [Jira](https://jira.hl7.org/browse/FHIR-53909) | [Source](../open/FHIR-53909/FHIR-53909.md)
-- FHIR-55462: Reference to additional resources should be normal references and not alternate reference | [Jira](https://jira.hl7.org/browse/FHIR-55462) | [Source](../open/FHIR-55462/FHIR-55462.md)
