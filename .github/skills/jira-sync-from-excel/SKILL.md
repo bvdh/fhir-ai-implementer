@@ -13,6 +13,9 @@ The skill uses the newest `*.xlsx` file in `jira/`, then generates or updates ti
 - `jira/active/`
 - `jira/closed/`
 
+If no new local Excel export is available, the sync script fetches a fresh export from Jira using:
+- [Jira](https://jira.hl7.org/sr/jira.issueviews:searchrequest-fullcontent/temp/SearchRequest.html?jqlQuery=project+%3D+FHIR+AND+Specification+%3D+%22FHIR+Core+%28FHIR%29+%5BFHIR-core%5D%22+AND+%28%28type+%3D+%22Technical+Correction%22+and+status+not+in+%28Published%29%29+OR+status+not+in+%28Published%2C+%22Change+Not+Needed%22%2C+%22Resolved+-+No+Change%22%2C+Deferred+%29%29+AND+%22Work+Group%22+%3D+%22FHIR+Infrastructure+%5Bfhir-i%5D%22+ORDER+BY+status+DESC&tempMax=1000)
+
 `jira/active/` is controlled strictly by `currentTickets.md` at repository root.
 
 Each ticket is written to a subdirectory named after its key:
@@ -34,8 +37,11 @@ bash ./.github/skills/jira-sync-from-excel/scripts/sync-if-newer.sh
    - Locate all `*.xlsx` files in `jira/`
    - Warn if multiple files are present
    - Select the most recent Excel file
+   - If no Excel exists, download a fresh Jira export from the URL above into `jira/`
    - Compare both Excel mtime and `currentTickets.md` mtime vs existing ticket directory mtimes
-   - Skip sync if no update is needed
+   - If no newer local Excel is found, attempt a Jira export download before deciding to skip
+   - Show a download progress bar in interactive terminals (or concise status in non-interactive runs)
+   - Skip sync only when neither local files nor Jira download yields a newer export
    - Generate updated markdown for each Jira ticket when sync is needed
 
 3. Optional: force sync even if timestamps indicate no changes:
@@ -79,6 +85,12 @@ Each `FHIR-XXXXX.md` file includes:
 
 ## Notes
 - Requires Node.js.
+- Requires `curl` and network access to Jira for the fallback download path.
+- Jira fallback may require authentication. Supported options:
+   - `JIRA_COOKIE_FILE=/path/to/jira-cookies.txt`
+   - `JIRA_USER=<username>` and `JIRA_API_TOKEN=<token>` (or `JIRA_TOKEN`)
+   - `JIRA_BEARER_TOKEN=<token>`
+- Fallback download timeout is extended for large Jira exports and may take several minutes.
 - Requires the `xlsx` npm package available to Node.js execution context.
 - Existing ticket directories in the wrong state folder are moved by regeneration (old location removed, new location written).
 - Root-level `jira/FHIR-XXXXX` directories are also migrated to status folders when encountered.
