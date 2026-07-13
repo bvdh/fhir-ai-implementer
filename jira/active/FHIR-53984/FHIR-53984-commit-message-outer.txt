@@ -1,0 +1,5 @@
+FHIR-53984: Update ticket artifacts and fhir-fork pointer
+
+- Add implementation change log for FHIR-53984
+- Add repository-scoped commit message files for FHIR-53984
+- Update fhir-fork gitlink to include DataRequirement valueFilter changes

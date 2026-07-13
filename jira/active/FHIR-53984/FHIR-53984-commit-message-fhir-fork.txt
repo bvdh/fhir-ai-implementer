@@ -1,0 +1,7 @@
+FHIR-53984: Allow more types for DataRequirement.valueFilter.value[x]
+
+- Expand DataRequirement.valueFilter.value[x] types in datatypes/datarequirement.xml
+  from dateTime|Period|Duration to boolean|integer|string|Quantity|Range|Ratio|RatioRange
+- Update the valueFilter short/definition text to describe the expanded value domain
+- Add invariant on DataRequirement.valueFilter enforcing
+  path.exists() xor searchParam.exists()
