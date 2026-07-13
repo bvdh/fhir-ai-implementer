@@ -1,0 +1,5 @@
+FHIR-50586: Add RelativeTime constraints box to datatypes page
+
+- Insert constraints box markup in RelativeTime section of source/datatypes.html
+- Render RelativeTime constraints via [%dt.constraints RelativeTime%]
+- Keep change scoped to one planned hunk in fhir-fork/source

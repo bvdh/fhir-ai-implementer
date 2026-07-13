@@ -1,0 +1,5 @@
+FHIR-50586: Record execution artifacts for RelativeTime constraints fix
+
+- Move FHIR-50586 ticket folder from jira/open to jira/active for execution tracking
+- Add repository-scoped commit message artifacts for outer and fhir-fork repos
+- Add implementation change log with validation outcomes and plan-conformance mapping
