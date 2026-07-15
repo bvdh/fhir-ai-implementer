@@ -1,0 +1,12 @@
+FHIR-46453: Move ticket to active and record implementation
+
+- Moved jira/open/FHIR-46453/FHIR-46453.md to
+  jira/active/FHIR-46453/FHIR-46453.md.
+- Added FHIR-46453-implementation-plan.md documenting the corrected
+  root-cause analysis (dateTime regex defect in
+  fhir-fork/source/datatypes/primitives.xml) and execution steps.
+- Added FHIR-46453-implementation-change-log.md recording the exact
+  before/after regex text and the full verification matrix run against
+  the dateTime narrative description.
+- Updated fhir-fork submodule pointer to the commit containing the
+  dateTime regex fix.

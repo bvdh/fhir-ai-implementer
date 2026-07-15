@@ -1,0 +1,14 @@
+FHIR-46453: Require timezone offset in dateTime regex when time is present
+
+- Fixed source/datatypes/primitives.xml dateTime RegEx cell: removed two
+  extraneous `?` quantifiers on the timezone group so a timezone offset
+  is mandatory whenever an hours/minutes time component is present,
+  matching the instant type's regex and the existing normative prose in
+  source/datatypes.html ("If hours and minutes are specified, a timezone
+  offset SHALL be populated").
+- Verified the corrected regex against every clause of the dateTime
+  narrative description (year/year-month/date-only forms, required
+  seconds, optional milliseconds, disallowed 24:00, allowed leap seconds,
+  and the +/-14:00 offset range), including the originally reported
+  defect string 2024-07-23T12:27:16.321661, which is now correctly
+  rejected.
