@@ -1,0 +1,4 @@
+FHIR-48493: Add UsageContext additional binding for age and fix typo
+
+- Added additional binding uc-bind-age (purpose preferred) on UsageContext.code=age, pointing to http://terminology.hl7.org/ValueSet/v3-AgeGroupObservationValue
+- Fixed purpose value typo "exetensible" -> "extensible" on the existing uc-bind-jurisdiction additional binding

@@ -1,0 +1,12 @@
+FHIR-48493: Move ticket to active and record implementation
+
+- Moved jira/open/FHIR-48493/FHIR-48493.md to
+  jira/active/FHIR-48493/FHIR-48493.md.
+- Added FHIR-48493-implementation-plan.md documenting the UsageContext
+  additional-binding gap analysis against the THO usage-context-type
+  CodeSystem concept definitions.
+- Added FHIR-48493-implementation-change-log.md recording the new
+  uc-bind-age additional binding and the exetensible typo fix, with
+  plan conformance mapping.
+- Updated fhir-fork submodule pointer to the commit containing the
+  UsageContext additional-binding fix.
