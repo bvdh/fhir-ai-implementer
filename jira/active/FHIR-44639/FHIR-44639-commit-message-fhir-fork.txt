@@ -1,0 +1,6 @@
+FHIR-44639: Fix CodeableReference datatype categorization on Datatypes page
+
+- Removed CodeableReference from the Special Purpose Datatypes diagram (source/datatypes/specialtypes.diagram)
+- Added CodeableReference to the General-Purpose Datatypes diagram (source/datatypes/alltypes.diagram), enlarging the canvas and repositioning boxes to avoid overlap
+- Increased canvas height on source/datatypes/specialtypes.diagram (148 -> 260) and source/datatypes/metadatatypes.diagram (188 -> 260) so bottom-row boxes (e.g. MonetaryComponent, VirtualServiceDetail) no longer clip off the rendered diagram
+- Investigated the ticket's second sub-issue (Contributor in metadatatypes diagram / ContactDetail usage) and confirmed it is not reproducible in current source; no action taken
