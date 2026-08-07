@@ -7,7 +7,7 @@ applyTo: "fhir-extensions-fork/**"
 
 ## Hard Rule
 - FHIR core extensions are stored in the `fhir-extensions-fork` repository.
-- If a ticket primarily changes FHIR core extensions, make that change in `fhir-extensions-fork` rather than `fhir-fork` unless the user explicitly overrides this.
+- If a ticket primarily changes FHIR core extensions, make that change in `fhir-extensions-fork` rather than `fhir-repo` unless the user explicitly overrides this.
 
 ## Scope Notes
 - Treat `fhir-extensions-fork` as the default implementation location for extension-definition and extension-page updates.
@@ -15,7 +15,7 @@ applyTo: "fhir-extensions-fork/**"
 
 ## Coordination Rule
 - If a ticket spans both FHIR core specification text and FHIR core extensions, identify which repo owns each part before editing.
-- Do not move extension-related edits into `fhir-fork` just because the ticket also touches core specification prose.
+- Do not move extension-related edits into `fhir-repo` just because the ticket also touches core specification prose.
 
 ## Build And Rendering Guidance
 - The publisher is used to generate the IG for `fhir-extensions-fork`.

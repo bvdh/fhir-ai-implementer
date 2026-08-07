@@ -3,7 +3,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/../../../.." && pwd)"
-FORK_DIR="$REPO_ROOT/fhir-fork"
+FORK_DIR="$REPO_ROOT/fhir-repo"
 CHECK_MODE="all"
 
 for arg in "$@"; do
@@ -20,7 +20,7 @@ for arg in "$@"; do
 done
 
 if [[ ! -d "$FORK_DIR/.git" ]]; then
-  echo "ERROR: fhir-fork repository not found at $FORK_DIR" >&2
+  echo "ERROR: fhir-repo repository not found at $FORK_DIR" >&2
   exit 2
 fi
 
@@ -41,7 +41,7 @@ else
 fi
 
 if [[ ${#changed_paths[@]} -eq 0 ]]; then
-  echo "PASS: No pending changes detected in fhir-fork ($CHECK_MODE mode)."
+  echo "PASS: No pending changes detected in fhir-repo ($CHECK_MODE mode)."
   exit 0
 fi
 
@@ -57,11 +57,11 @@ while IFS= read -r p; do
 done <<< "$unique_sorted_paths"
 
 if [[ ${#violations[@]} -gt 0 ]]; then
-  echo "FAIL: Found changes outside fhir-fork/source/ ($CHECK_MODE mode):"
+  echo "FAIL: Found changes outside fhir-repo/source/ ($CHECK_MODE mode):"
   for p in "${violations[@]}"; do
     echo "  - $p"
   done
   exit 1
 fi
 
-echo "PASS: All changed files are under fhir-fork/source/ ($CHECK_MODE mode)."
+echo "PASS: All changed files are under fhir-repo/source/ ($CHECK_MODE mode)."

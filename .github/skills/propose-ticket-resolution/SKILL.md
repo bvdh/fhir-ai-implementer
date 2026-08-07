@@ -28,7 +28,7 @@ This skill is aligned to the repository workflow:
 2. Active ticket scope is declared in `currentTickets.md`.
 3. Resolution proposals are generated for those active tickets.
 4. Proposal files are saved beside ticket files under `jira/open`, `jira/active`, or `jira/closed`.
-5. Proposal is used to create implementation plans and then implemented in `fhir-fork/source/`.
+5. Proposal is used to create implementation plans and then implemented in `fhir-repo/source/`.
 
 ## How To Invoke
 
@@ -68,7 +68,7 @@ When you provide a ticket key (e.g., `FHIR-51010`):
    - Extract commit hashes from comment text
    - Identify commit authors and dates from comment metadata
    - Note related tickets via Grouping field
-   - Reference relevant FHIR core specification pages under `fhir-fork/source/`
+   - Reference relevant FHIR core specification pages under `fhir-repo/source/`
 
 5. **Generate Resolution File**
    - Create `jira/FHIR-51010/FHIR-51010-resolution.md`
@@ -282,8 +282,8 @@ For `--all`, ticket selection is based on `currentTickets.md`, not global unreso
 
 The skill automatically extracts and links:
 
-- **Pull Requests**: `https://github.com/bvdh/fhir-bvdh/pull/NNN` and `https://github.com/HL7/fhir/pull/NNN`
-- **Commits**: `https://github.com/bvdh/fhir-bvdh/commit/HASH` and `https://github.com/HL7/fhir/commit/HASH`
+- **Pull Requests**: `https://github.com/HL7/fhir/pull/NNN`
+- **Commits**: `https://github.com/HL7/fhir/commit/HASH`
 - **Issues**: Any linked issue URLs in comment text
 
 These are extracted from comment text and linked in the resolution file with clickable URLs.
@@ -303,7 +303,7 @@ If a ticket has a Parent key, the resolution file notes the relationship:
 - **Static Data**: Reads from markdown files only; does not connect to live Jira API.
 - **Data Currency**: Ensure tickets are synced before running. Use `jira-sync-from-excel` if export.xlsx was updated.
 - **GitHub Linking**: Links extracted via regex; malformed URLs may not be captured.
-- **Repository Assumption**: Assumes imaging repo is `hl7-eu/imaging` on GitHub.
+- **Repository Assumption**: Assumes the core repo is `HL7/fhir` on GitHub.
 - **Batch Filtering**: The `--all` flag only processes tickets with statuses other than Applied, Not Persuasive with Modification, Retracted, Not Persuasive, or Declined.
 - **File Permissions**: Skill must have write access to `jira/FHIR-*/` directories.
 

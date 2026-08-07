@@ -1,33 +1,33 @@
 ---
-name: validate-fhir-fork-source-boundary
-description: 'Validate that all pending fhir-fork changes are under fhir-fork/source only. Use before commit to enforce fork edit boundaries.'
+name: validate-fhir-repo-source-boundary
+description: 'Validate that all pending fhir-repo changes are under fhir-repo/source only. Use before commit to enforce fork edit boundaries.'
 argument-hint: '[--staged] optional flag to check staged changes only'
 ---
 
 # Validate FHIR Fork Source Boundary
 
-Check whether changed files in `fhir-fork/` are restricted to `source/`.
+Check whether changed files in `fhir-repo/` are restricted to `source/`.
 
 ## When to Use
 - Before committing ticket implementation changes
 - After editing to verify no accidental updates outside specification source
-- During review to enforce fhir-fork boundary rules
+- During review to enforce fhir-repo boundary rules
 
 ## Run
 From repository root:
 
 ```bash
-bash ./.github/skills/validate-fhir-fork-source-boundary/scripts/check-changed-paths.sh
+bash ./.github/skills/validate-fhir-repo-source-boundary/scripts/check-changed-paths.sh
 ```
 
 Staged-only check:
 
 ```bash
-bash ./.github/skills/validate-fhir-fork-source-boundary/scripts/check-changed-paths.sh --staged
+bash ./.github/skills/validate-fhir-repo-source-boundary/scripts/check-changed-paths.sh --staged
 ```
 
 ## Output
-- PASS when all changed paths are under `fhir-fork/source/`
+- PASS when all changed paths are under `fhir-repo/source/`
 - FAIL with a list of violating paths when any changes exist outside `source/`
 
 ## Notes

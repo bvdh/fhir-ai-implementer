@@ -1,6 +1,6 @@
 ---
 name: execute-implementation-plan
-description: 'Execute a ticket implementation plan by applying approved source edits in fhir-fork/source/, validating results, and writing commit-message and change-log files in jira/active/<ticket>/. Use for FHIR technical correction implementation after planning.'
+description: 'Execute a ticket implementation plan by applying approved source edits in fhir-repo/source/, validating results, and writing commit-message and change-log files in jira/active/<ticket>/. Use for FHIR technical correction implementation after planning.'
 argument-hint: 'FHIR-XXXXX or path to <ticket>-implementation-plan.md'
 user-invocable: true
 ---
@@ -12,7 +12,7 @@ Execute an approved implementation plan for a FHIR Jira ticket, make minimal sou
 ## Use When
 
 - A per-ticket implementation plan already exists and is ready to execute.
-- You need to apply the plan in `fhir-fork/source/` with minimal, traceable changes.
+- You need to apply the plan in `fhir-repo/source/` with minimal, traceable changes.
 - You want generated commit text and a change log stored in the ticket directory under `jira/active/<ticket>/`.
 
 ## Inputs
@@ -23,28 +23,28 @@ Execute an approved implementation plan for a FHIR Jira ticket, make minimal sou
 
 ## Outputs
 
-- Source edits limited to `fhir-fork/source/`.
+- Source edits limited to `fhir-repo/source/`.
 - Repository-scoped commit message files in ticket directory (generated via `create-commit-message`):
   - `jira/active/<ticket>/<ticket>-commit-message-outer.txt` (when outer repo is touched)
-  - `jira/active/<ticket>/<ticket>-commit-message-fhir-fork.txt` (when `fhir-fork` is touched)
+  - `jira/active/<ticket>/<ticket>-commit-message-fhir-repo.txt` (when `fhir-repo` is touched)
   - `jira/active/<ticket>/<ticket>-commit-message-fhir-extensions-fork.txt` (when `fhir-extensions-fork` is touched)
 - Change log file in ticket directory:
   - `jira/active/<ticket>/<ticket>-implementation-change-log.md`
-- Pattern proposal in the change log when a new reusable `fhir-fork` editing pattern is observed:
+- Pattern proposal in the change log when a new reusable `fhir-repo` editing pattern is observed:
   - Describe the pattern and where it appeared.
-  - Propose concrete instruction text for `.github/instructions/fhir-fork.instructions.md`.
+  - Propose concrete instruction text for `.github/instructions/fhir-repo.instructions.md`.
 - No automatic `git commit` by default; this skill prepares commit text for user-driven commit flow.
 
 ## Constraints
 
-- Do not modify files outside `fhir-fork/source/` for implementation edits.
+- Do not modify files outside `fhir-repo/source/` for implementation edits.
 - Do not change build tooling, scripts, Gradle config, CI pipelines, or implementation code unless explicitly requested.
 - Keep edits minimal and tied directly to ticket intent and plan scope.
 - If plan scope is ambiguous, stop and clarify before editing.
 - Execution gate for ticket metadata:
   - Standard rule: `Resolution` must be non-empty and not `Unresolved`, and `Status` must be `Resolved - change required` (equivalently normalized as `Resolved-change-required`).
   - Technical Correction exception (direct resolution): if `Issue Type` is `Technical Correction`, execution may proceed with `Resolution: Unresolved` only when wording to apply is explicit in the approved plan or ticket description.
-- If the implementation plan is owned by `fhir-extensions-fork`, use the same working branch name there as the current `fhir-fork` branch unless the user explicitly overrides this.
+- If the implementation plan is owned by `fhir-extensions-fork`, use the same working branch name there as the current `fhir-repo` branch unless the user explicitly overrides this.
 
 ## Workflow
 
@@ -59,11 +59,11 @@ Execute an approved implementation plan for a FHIR Jira ticket, make minimal sou
    - Intended changes
    - Validation steps
 4. Determine the owning source repository from the plan:
-  - If the plan targets `fhir-fork/source/`, execute there.
+  - If the plan targets `fhir-repo/source/`, execute there.
   - If the plan targets `fhir-extensions-fork`, execute there.
   - If both repos are involved, map each planned edit to its owning repo before editing.
-5. If `fhir-extensions-fork` is involved, compare its current branch name to `fhir-fork`:
-  - If `fhir-fork` already has a non-default working branch, create or switch `fhir-extensions-fork` to the same branch name before editing unless the user explicitly requests otherwise.
+5. If `fhir-extensions-fork` is involved, compare its current branch name to `fhir-repo`:
+  - If `fhir-repo` already has a non-default working branch, create or switch `fhir-extensions-fork` to the same branch name before editing unless the user explicitly requests otherwise.
   - If no working branch exists yet, ask the user to confirm branch strategy before execution.
 6. Validate target files are under the allowed source area for the owning repo.
 7. Apply edits exactly as planned with minimal diff.
@@ -81,7 +81,7 @@ Execute an approved implementation plan for a FHIR Jira ticket, make minimal sou
 11. If a new relevant pattern is detected, add a proposal section to the change log:
   - `## Proposed Instruction Update`
   - `Pattern observed:` <short description>
-  - `Suggested addition to .github/instructions/fhir-fork.instructions.md:` <ready-to-paste bullets>
+  - `Suggested addition to .github/instructions/fhir-repo.instructions.md:` <ready-to-paste bullets>
 12. Invoke `create-commit-message` to generate repository-scoped commit message file(s).
 13. Write implementation change log file.
 14. Do not commit automatically unless explicitly requested.
@@ -100,7 +100,7 @@ Hard stop rules:
 - If `Status` is not `Resolved - change required`, do not execute this skill.
 - If ticket is not `Technical Correction` and `Resolution` is missing/`Unresolved`, do not execute this skill.
 - If ticket is `Technical Correction` with `Resolution: Unresolved` and no explicit approved wording is provided by plan or ticket description, do not edit source.
-- If `fhir-extensions-fork` is part of the task and is not on the same working branch name as `fhir-fork`, switch/create the matching branch first unless the user explicitly overrides this.
+- If `fhir-extensions-fork` is part of the task and is not on the same working branch name as `fhir-repo`, switch/create the matching branch first unless the user explicitly overrides this.
 - If a proposed edit introduces content not listed in the plan's edit intent, stop and ask to revise the plan first.
 - If changed text semantically matches a different ticket's resolution/comments more than the in-scope ticket, stop and ask whether scope changed.
 
@@ -120,7 +120,7 @@ Post-edit conformance checks (must pass):
   - If ticket key is provided, use `jira/active/<ticket>/<ticket>-implementation-plan.md`.
   - If explicit plan path is provided, infer ticket key from path/content.
 - Branch alignment:
-  - If the plan is executed in `fhir-extensions-fork` and `fhir-fork` is already on a task branch, use that same branch name in `fhir-extensions-fork` by default.
+  - If the plan is executed in `fhir-extensions-fork` and `fhir-repo` is already on a task branch, use that same branch name in `fhir-extensions-fork` by default.
   - If the user explicitly asks for a different branch strategy, follow the user override and document it in the change log notes.
 - Missing plan:
   - If plan file is missing, stop and ask whether to generate the plan first.
@@ -163,7 +163,7 @@ Write `jira/active/<ticket>/<ticket>-implementation-change-log.md` with:
 - Execution date: <YYYY-MM-DD>
 
 ## Files Changed
-- fhir-fork/source/<path>
+- fhir-repo/source/<path>
 
 ## Changes Applied
 1. <what changed>
@@ -190,8 +190,8 @@ Execution is complete only if all are true:
 - One of the following was true before execution started:
   - `Resolution` was present and not `Unresolved`; or
   - Ticket `Issue Type` was `Technical Correction` and direct-resolution wording was explicit in plan or ticket description.
-- All implementation edits are inside the planned owning source area (`fhir-fork/source/` or the planned `fhir-extensions-fork` location).
-- If `fhir-extensions-fork` was used, its branch name matched the active `fhir-fork` task branch unless the user explicitly overrode that rule.
+- All implementation edits are inside the planned owning source area (`fhir-repo/source/` or the planned `fhir-extensions-fork` location).
+- If `fhir-extensions-fork` was used, its branch name matched the active `fhir-repo` task branch unless the user explicitly overrode that rule.
 - Diff contains only intended plan-aligned changes.
 - Every diff hunk is mapped to a plan step and evidence source in `## Plan Conformance`.
 - Validation checks are documented with outcomes.
@@ -205,7 +205,7 @@ Execution is complete only if all are true:
 
 ## Notes
 
-If `fhir-fork` already has a task branch and the plan also uses `fhir-extensions-fork`, use the same branch name in `fhir-extensions-fork` unless the user explicitly asks for a different strategy.
+If `fhir-repo` already has a task branch and the plan also uses `fhir-extensions-fork`, use the same branch name in `fhir-extensions-fork` unless the user explicitly asks for a different strategy.
 
 If no branch is prepared in either fork, ask the user to confirm branch strategy before execution.
 

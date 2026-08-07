@@ -1,7 +1,7 @@
 ---
 name: create-pr-message
-description: 'Generate a pull request message for FHIR ticket batches. Use when you need a PR body from currentTickets.md that lists each ticket and a one-line summary of what changed, and verifies fhir-fork branch commit coverage per ticket.'
-argument-hint: 'Optional: ticket source file (default currentTickets.md). Outputs are written under jira/pullrequest/<fhir-fork-branch>/ by default.'
+description: 'Generate a pull request message for FHIR ticket batches. Use when you need a PR body from currentTickets.md that lists each ticket and a one-line summary of what changed, and verifies fhir-repo branch commit coverage per ticket.'
+argument-hint: 'Optional: ticket source file (default currentTickets.md). Outputs are written under jira/pullrequest/<fhir-repo-branch>/ by default.'
 user-invocable: true
 disable-model-invocation: false
 ---
@@ -13,9 +13,9 @@ Build a PR message for the current FHIR batch that:
 - gives a single-line summary per ticket
 - includes Jira hyperlinks for each ticket key in rendered PR sections
 - calls out duplicate/overlapping ticket implementations clearly
-- verifies ticket-to-commit coverage on the current `fhir-fork` branch
-- requires ticket implementation commits only in `fhir-fork` (outer repo commits are optional and not part of commit-coverage pass/fail)
-- supports separate PR message outputs for `fhir-fork` and `fhir-extensions-fork` when requested
+- verifies ticket-to-commit coverage on the current `fhir-repo` branch
+- requires ticket implementation commits only in `fhir-repo` (outer repo commits are optional and not part of commit-coverage pass/fail)
+- supports separate PR message outputs for `fhir-repo` and `fhir-extensions-fork` when requested
 
 ## When To Use
 - You are preparing a PR from the current batch in `currentTickets.md`.
@@ -25,17 +25,17 @@ Build a PR message for the current FHIR batch that:
 ## Inputs
 - Ticket list source: `currentTickets.md` (default).
 - Ticket directories: `jira/active/<ticket>/`, with fallback to `jira/closed/<ticket>/` then `jira/open/<ticket>/`.
-- Source branch for implementation commits: current checked out branch in `fhir-fork`.
+- Source branch for implementation commits: current checked out branch in `fhir-repo`.
 - Source branch for extension commits: current checked out branch in `fhir-extensions-fork`.
-- Output directory: `jira/pullrequest/<branch-name>/` where `<branch-name>` is the current `fhir-fork` branch name.
+- Output directory: `jira/pullrequest/<branch-name>/` where `<branch-name>` is the current `fhir-repo` branch name.
 - Full output file path: `jira/pullrequest/<branch-name>/pull-request-message-full.md` (default).
 - Trimmed output file path: `jira/pullrequest/<branch-name>/pull-request-message.md` (default, includes only `## Scope`, `## Per-Ticket Change Summary`, and `## Notes on Overlaps`).
 - Ticket snapshot path: `jira/pullrequest/<branch-name>/currentTickets.md` (copy of ticket scope used to generate the PR message).
 - Optional split outputs when requested:
-1. `jira/pullrequest/<branch-name>/pull-request-message-fhir-fork.md`
+1. `jira/pullrequest/<branch-name>/pull-request-message-fhir-repo.md`
 2. `jira/pullrequest/<branch-name>/pull-request-message-fhir-extensions-fork.md`
 - Preferred summary artifacts (in order):
-1. `<ticket>-commit-message-fhir-fork.txt` first bullet line under title
+1. `<ticket>-commit-message-fhir-repo.txt` first bullet line under title
 2. `<ticket>-commit-message.txt` first bullet line under title (legacy fallback)
 3. `<ticket>-implementation-change-log.md` first item under `## Changes Applied`
 4. `<ticket>.md` `Summary` field (ticket summary, used as fallback)
@@ -47,7 +47,7 @@ Build a PR message for the current FHIR batch that:
 2. `jira/closed/<ticket>/`
 3. `jira/open/<ticket>/`
 3. Derive one-line summary using precedence:
-1. Commit message bullet from `<ticket>-commit-message-fhir-fork.txt`
+1. Commit message bullet from `<ticket>-commit-message-fhir-repo.txt`
 2. Commit message bullet from `<ticket>-commit-message.txt` (legacy fallback)
 3. First numbered change from `<ticket>-implementation-change-log.md`
 4. `Summary` metadata line from `<ticket>.md`
@@ -55,8 +55,8 @@ Build a PR message for the current FHIR batch that:
 4. Detect likely duplicate implementation across tickets:
 1. If two tickets have identical normalized summary text, mark as potential overlap.
 2. If change-log indicates verification-only/no-op, mark as already applied/verification-only.
-5. Run commit coverage checks for the current `fhir-fork` branch:
-1. Collect ticket keys from any commit subject in the PR commit range on `fhir-fork` (prefer `merge-base(default-branch, HEAD)..HEAD`), using pattern `FHIR-12345`.
+5. Run commit coverage checks for the current `fhir-repo` branch:
+1. Collect ticket keys from any commit subject in the PR commit range on `fhir-repo` (prefer `merge-base(default-branch, HEAD)..HEAD`), using pattern `FHIR-12345`.
 2. Compare commit ticket keys against `currentTickets.md`.
 3. If a commit ticket key is not in `currentTickets.md`, ask whether to add it to `currentTickets.md` and include it in PR scope.
 4. For any ticket in `currentTickets.md` with no matching branch commit, check whether ticket execution is explicitly verification-only/no-op/already applied.
@@ -72,7 +72,7 @@ Build a PR message for the current FHIR batch that:
 1. Use Markdown links in the form `[FHIR-XXXXX](https://jira.hl7.org/browse/FHIR-XXXXX)`.
 2. Apply this format consistently in `## Tickets Addressed`, `## Per-Ticket Change Summary`, `## Notes on Overlaps`, `## Commit Coverage Check`, and `## Validation Notes` whenever ticket keys are shown.
 7. Persist output:
-1. Resolve the current `fhir-fork` branch name and map it to a safe directory segment (replace `/` with `-`).
+1. Resolve the current `fhir-repo` branch name and map it to a safe directory segment (replace `/` with `-`).
 2. Ensure directory `jira/pullrequest/<branch-name>/` exists.
 3. Copy `currentTickets.md` to `jira/pullrequest/<branch-name>/currentTickets.md`.
 4. Write the complete PR markdown (including `## Commit Coverage Check` and `## Validation Notes`) to `jira/pullrequest/<branch-name>/pull-request-message-full.md` unless caller supplied a different full-output path.
@@ -80,14 +80,14 @@ Build a PR message for the current FHIR batch that:
 6. Write the trimmed markdown to `jira/pullrequest/<branch-name>/pull-request-message.md`.
 7. Return the trimmed markdown in chat, and mention where the full report and copied `currentTickets.md` snapshot are stored.
 8. If separate messages are requested, also write repository-specific outputs:
-1. `pull-request-message-fhir-fork.md` for core-spec updates and `fhir-fork` commit coverage.
+1. `pull-request-message-fhir-repo.md` for core-spec updates and `fhir-repo` commit coverage.
 2. `pull-request-message-fhir-extensions-fork.md` for extension-pack content, using the extension template below.
 3. For extension-repo output, include explicit `New extension` vs `Updated extension` attestations per extension.
 8. Validate final output:
 1. Every ticket from `currentTickets.md` appears exactly once.
 2. Every ticket has exactly one summary line.
 3. Overlap notes are explicit and reference both ticket keys.
-4. Every ticket requiring source change has a corresponding `fhir-fork` ticket commit.
+4. Every ticket requiring source change has a corresponding `fhir-repo` ticket commit.
 5. Tickets without commits are explicitly marked verification-only/no-op, or flagged for follow-up.
 6. Missing-artifact tickets are listed in validation notes.
 
@@ -162,13 +162,13 @@ Default write targets for this output:
   Prefer commit-message bullet and note discrepancy in validation notes.
 - If a ticket is in `currentTickets.md` but missing from all Jira status folders:
   Keep ticket in output with missing-artifact warning.
-- If a `fhir-fork` commit references a ticket not in `currentTickets.md`:
+- If a `fhir-repo` commit references a ticket not in `currentTickets.md`:
   Ask whether to add the ticket to `currentTickets.md` and PR scope before finalizing output.
-- If a ticket in `currentTickets.md` has no `fhir-fork` commit:
+- If a ticket in `currentTickets.md` has no `fhir-repo` commit:
   Check ticket artifacts for explicit verification-only/no-op/already-applied execution. If absent, flag the ticket as unresolved for PR readiness.
-- If an outer-repo commit exists without a `fhir-fork` commit for a change-required ticket:
-  Do not count the outer commit toward commit coverage. Require either a matching `fhir-fork` ticket commit or explicit no-op/verification evidence.
-- If separate `fhir-fork` and `fhir-extensions-fork` messages are requested:
+- If an outer-repo commit exists without a `fhir-repo` commit for a change-required ticket:
+  Do not count the outer commit toward commit coverage. Require either a matching `fhir-repo` ticket commit or explicit no-op/verification evidence.
+- If separate `fhir-repo` and `fhir-extensions-fork` messages are requested:
   Generate both files and apply the extension-repo template to the extension message.
 
 ## Completion Checks
@@ -179,7 +179,7 @@ Default write targets for this output:
 - Commit coverage check section is included and complete.
 - Any commit-ticket mismatch has an explicit action decision (add to scope or defer).
 - Any missing commit is classified as verification-only/no-op or unresolved.
-- Commit coverage is evaluated only against `fhir-fork` branch commits.
+- Commit coverage is evaluated only against `fhir-repo` branch commits.
 - Full PR report is written to `jira/pullrequest/<branch-name>/pull-request-message-full.md`.
 - Trimmed PR text is written to `jira/pullrequest/<branch-name>/pull-request-message.md` and includes only `## Scope`, `## Per-Ticket Change Summary`, and `## Notes on Overlaps`.
 - `currentTickets.md` snapshot is copied to `jira/pullrequest/<branch-name>/currentTickets.md`.

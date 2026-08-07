@@ -11,7 +11,7 @@ Create review-ready implementation plans for FHIR specification tickets in this 
 
 ## Use When
 
-- Preparing a plan before editing spec content in fhir-fork/source/.
+- Preparing a plan before editing spec content in fhir-repo/source/.
 - Converting Jira ticket scope into detailed actionable implementation steps.
 - Handling repetitive ticket batches where one shared approach applies.
 - Needing a clear validation checklist and risk/assumption log for workgroup review.
@@ -54,7 +54,7 @@ Create review-ready implementation plans for FHIR specification tickets in this 
 6. Classify the batch:
    - Repetitive pattern across tickets: prepare a shared implementation approach.
    - Mixed patterns: split into grouped approaches in one plan.
-7. Map each ticket to likely edit surface under fhir-fork/source/.
+7. Map each ticket to likely edit surface under fhir-repo/source/.
 8. Write implementation steps with clear execution order.
 9. Add validation checklist, risks, and assumptions.
 10. Save each per-ticket plan to jira/active/<ticket>/.
@@ -95,7 +95,7 @@ Use this structure in generated plans:
 |---|---|---|---|---|---|
 
 ## Shared Implementation Approach
-1. Locate files under fhir-fork/source/.
+1. Locate files under fhir-repo/source/.
 2. Apply edits using consistent wording/style rules.
 3. Keep changes minimal and traceable to ticket intent.
 
@@ -106,7 +106,7 @@ Use this structure in generated plans:
 
 ## Validation Checklist
 - [ ] Each ticket mapped to at least one file/page
-- [ ] Planned edits stay within fhir-fork/source/
+- [ ] Planned edits stay within fhir-repo/source/
 - [ ] No unrelated formatting/tooling changes
 - [ ] Terminology and abbreviations are consistent
 - [ ] Plan is review-ready and references ticket intent
@@ -147,6 +147,6 @@ If input scope is ambiguous, ask first:
 
 If no scope source is provided, use currentTickets.md by default and generate plans only for tickets that do not already have implementation plans.
 
-Always constrain implementation targets to fhir-fork/source/ only.
+Always constrain implementation targets to fhir-repo/source/ only.
 
 When a ticket is not present under jira/active/, ask whether to create the plan in its existing status directory or move the ticket into active first.

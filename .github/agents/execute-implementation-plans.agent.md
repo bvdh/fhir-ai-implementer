@@ -24,7 +24,7 @@ Execute multiple approved implementation plans and produce separate, ticket-scop
 3. Handle each ticket in a separate execution session (fresh per-ticket context and per-ticket git-delta calculation).
 4. Use safe parallelism only for independent read/analysis tasks; keep file-edit and commit steps isolated per ticket session.
 5. For each ticket, run the execute-implementation-plan workflow to produce:
-   - source edits in `fhir-fork/source/`
+   - source edits in `fhir-repo/source/`
    - ticket artifacts in `jira/active/<ticket>/`
 6. For each ticket, create separate commits in the relevant repos that include only files changed by that ticket's execution session.
 
@@ -40,7 +40,7 @@ For every ticket in scope:
 
 1. Capture pre-execution snapshots:
    - outer repo changed-file list
-   - `fhir-fork` changed-file list
+   - `fhir-repo` changed-file list
 2. Execute the ticket plan.
 3. Capture post-execution changed-file lists and compute delta for this ticket only.
 4. Stage only delta files for this ticket in each repository.

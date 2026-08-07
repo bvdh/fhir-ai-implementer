@@ -1,19 +1,19 @@
 ---
-description: "Use when working in fhir-fork. Enforce fork edit boundaries and keep changes limited to specification source content."
-name: "FHIR Fork Boundaries"
-applyTo: "fhir-fork/**"
+description: "Use when working in fhir-repo. Enforce repository edit boundaries and keep changes limited to specification source content."
+name: "FHIR Repo Boundaries"
+applyTo: "fhir-repo/**"
 ---
-# FHIR Fork Guidance
+# FHIR Repo Guidance
 
 ## Hard Rule
-- Only modify files under `fhir-fork/source/`.
-- Do not modify files outside `fhir-fork/source/` unless the user explicitly overrides this rule.
+- Only modify files under `fhir-repo/source/`.
+- Do not modify files outside `fhir-repo/source/` unless the user explicitly overrides this rule.
 
 ## Scope Notes
 - Treat this as a strict safety boundary for normal ticket implementation work.
 - Keep edits minimal, traceable to ticket intent, and limited to specification content.
 - FHIR core extensions are stored in the `fhir-extensions-fork` repository.
-- If a ticket primarily changes FHIR core extensions, make that change in `fhir-extensions-fork` rather than `fhir-fork` unless the user explicitly overrides this.
+- If a ticket primarily changes FHIR core extensions, make that change in `fhir-extensions-fork` rather than `fhir-repo` unless the user explicitly overrides this.
 
 ## Additional sources for guidance
 - https://confluence.hl7.org/spaces/FHIR/pages/79507295/Maintaining+FHIR+Core
@@ -30,17 +30,17 @@ Other versions can be found at https://hl7.org/fhir/directory.html.
 - https://github.com/HL7/kindling.
 
 ## Primitive Regex Source Rules
-- Treat `fhir-fork/source/datatypes/primitives.xml` as the source of truth for primitive datatype regex values rendered via tokens such as `[%regex code%]`.
-- When a ticket changes a primitive regex, update the corresponding row in `fhir-fork/source/datatypes/primitives.xml` rather than hardcoding regex text into tokenized template pages such as `fhir-fork/source/datatypes.html`.
-- Keep `fhir-fork/source/datatypes.html` token usage intact unless a ticket explicitly requires changing template structure.
+- Treat `fhir-repo/source/datatypes/primitives.xml` as the source of truth for primitive datatype regex values rendered via tokens such as `[%regex code%]`.
+- When a ticket changes a primitive regex, update the corresponding row in `fhir-repo/source/datatypes/primitives.xml` rather than hardcoding regex text into tokenized template pages such as `fhir-repo/source/datatypes.html`.
+- Keep `fhir-repo/source/datatypes.html` token usage intact unless a ticket explicitly requires changing template structure.
 
 ## Extension Link Rules
 - Include extension links using this format:
 	- `<a href="[%extensions-location%]StructureDefinition-artifact-author.html">artifact-author</a>`
 - When adding or changing extension links:
-	- Verify the target URL resolves to an existing extension page in `fhir-fork/publish/` output.
-	- If `fhir-fork/publish/` is missing or stale for the files being validated, run `./gradlew publish` from the `fhir-fork/` root, then re-check.
-	- Use `./gradlew publish` sparingly because it is expensive; do not re-run when current `fhir-fork/publish/` output already reflects the source under review.
+	- Verify the target URL resolves to an existing extension page in `fhir-repo/publish/` output.
+	- If `fhir-repo/publish/` is missing or stale for the files being validated, run `./gradlew publish` from the `fhir-repo/` root, then re-check.
+	- Use `./gradlew publish` sparingly because it is expensive; do not re-run when current `fhir-repo/publish/` output already reflects the source under review.
 	- Verify the visible hyperlink text matches the extension name in the URL (e.g., `artifact-author` for `StructureDefinition-artifact-author.html`).
 	- If URL and label do not correspond, update both to the correct matching extension.
 
@@ -67,5 +67,5 @@ Other versions can be found at https://hl7.org/fhir/directory.html.
 - When approval is granted, keep the change minimal and limited to the approved sentence(s).
 
 
-## Placeholder For Additional FHIR-Fork Rules
-- Add future fork-specific conventions here as they are agreed.
+## Placeholder For Additional FHIR-Repo Rules
+- Add future repo-specific conventions here as they are agreed.

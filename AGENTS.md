@@ -2,23 +2,22 @@
 
 This repository manages AI-assisted work for resolving Jira tickets on the FHIR core specification.
 
-## FHIR Fork Context
+## FHIR Repo Context
 
-- The FHIR fork used by this project is git@github.com:bvdh/fhir-bvdh.git.
-- It is a fork of https://github.com/HL7/fhir.git.
-- The fork is expected in fhir-fork/.
+- The primary FHIR repository used by this project is https://github.com/HL7/fhir.git.
+- The local checkout is expected in fhir-repo/.
 - FHIR core extensions are stored in the `fhir-extensions-fork` repository.
-- Tickets that primarily change FHIR core extensions should typically be implemented in `fhir-extensions-fork` rather than `fhir-fork`.
+- Tickets that primarily change FHIR core extensions should typically be implemented in `fhir-extensions-fork` rather than `fhir-repo`.
 
-## Scope and Allowed Changes in the Fork
+## Scope and Allowed Changes in the Repo
 
-- When working in fhir-fork/, only files under fhir-fork/source/ are allowed to be modified.
-- Do not modify files outside fhir-fork/source/ unless explicitly instructed by the user.
+- When working in fhir-repo/, only files under fhir-repo/source/ are allowed to be modified.
+- Do not modify files outside fhir-repo/source/ unless explicitly instructed by the user.
 
 ## Repository Rules
 
 - Treat upstream HL7 FHIR conventions as authoritative for specification content.
-- Do not change build tooling, scripts, Gradle configuration, CI pipelines, or implementation code in the fork unless explicitly requested.
+- Do not change build tooling, scripts, Gradle configuration, CI pipelines, or implementation code in the repo unless explicitly requested.
 - Prefer source edits over generated output edits.
 - When ticket scope relates to FHIR core extensions, prefer making the change in `fhir-extensions-fork` unless the user explicitly directs otherwise.
 
@@ -40,7 +39,7 @@ When executing ticket work, follow this sequence:
 	- Ask the user to change status to applied.
 5. Select one or more tickets to apply and list them in currentTickets.md at repository root.
 	- The presence of currentTickets.md indicates active work in progress.
-6. Update the GitHub fork so it aligns with the current HL7 FHIR repository.
+6. Update the local `fhir-repo` checkout so it aligns with the current HL7 FHIR repository.
 7. Create a branch for work based on the current main FHIR repository state.
 8. For each ticket listed in currentTickets.md:
 	- For technical corrections, create a resolution proposal.

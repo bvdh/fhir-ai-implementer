@@ -1,7 +1,7 @@
 ---
 name: create-commit-message
 description: 'Generate repository-scoped commit message files for a ticket so each touched repository gets a ticket-prefixed message describing only its own changes.'
-argument-hint: 'FHIR-XXXXX (optionally include touched repos: outer, fhir-fork, fhir-extensions-fork)'
+argument-hint: 'FHIR-XXXXX (optionally include touched repos: outer, fhir-repo, fhir-extensions-fork)'
 user-invocable: true
 ---
 
@@ -21,7 +21,7 @@ Generate commit message artifacts for each repository touched by a ticket implem
 - Ticket directory: `jira/active/<ticket>/` (fallback to `jira/open/<ticket>/` or `jira/closed/<ticket>/` when needed).
 - Touched repositories set (detected or provided):
   - `outer` (`fhir-ai-implementer`)
-  - `fhir-fork`
+  - `fhir-repo`
   - `fhir-extensions-fork`
 - Evidence sources (in priority order):
   1. `git diff --name-only` and `git diff` per repository
@@ -34,7 +34,7 @@ Generate commit message artifacts for each repository touched by a ticket implem
 Write one commit message file per touched repository under `jira/active/<ticket>/`:
 
 - Outer repo: `jira/active/<ticket>/<ticket>-commit-message-outer.txt`
-- FHIR core fork: `jira/active/<ticket>/<ticket>-commit-message-fhir-fork.txt`
+- FHIR core fork: `jira/active/<ticket>/<ticket>-commit-message-fhir-repo.txt`
 - Extensions fork: `jira/active/<ticket>/<ticket>-commit-message-fhir-extensions-fork.txt`
 
 Optional backward-compatibility file (only if another workflow explicitly requires it):

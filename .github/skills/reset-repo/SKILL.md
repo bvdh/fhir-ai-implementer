@@ -1,6 +1,6 @@
 ---
 name: reset-repo
-description: 'Reset FHIR ticket workflow state. Use for resyncing fhir-fork with HL7/fhir master, creating a fresh working branch, clearing currentTickets.md, and moving jira/active tickets back to open or closed.'
+description: 'Reset FHIR ticket workflow state. Use for resyncing fhir-repo with HL7/fhir master, creating a fresh working branch, clearing currentTickets.md, and moving jira/active tickets back to open or closed.'
 argument-hint: 'New branch name and optional ticket-closing list'
 ---
 
@@ -15,21 +15,21 @@ Resets the workspace to a clean starting state for a new FHIR ticket batch.
 
 ## Inputs
 - New branch name (required)
-- Optional confirmation to proceed with destructive reset of `fhir-fork/master`
+- Optional confirmation to proceed with destructive reset of `fhir-repo/master`
 
 ## Procedure
 1. Validate workspace state.
 - Confirm repository root is the `fhir-ai-implementer` workspace.
-- Check for uncommitted changes in both the outer repo and `fhir-fork/`.
+- Check for uncommitted changes in both the outer repo and `fhir-repo/`.
 - If there are uncommitted changes, stop and ask whether to commit/stash first.
 
-2. Sync `fhir-fork/` to upstream HL7 master.
-- `cd fhir-fork`
-- Ensure `upstream` remote points to `https://github.com/HL7/fhir` (or `git@github.com:HL7/fhir.git`).
-- `git fetch upstream master`
+2. Sync `fhir-repo/` to HL7 master via `origin`.
+- `cd fhir-repo`
+- Ensure `origin` points to `https://github.com/HL7/fhir` (or `git@github.com:HL7/fhir.git`).
+- `git fetch origin master`
 - `git checkout master`
 - Ask for explicit confirmation before destructive sync.
-- `git reset --hard upstream/master`
+- `git reset --hard origin/master`
 - Do not push `origin master` automatically.
 
 3. Create the new working branch.
@@ -49,7 +49,7 @@ Resets the workspace to a clean starting state for a new FHIR ticket batch.
 - Preserve the per-ticket folder contents.
 
 6. Verify result.
-- Confirm `fhir-fork` is on the new branch and branch tip includes upstream master.
+- Confirm `fhir-repo` is on the new branch and branch tip includes origin master.
 - Confirm `currentTickets.md` has zero `FHIR-` entries.
 - Confirm `jira/active/` is empty.
 - Summarize moved ticket counts: `open`, `closed`.
@@ -57,21 +57,21 @@ Resets the workspace to a clean starting state for a new FHIR ticket batch.
 ## Decision Points
 - Uncommitted changes detected:
   - Stop and request explicit action before continuing.
-- `upstream` remote missing:
-  - Add it, then fetch.
+- `origin` remote does not point to HL7/fhir:
+  - Correct it, then fetch.
 - Branch already exists:
   - Ask for overwrite strategy (new name preferred) rather than force-reset.
 - Ticket status missing or ambiguous:
   - Default to `jira/open/` and include in summary.
 
 ## Completion Checks
-- `fhir-fork` branch is `<new-branch-name>`
-- `fhir-fork/master` equals `upstream/master` commit
+- `fhir-repo` branch is `<new-branch-name>`
+- `fhir-repo/master` equals `origin/master` commit
 - `currentTickets.md` contains no `FHIR-` lines
 - `jira/active/` has no ticket folders
 - Every previously active ticket exists in either `jira/open/` or `jira/closed/`
 
 ## Example Prompts
 - `/reset-repo Create branch techcorr-2026-05-28 and classify active tickets by markdown status`
-- `/reset-repo Hard reset fhir-fork master to upstream/master, then prepare new working branch`
+- `/reset-repo Hard reset fhir-repo master to origin/master, then prepare new working branch`
 - `/reset-repo Sync from HL7 master and prepare a fresh branch for new ticket work`

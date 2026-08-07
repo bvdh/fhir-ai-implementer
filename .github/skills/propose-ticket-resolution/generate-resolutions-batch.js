@@ -265,7 +265,7 @@ ${related.Grouping ? `- Part of grouping: ${related.Grouping}` : 'No related gro
 - [ ] Disposition approved
 - [ ] Implementation (if accepted) committed to repository
 - [ ] Changes verified in main branch
-- [ ] Specification source updated under fhir-fork/source (if accepted)
+- [ ] Specification source updated under fhir-repo/source (if accepted)
 - [ ] Documentation updated if needed
 - [ ] Resolution file finalized and committed
 

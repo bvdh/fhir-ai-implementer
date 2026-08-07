@@ -12,7 +12,7 @@ Your primary workflow is defined in [create-implementation-plan](../skills/creat
 
 ## Constraints
 
-- Do not edit specification content under fhir-fork/source/ while planning.
+- Do not edit specification content under fhir-repo/source/ while planning.
 - Do not create resolution/disposition artifacts in this step.
 - Keep output as per-ticket plans unless the user explicitly requests a consolidated batch plan.
 

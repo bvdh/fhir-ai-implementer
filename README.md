@@ -15,7 +15,7 @@ Update to applied:
    2. Make a list of all those tickets 
    3. And ask the user to change the status to applied.
 5. Create a selection of one or more tickets to apply and list them in file currentTickets.md in the root of the repo. The presence of this file signals that there is work in progress and to what tickets the work relates.
-6. Update the github fork to align with the current version of the FHIR core github repo
+6. Update the local `fhir-repo` checkout to align with the current version of the FHIR core github repo
 7. Create a branch for the commit that reflects the current version of the main FHIR github repo.
 8. For each ticket listed in currentTickets.md.
    1.  For technical corrections: created resolution proposal.
