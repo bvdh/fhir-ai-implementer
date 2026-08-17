@@ -67,47 +67,6 @@ Each batch period covers exactly one month (or less for the final batch). The ba
 - `jira/active/` is controlled strictly by `currentTickets.md` at repository root.
 - The temp HTML file is removed after parsing (nothing is written to `jira/*.html`).
 
-## Sync Tickets Filed by Bas van den Heuvel
-
-To download **all** tickets filed by Bas van den Heuvel (>1000 tickets), use the dedicated batch sync script. This handles the large volume by downloading in quarterly chunks, starting with the most recent quarter and working backward.
-
-From repository root:
-
-```bash
-# Dry-run: show what would be downloaded without fetching
-bash ./.github/skills/jira-sync/scripts/sync-bvdh-filed.sh --dry-run
-
-# Start fresh (clear progress and re-download everything)
-bash ./.github/skills/jira-sync/scripts/sync-bvdh-filed.sh --reset
-
-# Resume from last checkpoint (default; only downloads incomplete quarters)
-bash ./.github/skills/jira-sync/scripts/sync-bvdh-filed.sh --resume
-
-# Start from a specific date (oldest quarter to fetch)
-bash ./.github/skills/jira-sync/scripts/sync-bvdh-filed.sh --from 2020-01-01
-```
-
-### BVDH Batch Behavior
-
-- Downloads tickets **created** by Bas van den Heuvel (`creator = "bas.van.den.heuvel"`)
-- Works backward in **3-month (quarterly) increments** from today
-- Default start date is **2018-01-01** (can be overridden with `--from`)
-- Stores results in `jira/bvdh-filed/` organized by quarter: `jira/bvdh-filed/2026-Q3/`, `jira/bvdh-filed/2026-Q2/`, etc.
-- Each quarter contains `open/`, `active/`, and `closed/` subdirectories
-- Progress is tracked in `.github/skills/jira-sync/.bvdh-sync-progress` (gitignored)
-- Resuming picks up where it left off; use `--reset` to start over
-- Downloads are rate-limited with 2-second pauses between quarters to avoid overwhelming Jira
-
-### Output
-
-After completion, you will have:
-- `jira/bvdh-filed/2026-Q3/open/FHIR-XXXXX/` — open tickets filed in Q3 2026
-- `jira/bvdh-filed/2026-Q3/closed/FHIR-XXXXX/` — closed tickets filed in Q3 2026
-- `jira/bvdh-filed/2026-Q2/open/` — tickets from Q2 2026
-- ... (continuing backward by quarter)
-
-To consolidate all quarters into a single open/closed/active structure, you can manually move directories or create a post-processing script.
-
 ## Auth For Jira Download
 
 If Jira blocks anonymous export access, set one of:
@@ -116,13 +75,12 @@ If Jira blocks anonymous export access, set one of:
 - `JIRA_USER=<username>` and `JIRA_API_TOKEN=<token>` (or `JIRA_TOKEN`)
 - `JIRA_BEARER_TOKEN=<token>`
 
-These environment variables apply to **both** `sync-if-newer.sh` and `sync-bvdh-filed.sh`.
+These environment variables apply to all sync operations.
 
 ## Notes
 
 - Requires Node.js and curl.
 - Requires the `cheerio` npm package (installed automatically under the skill on first run).
 - Large full exports may take several minutes; incremental exports are much smaller and faster.
-- BVDH batch downloads may take 30+ minutes for full history (1000+ tickets); use `--dry-run` first.
+- Batched downloads (with `--all-batched`) may take 15+ minutes depending on ticket volume; use it for large sync operations (>1000 tickets).
 - Use `jira-sync-from-excel` instead when you want to sync from an existing local Excel export.
-- Use `sync-if-newer.sh` for FHIR Infrastructure workgroup tickets; use `sync-bvdh-filed.sh` for all BVDH-created tickets.

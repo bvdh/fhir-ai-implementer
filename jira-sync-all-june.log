@@ -1,0 +1,16 @@
+Downloading fresh Jira full-content export...
+Source: https://jira.hl7.org/sr/jira.issueviews:searchrequest-fullcontent/temp/SearchRequest.html?jqlQuery=project%20%3D%20FHIR%20AND%20Specification%20%3D%20%22FHIR%20Core%20(FHIR)%20%5BFHIR-core%5D%22%20AND%20((type%20%3D%20%22Technical%20Correction%22%20and%20status%20not%20in%20(Published))%20OR%20status%20not%20in%20(Published%2C%20%22Change%20Not%20Needed%22%2C%20%22Resolved%20-%20No%20Change%22%2C%20Deferred%20))%20AND%20%22Work%20Group%22%20%3D%20%22FHIR%20Infrastructure%20%5Bfhir-i%5D%22%20AND%20updated%20%3E%3D%20%222026-06-01%22%20ORDER%20BY%20status%20DESC&tempMax=1000
+Sync mode: incremental (updated >= 2026-06-01)
+Download mode: non-interactive
+This export can take several minutes for large Jira result sets.
+Downloaded Jira full-content export: 4482300 bytes
+
+Synced 439 Jira tickets from HTML export.
+Mode: incremental (existing tickets preserved)
+Current tickets loaded from /home/nly98977/SwArchives/bvdh/fhir-ai-implementer/currentTickets.md: 0
+  - Open: 281
+  - Active: 0
+  - Closed: 158
+Output directory: /home/nly98977/SwArchives/bvdh/fhir-ai-implementer/jira
+
+Jira sync completed successfully

@@ -1,47 +1,48 @@
 # Non-Technical FHIR Review Report
 
 ## Metadata
-- Date: 2026-08-14
+- Review ID: marketingstatus-mappings-non-technical-2026-08-17
+- Date: 2026-08-17
 - Mode: page
-- Target input: marketingstatus-mappings.html
-- Resolved output page: /home/nly98977/SwArchives/bvdh/fhir-ai-implementer/fhir-repo/publish/marketingstatus-mappings.html
-- Status: READY-FOR-RULE-AGENTS
+- Target input: `fhir-repo/publish/marketingstatus-mappings.html`
+- Resolved output page: `fhir-repo/publish/marketingstatus-mappings.html`
+- Status: COMPLETED
 
 ## Build Evidence
-- Build check command: ./.github/skills/build-fhir/scripts/build-if-needed.sh --repo ./fhir-repo --mode check
+- Build check command: `./.github/skills/build-fhir/scripts/build-if-needed.sh --repo ./fhir-repo --mode check`
 - Build check result: BUILD_NEEDED: no
+- Build status used for review: current
+- Notes: `BUILD_NEEDED: no`; review used the current local publish tree without rebuilding.
 
 ## Inputs Used
-- Output file:
-  - /home/nly98977/SwArchives/bvdh/fhir-ai-implementer/fhir-repo/publish/marketingstatus-mappings.html
-- Source context files:
-  - Resolve and record under fhir-repo/source/** during agent review.
-
-## Agent Input Payload
-- target_input: marketingstatus-mappings.html
-- resolved_output_page: /home/nly98977/SwArchives/bvdh/fhir-ai-implementer/fhir-repo/publish/marketingstatus-mappings.html
-- source_context_hint: fhir-repo/source/**
+- Source files:
+  - `fhir-repo/source/marketingstatus-mappings.html` (SHA-256 `3b832cdb2a474c03`)
+- Output files:
+  - `fhir-repo/publish/marketingstatus-mappings.html` (12004 bytes)
 
 ## Rule 1 Findings: Normative Language on Informative Pages
-- None.
+- Page-level Standards Status evidence: `Informative This page provides mappings for MarketingStatus (see Mappings to Oth`
+- Scan scope: visible rendered body text, excluding scripts/styles/SVG; source context used for corroboration. Uppercase occurrence count: 0.
+- Screening result: 0 uppercase conformance-term occurrence(s); page status: `Informative This page provides mappings for MarketingStatus (see Mappings to Oth`. No informative-page Rule 1 violation was isolated by the deterministic scan.
 
 ## Rule 2 Findings: Normative Language in note/summary/comment Fields
-- None.
+- Deterministic source/output scan checked `note`, `summary`, and `comment` contexts for uppercase MUST/SHALL/SHOULD/MAY terms. No field-level violation was isolated; navigation and generated metadata were excluded from disposition. - None.
 
 ## Rule 3 Findings: Regulatory Expressions vs Description
-- None.
+- Regulatory marker count: 0 (none). No regulatory expression/description mismatch was detected by the page-local scan. - None.
 
 ## Rule 4 Findings: FHIRPath Expressions vs Description
-- None.
+- FHIRPath-like expression count: 0. No expression with a same-page descriptive mismatch was isolated by the deterministic scan. - None.
 
 ## Rule 5 Findings: Contradictions on Page
-- None.
+- Restrictive-language marker count: 0. No contradictory pair was detected by the page-local scan; this is a screening conclusion, not a claim that the page has no editorial ambiguity. - None.
 
 ## Rule 6 Findings: subject Field Requires patient and/or subject Search Parameter
-- None.
+- Screening result: no subject element context was detected in source HTML; Rule 6 is not applicable on the available evidence.
+- Search parameters observed on the page: - None detected.
 
 ## Cross-Rule Synthesis
-- None.
+- The rendered page and matching source context were present, the build freshness gate passed, and all six rule checks were evaluated. Rule 1 recorded 0 conformance-term occurrence(s); no additional cross-rule conflict was found.
 
 ## Blocking Issues
 - None.

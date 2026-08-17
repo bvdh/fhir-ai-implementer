@@ -1,47 +1,49 @@
 # Non-Technical FHIR Review Report
 
 ## Metadata
-- Date: 2026-08-14
+- Review ID: device-module-non-technical-2026-08-17
+- Date: 2026-08-17
 - Mode: page
-- Target input: device-module.html
-- Resolved output page: /home/nly98977/SwArchives/bvdh/fhir-ai-implementer/fhir-repo/publish/device-module.html
-- Status: READY-FOR-RULE-AGENTS
+- Target input: `fhir-repo/publish/device-module.html`
+- Resolved output page: `fhir-repo/publish/device-module.html`
+- Status: COMPLETED
 
 ## Build Evidence
-- Build check command: ./.github/skills/build-fhir/scripts/build-if-needed.sh --repo ./fhir-repo --mode check
+- Build check command: `./.github/skills/build-fhir/scripts/build-if-needed.sh --repo ./fhir-repo --mode check`
 - Build check result: BUILD_NEEDED: no
+- Build status used for review: current
+- Notes: `BUILD_NEEDED: no`; review used the current local publish tree without rebuilding.
 
 ## Inputs Used
-- Output file:
-  - /home/nly98977/SwArchives/bvdh/fhir-ai-implementer/fhir-repo/publish/device-module.html
-- Source context files:
-  - Resolve and record under fhir-repo/source/** during agent review.
-
-## Agent Input Payload
-- target_input: device-module.html
-- resolved_output_page: /home/nly98977/SwArchives/bvdh/fhir-ai-implementer/fhir-repo/publish/device-module.html
-- source_context_hint: fhir-repo/source/**
+- Source files:
+  - `fhir-repo/source/device-module.html` (SHA-256 `69024de67aac2f8e`)
+- Output files:
+  - `fhir-repo/publish/device-module.html` (87427 bytes)
 
 ## Rule 1 Findings: Normative Language on Informative Pages
-- None yet.
+- Page-level Standards Status evidence: `Informative Note to Balloters for Ballot5 : Non-substantive Elaborated common us`
+- Scan scope: visible rendered body text, excluding scripts/styles/SVG; source context used for corroboration. Uppercase occurrence count: 0.
+- Screening result: 0 uppercase conformance-term occurrence(s); page status: `Informative Note to Balloters for Ballot5 : Non-substantive Elaborated common us`. No informative-page Rule 1 violation was isolated by the deterministic scan.
 
 ## Rule 2 Findings: Normative Language in note/summary/comment Fields
-- None yet.
+- Deterministic source/output scan checked `note`, `summary`, and `comment` contexts for uppercase MUST/SHALL/SHOULD/MAY terms. No field-level violation was isolated; navigation and generated metadata were excluded from disposition. - None.
 
 ## Rule 3 Findings: Regulatory Expressions vs Description
-- None yet.
+- Regulatory marker count: 2 (regulatory). No regulatory expression/description mismatch was detected by the page-local scan. - None.
 
 ## Rule 4 Findings: FHIRPath Expressions vs Description
-- None yet.
+- FHIRPath-like expression count: 0. No expression with a same-page descriptive mismatch was isolated by the deterministic scan. - None.
 
 ## Rule 5 Findings: Contradictions on Page
-- None yet.
+- Restrictive-language marker count: 1. No contradictory pair was detected by the page-local scan; this is a screening conclusion, not a claim that the page has no editorial ambiguity. - None.
 
 ## Rule 6 Findings: subject Field Requires patient and/or subject Search Parameter
-- None yet.
+- Screening result: source context contains 6 subject-related occurrence(s); representative context: `ervation.device</code> referencing the <code>Device</code> instance and <code>Observation.subject</code> referencing the <code>Patient</code>. This is the primary linkage used t...`.
+- Detected subject context: `fhir-repo/source/device-module.html`; the scan did not prove that every occurrence is a resource element.
+- Search parameters observed on the page: patient, subject. No unsupported Rule 6 violation is asserted without a resource-specific subject definition.
 
 ## Cross-Rule Synthesis
-- None yet.
+- The rendered page and matching source context were present, the build freshness gate passed, and all six rule checks were evaluated. Rule 1 recorded 0 conformance-term occurrence(s); no additional cross-rule conflict was found.
 
 ## Blocking Issues
 - None.

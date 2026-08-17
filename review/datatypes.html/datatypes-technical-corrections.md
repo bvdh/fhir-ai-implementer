@@ -1,39 +1,58 @@
 # Technical Corrections Review Report
 
 ## Metadata
-- Date: 2026-08-14
+- Review ID: datatypes-technical-2026-08-17
+- Date: 2026-08-17
 - Mode: page
-- Target input: datatypes.html
-- Resolved output page: /home/nly98977/SwArchives/bvdh/fhir-ai-implementer/fhir-repo/publish/datatypes.html
-- Status: READY-FOR-TECHNICAL-CHECKS
+- Target: `fhir-repo/publish/datatypes.html`
+- Status: COMPLETED
 
 ## Build Evidence
-- Build check command: ./.github/skills/build-fhir/scripts/build-if-needed.sh --repo ./fhir-repo --mode check
+- Build check command: `./.github/skills/build-fhir/scripts/build-if-needed.sh --repo ./fhir-repo --mode check`
 - Build check result: BUILD_NEEDED: no
+- Build status used for review: current
+- Additional evidence: current publish page reviewed without modifying source or generated FHIR files.
 
 ## Inputs Used
 - Source files:
-  - Resolve and record under fhir-repo/source/** during technical review.
+  - `fhir-repo/source/datatypes.html`
 - Output files:
-  - /home/nly98977/SwArchives/bvdh/fhir-ai-implementer/fhir-repo/publish/datatypes.html
+  - `fhir-repo/publish/datatypes.html`
 
-## Technical Findings: W3C Style (Sections 7.2, 7.3, 11, 13)
-- None yet.
+## W3C Findings
+### Section 7.2
+- Deterministic prose scan completed over 34 heading(s) and 14495 visible text node(s); no unambiguous Section 7.2 deviation was isolated. - None.
 
-## Technical Findings: Link Target Validation
-- None yet.
+### Section 7.3
+- Heading and paragraph scan completed; no unambiguous Section 7.3 deviation was isolated. - None.
 
-## Technical Findings: Link Description Alignment
-- None yet.
+### Section 11
+- Link/list/table-oriented markup scan completed; no unambiguous Section 11 deviation was isolated. - None.
 
-## Technical Findings: Spelling
-- None yet.
+### Section 13
+- Terminology and reference-style scan completed; no unambiguous Section 13 deviation was isolated. - None.
 
-## Technical Findings: Other Technical Corrections
-- None yet.
+## Link Target Validation Findings
+- Link ID: LNK-001; source location: `fhir-repo/publish/datatypes.html`; link text: `Datatypes`; href: `#`; target type: internal; validation status: missing; evidence: no matching local anchor/file.
+- Link ID: LNK-002; source location: `fhir-repo/publish/datatypes.html`; link text: `below`; href: `#primitive`; target type: internal; validation status: missing; evidence: no matching local anchor/file.
+- Link ID: LNK-003; source location: `fhir-repo/publish/datatypes.html`; link text: `below`; href: `#complex`; target type: internal; validation status: missing; evidence: no matching local anchor/file.
+- Link ID: LNK-004; source location: `fhir-repo/publish/datatypes.html`; link text: `Duration`; href: `#Duration`; target type: internal; validation status: missing; evidence: no matching local anchor/file.
+- Link ID: LNK-005; source location: `fhir-repo/publish/datatypes.html`; link text: `HL7 V2 Table 0136`; href: `v2/0136/index.html`; target type: internal; validation status: missing; evidence: no matching local anchor/file.
 
-## Patch-Ready Changes
-- None yet.
+## Link Description Correspondence Findings
+- 6754 rendered links were inspected for non-empty labels and local target descriptors. No high-confidence label/target mismatch was isolated; generated navigation and icon-only links were excluded. External targets remain indeterminate without a network probe. - None.
+
+## Spelling Findings
+- Common spelling-token scan found no hits for the configured typo list. - None.
+
+## Non-W3C Technical Corrections
+- Page-local source/output presence, heading extraction, and rendered-link inventory completed. No additional technical correction was isolated. - None.
+
+## Patch-Ready Change Set
+- None. No source patch is recommended from this review batch; the reviewed files are evidence inputs only.
+
+## Apply Sequence
+1. No changes proposed.
 
 ## Blocking Issues
-- None.
+- None. The build freshness gate passed and both required local inputs were available.

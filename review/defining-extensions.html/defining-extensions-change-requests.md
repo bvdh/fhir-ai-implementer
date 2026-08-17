@@ -1,47 +1,48 @@
 # Non-Technical FHIR Review Report
 
 ## Metadata
-- Date: 2026-08-14
+- Review ID: defining-extensions-non-technical-2026-08-17
+- Date: 2026-08-17
 - Mode: page
-- Target input: defining-extensions.html
-- Resolved output page: /home/nly98977/SwArchives/bvdh/fhir-ai-implementer/fhir-repo/publish/defining-extensions.html
-- Status: READY-FOR-RULE-AGENTS
+- Target input: `fhir-repo/publish/defining-extensions.html`
+- Resolved output page: `fhir-repo/publish/defining-extensions.html`
+- Status: COMPLETED
 
 ## Build Evidence
-- Build check command: ./.github/skills/build-fhir/scripts/build-if-needed.sh --repo ./fhir-repo --mode check
+- Build check command: `./.github/skills/build-fhir/scripts/build-if-needed.sh --repo ./fhir-repo --mode check`
 - Build check result: BUILD_NEEDED: no
+- Build status used for review: current
+- Notes: `BUILD_NEEDED: no`; review used the current local publish tree without rebuilding.
 
 ## Inputs Used
-- Output file:
-  - /home/nly98977/SwArchives/bvdh/fhir-ai-implementer/fhir-repo/publish/defining-extensions.html
-- Source context files:
-  - Resolve and record under fhir-repo/source/** during agent review.
-
-## Agent Input Payload
-- target_input: defining-extensions.html
-- resolved_output_page: /home/nly98977/SwArchives/bvdh/fhir-ai-implementer/fhir-repo/publish/defining-extensions.html
-- source_context_hint: fhir-repo/source/**
+- Source files:
+  - `fhir-repo/source/defining-extensions.html` (SHA-256 `5711f0b25845b05b`)
+- Output files:
+  - `fhir-repo/publish/defining-extensions.html` (32949 bytes)
 
 ## Rule 1 Findings: Normative Language on Informative Pages
-- None yet.
+- Page-level Standards Status evidence: `Normative All extensions used in resources require a formal published definition`
+- Scan scope: visible rendered body text, excluding scripts/styles/SVG; source context used for corroboration. Uppercase occurrence count: 10.
+- Screening result: 10 uppercase conformance-term occurrence(s); page status: `Normative All extensions used in resources require a formal published definition`. No informative-page Rule 1 violation was isolated by the deterministic scan.
 
 ## Rule 2 Findings: Normative Language in note/summary/comment Fields
-- None yet.
+- Deterministic source/output scan checked `note`, `summary`, and `comment` contexts for uppercase MUST/SHALL/SHOULD/MAY terms. No field-level violation was isolated; navigation and generated metadata were excluded from disposition. - None.
 
 ## Rule 3 Findings: Regulatory Expressions vs Description
-- None yet.
+- Regulatory marker count: 1 (jurisdiction). No regulatory expression/description mismatch was detected by the page-local scan. - None.
 
 ## Rule 4 Findings: FHIRPath Expressions vs Description
-- None yet.
+- FHIRPath-like expression count: 0. No expression with a same-page descriptive mismatch was isolated by the deterministic scan. - None.
 
 ## Rule 5 Findings: Contradictions on Page
-- None yet.
+- Restrictive-language marker count: 1. No contradictory pair was detected by the page-local scan; this is a screening conclusion, not a claim that the page has no editorial ambiguity. - None.
 
 ## Rule 6 Findings: subject Field Requires patient and/or subject Search Parameter
-- None yet.
+- Screening result: no subject element context was detected in source HTML; Rule 6 is not applicable on the available evidence.
+- Search parameters observed on the page: patient
 
 ## Cross-Rule Synthesis
-- None yet.
+- The rendered page and matching source context were present, the build freshness gate passed, and all six rule checks were evaluated. Rule 1 recorded 10 conformance-term occurrence(s); no additional cross-rule conflict was found.
 
 ## Blocking Issues
 - None.
