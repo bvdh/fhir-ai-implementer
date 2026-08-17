@@ -2,5 +2,22 @@
     "java.compile.nullAnalysis.mode": "disabled",
     "git.autoRepositoryDetection": "subFolders",
     "git.repositoryScanMaxDepth": 4,
-    "git.ignoredRepositories": []
+    "git.ignoredRepositories": [],
+    "chat.tools.terminal.autoApprove": {
+        "./.github/skills/build-fhir/scripts/build-if-needed.sh": true,
+        "/^bash \\./\\.github/skills/review-fhir/scripts/review-page\\.sh requirements\\.html$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "test": true,
+        "true": true,
+        "/^bash \\./\\.github/skills/review-fhir/scripts/build-if-needed\\.sh --repo \\./fhir-repo --mode check$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^bash \\./\\.github/skills/review-fhir/scripts/review-page\\.sh fhir-repo/publish/ansi\\.html$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
 }

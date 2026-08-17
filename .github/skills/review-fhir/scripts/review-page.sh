@@ -86,7 +86,9 @@ PAGE_SLUG="${PAGE_SLUG//[^A-Za-z0-9._-]/-}"
 if [[ -z "$PAGE_SLUG" ]]; then
   PAGE_SLUG="unknown-target"
 fi
-REPORT_PATH="$REPORT_DIR/${PAGE_SLUG}-non-technical-review.md"
+REPORT_DIR="$REPORT_DIR/${PAGE_SLUG}.html"
+mkdir -p "$REPORT_DIR"
+REPORT_PATH="$REPORT_DIR/${PAGE_SLUG}-change-requests.md"
 TECH_REPORT_PATH="$REPORT_DIR/${PAGE_SLUG}-technical-corrections.md"
 CURRENT_DATE="$(date +%F)"
 
@@ -137,7 +139,7 @@ if [[ -z "$PAGE_SLUG" ]]; then
   PAGE_SLUG="unknown-target"
 fi
 
-REPORT_PATH="$REPORT_DIR/${PAGE_SLUG}-non-technical-review.md"
+REPORT_PATH="$REPORT_DIR/${PAGE_SLUG}-change-requests.md"
 TECH_REPORT_PATH="$REPORT_DIR/${PAGE_SLUG}-technical-corrections.md"
 CURRENT_DATE="$(date +%F)"
 

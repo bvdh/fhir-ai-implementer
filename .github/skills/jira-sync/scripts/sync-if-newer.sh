@@ -13,6 +13,8 @@
 #   --week              Only issues updated in the last 7 days.
 #   --month             Only issues updated in the last month.
 #   --since YYYY-MM-DD  Only issues updated on/after the given date.
+#   --all-batched       Download all matching tickets in monthly batches
+#                       (starting with most recent) and prune old tickets.
 #   --force             Alias for the default incremental behavior (kept for
 #                       backward compatibility); does not change the filter.
 
@@ -31,8 +33,9 @@ JQL_ORDER='ORDER BY status DESC'
 JIRA_BASE_URL="https://jira.hl7.org/sr/jira.issueviews:searchrequest-fullcontent/temp/SearchRequest.html"
 TEMP_MAX=1000
 
-MODE="incremental"   # incremental | full
+MODE="incremental"   # incremental | full | batched
 SINCE=""
+BATCHED_QUERY=""
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
@@ -55,6 +58,9 @@ while [[ $# -gt 0 ]]; do
             fi
             MODE="incremental"
             SINCE="$1"
+            ;;
+        --all-batched)
+            MODE="batched"
             ;;
         --force)
             # Backward-compatible no-op flag; default is already incremental.
@@ -107,6 +113,156 @@ if [[ "$MODE" == "incremental" && -z "$SINCE" ]]; then
         MODE="full"
         echo "No previous sync recorded - performing a full seed download."
     fi
+fi
+
+# Function to download and parse a batch with a specific date range
+download_batch() {
+    local batch_start="$1"
+    local batch_end="$2"
+    local batch_jql="$3"
+    local is_last_batch="$4"
+    local prune_flag=""
+    
+    if [[ "$is_last_batch" == "true" ]]; then
+        prune_flag="--prune"
+    fi
+    
+    echo ""
+    echo "Downloading batch: $batch_start to $batch_end"
+    
+    local batch_encoded="$(node -e 'process.stdout.write(encodeURIComponent(process.argv[1]))' "$batch_jql")"
+    local batch_url="${JIRA_BASE_URL}?jqlQuery=${batch_encoded}&tempMax=${TEMP_MAX}"
+    
+    local batch_file="$(mktemp "${TMPDIR:-/tmp}/jira-batch-XXXXXX.html")"
+    cleanup_batch() { rm -f "$batch_file"; }
+    trap cleanup_batch EXIT
+    
+    set +e
+    local http_code=$(curl "${curl_args[@]}" -w '%{http_code}' -o "$batch_file" "$batch_url")
+    local curl_status=$?
+    set -e
+    
+    if [[ $curl_status -ne 0 ]]; then
+        echo "ERROR: curl failed for batch $batch_start to $batch_end (exit code $curl_status)"
+        return 1
+    fi
+    
+    if [[ "$http_code" != "200" ]]; then
+        echo "ERROR: Failed to download batch $batch_start to $batch_end (HTTP ${http_code:-unknown})"
+        return 1
+    fi
+    
+    if [[ ! -s "$batch_file" ]]; then
+        echo "WARNING: Downloaded batch is empty for $batch_start to $batch_end"
+        return 0
+    fi
+    
+    if ! grep -q 'class="formtitle"' "$batch_file"; then
+        echo "ERROR: Batch response did not contain issue content"
+        return 1
+    fi
+    
+    local batch_bytes=$(stat -c %s "$batch_file" 2>/dev/null || stat -f %z "$batch_file" 2>/dev/null)
+    echo "Downloaded batch: ${batch_bytes:-unknown} bytes"
+    
+    node "$PARSER_SCRIPT" --jira-dir "$JIRA_DIR" --html "$batch_file" $prune_flag
+    
+    rm -f "$batch_file"
+    return 0
+}
+
+# Handle batched download mode
+if [[ "$MODE" == "batched" ]]; then
+    echo "Downloading all matching tickets in monthly batches (most recent first)..."
+    
+    # Setup curl args for batched downloads (done outside the loop)
+    cookie_file="${JIRA_COOKIE_FILE:-}"
+    jira_user="${JIRA_USER:-}"
+    jira_token="${JIRA_API_TOKEN:-${JIRA_TOKEN:-}}"
+    jira_bearer_token="${JIRA_BEARER_TOKEN:-}"
+    declare -a curl_args
+    
+    curl_args=(
+        -LsS
+        --retry 3
+        --retry-delay 2
+        --retry-all-errors
+        --connect-timeout 20
+        --max-time 900
+        --user-agent "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0 Safari/537.36"
+        -H "Accept: text/html,application/xhtml+xml,*/*"
+    )
+    
+    if [[ -t 2 ]]; then
+        curl_args+=( --progress-bar )
+    else
+        curl_args+=( --no-progress-meter )
+    fi
+    
+    if [[ -n "$cookie_file" ]]; then
+        if [[ ! -f "$cookie_file" ]]; then
+            echo "ERROR: JIRA_COOKIE_FILE is set but does not exist: $cookie_file"
+            exit 1
+        fi
+        curl_args+=( -b "$cookie_file" -c "$cookie_file" )
+    fi
+    
+    if [[ -n "$jira_bearer_token" ]]; then
+        curl_args+=( -H "Authorization: Bearer ${jira_bearer_token}" )
+    fi
+    
+    if [[ -n "$jira_user" && -n "$jira_token" ]]; then
+        curl_args+=( -u "${jira_user}:${jira_token}" )
+    elif [[ -n "$jira_user" || -n "$jira_token" ]]; then
+        echo "ERROR: Both JIRA_USER and JIRA_API_TOKEN (or JIRA_TOKEN) must be set together"
+        exit 1
+    fi
+    
+    # Start from current date and go back
+    local current_date=$(date +%Y-%m-%d)
+    local batch_end="$current_date"
+    local batch_start=""
+    local total_batches=0
+    local is_last=false
+    
+    # We'll keep downloading batches until we reach the cutoff date
+    # Assume tickets date back to 2020 (adjust as needed)
+    local start_year=$(date -d '6 years ago' +%Y 2>/dev/null || date -v-6y +%Y)
+    local cutoff_date="${start_year}-01-01"
+    
+    while true; do
+        # Calculate batch start (1 month back from batch_end)
+        batch_start=$(date -d "$batch_end -1 month" +%Y-%m-%d 2>/dev/null || date -j -v-1m -f %Y-%m-%d "$batch_end" +%Y-%m-%d)
+        
+        # Check if we've gone back far enough
+        if [[ "$batch_start" < "$cutoff_date" ]]; then
+            batch_start="$cutoff_date"
+            is_last=true
+        fi
+        
+        ((total_batches++))
+        
+        local batch_query="$JQL_BASE AND updated >= \"$batch_start\" AND updated < \"$batch_end\" $JQL_ORDER"
+        
+        if download_batch "$batch_start" "$batch_end" "$batch_query" "$is_last"; then
+            if [[ "$is_last" == "true" ]]; then
+                break
+            fi
+            batch_end="$batch_start"
+        else
+            echo "WARNING: Batch download failed, but continuing with next batch"
+            if [[ "$is_last" == "true" ]]; then
+                break
+            fi
+            batch_end="$batch_start"
+        fi
+    done
+    
+    echo ""
+    echo "Downloaded $total_batches batches total"
+    date +%Y-%m-%d > "$STATE_FILE"
+    echo "Jira sync (batched) completed successfully"
+    exit 0
 fi
 
 # Build the effective JQL.

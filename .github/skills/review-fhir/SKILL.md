@@ -13,7 +13,7 @@ This skill produces two findings-only reports for one FHIR page:
 - a technical-corrections review report
 
 Outputs are written under `review/`:
-- Page mode: `review/<page-slug>.html/<page-slug>-non-technical-review.md`
+- Page mode: `review/<page-slug>.html/<page-slug>-change-requests.md`
 - Page mode: `review/<page-slug>.html/<page-slug>-technical-corrections.md`
 - Template: `review/non-technical-review-template.md`
 - Template: `review/technical-corrections-template.md`
@@ -36,7 +36,7 @@ Outputs are written under `review/`:
   - ticket reference
 
 ## Rule Set (Always Run)
-1. Normative language (`MUST`, `SHALL`, `SHOULD`, `MAY`) is not allowed on informative pages.
+1. Normative language (`MUST`, `SHALL`, `SHOULD`, `MAY`) is not allowed on informative pages. For an informative page, scan the rendered page body and its source context for uppercase conformance terms, excluding the standards-status metadata, navigation, page chrome, scripts, styles, and generated markup. Report every occurrence with its heading or anchor, exact evidence, and whether it is an actual normative statement, a quotation/definition, or an explanatory example. Do not treat a term merely appearing in the page's description of FHIR conformance vocabulary as an automatic violation; record it for review and explain the context.
 2. For FHIR resource elements, normative language is not allowed in note, summary, and comment fields.
 3. Regulatory expressions must align with corresponding same-page descriptions.
 4. FHIRPath expressions must align with corresponding same-page descriptions.
@@ -58,16 +58,17 @@ Outputs are written under `review/`:
      - `resolved_output_page`
      - `source_context_hint`
    - Agents must use this payload and must not perform target resolution themselves.
-4. Invoke six rule agents and aggregate findings.
+4. Determine the target page's page-level Standards Status from the resolved rendered page or source context. When the page is informative, run the Rule 1 normative-language scan against the rendered body and source context before aggregating the rule results. When the page is normative, do not apply the informative-page prohibition; still report normative terms as evidence when relevant to another finding.
+5. Invoke six rule agents and aggregate findings.
    - Deterministic aggregation order: Rule 1 through Rule 6.
-5. Invoke technical-correction checks on the same resolved target.
+6. Invoke technical-correction checks on the same resolved target.
    - W3C style checks (sections 7.2, 7.3, 11, 13)
    - Link target existence checks
    - Link description/heading alignment checks
    - Spelling checks
-6. Write findings-only reports.
+7. Write findings-only reports.
    - Write to `review/<page-slug>.html/` (create the subdirectory if it does not exist).
-   - Use `review/non-technical-review-template.md` structure.
+   - Use `review/non-technical-review-template.md` structure for the change-requests report.
    - Use `review/technical-corrections-template.md` structure.
 
 ## Decision Logic
@@ -82,6 +83,7 @@ The non-technical report must include:
 - Build evidence
 - Input files used
 - Findings grouped by Rule 1 to Rule 6
+- For Rule 1 on informative pages: the page-level Standards Status, scan scope/exclusions, total occurrence count, each occurrence's location and evidence, and a disposition distinguishing normative statements from quotations, definitions, examples, or other non-normative uses
 - Cross-rule synthesis
 - Blocking issues
 
