@@ -1,0 +1,22 @@
+Fix best-practices page technical corrections
+
+- CHG-001: Skipped - remove repeated wording from the local-build banner.
+  - File: source/template or generated navigation source for the local-build banner
+  - Change: `Directory of published versions for published versions` -> `Directory of published versions`
+  - Reason: Remove repeated wording. The report does not identify a concrete source file under `fhir-repo/source/`.
+- CHG-002: Improve the introductory list paragraph grammar.
+  - File: `fhir-repo/source/best-practices.html`
+  - Change: `Committees can document best practice by one of two different ways:` -> `Committees can document best practice in one of two ways:`
+  - Reason: Improve grammar and remove redundant wording.
+- CHG-003: Correct the Appointment app-6 spelling.
+  - File: `fhir-repo/source/appointment/structuredefinition-Appointment.xml`
+  - Change: `occurence` -> `occurrence`
+  - Reason: Correct spelling.
+- CHG-004: Use the standard closed compound spelling for ecosystem.
+  - File: `fhir-repo/source/domainresource/structuredefinition-DomainResource.xml`
+  - Change: `eco-system` -> `ecosystem`
+  - Reason: Use the standard closed compound spelling.
+- CHG-005: Use the standard plural closed compound spelling for ecosystems.
+  - File: `fhir-repo/source/domainresource/structuredefinition-DomainResource.xml`
+  - Change: `eco-systems` -> `ecosystems`
+  - Reason: Use the standard closed compound spelling.

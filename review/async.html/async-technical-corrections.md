@@ -59,7 +59,6 @@
 - Proposed text: `<h3 id="conformance">Conformance</h3>`
 - Occurrence rule: unique, second occurrence of `id="patterns"`
 - Rationale: Give the Conformance section a unique anchor.
-- Validation check: Rebuild/publish and verify only one `id="patterns"` remains and `id="conformance"` exists.
 
 ### CHG-002
 - Target file: fhir-repo/source/async.html
@@ -69,11 +68,23 @@
 - Proposed text: `in their CapabilityStatements.`
 - Occurrence rule: unique
 - Rationale: Remove the unmatched closing parenthesis.
-- Validation check: Rebuild/publish and verify the rendered paragraph ends with `CapabilityStatements.`.
 
 ## Apply Sequence
 1. CHG-001
 2. CHG-002
+
+## Commit Message
+
+Fix async page technical corrections
+
+- CHG-001: Give the Conformance section a unique anchor.
+  - File: `fhir-repo/source/async.html`
+  - Change: `<h3 id="patterns">Conformance</h3>` -> `<h3 id="conformance">Conformance</h3>`
+  - Reason: Give the Conformance section a unique anchor.
+- CHG-002: Remove the unmatched closing parenthesis.
+  - File: `fhir-repo/source/async.html`
+  - Change: `in their CapabilityStatements.)` -> `in their CapabilityStatements.`
+  - Reason: Remove the unmatched closing parenthesis.
 
 ## Blocking Issues
 - None.

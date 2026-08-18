@@ -1,0 +1,7 @@
+Add review-tc-applies skill for technical-correction application
+
+- Add the reusable review-tc-applies skill definition in SKILL.md.
+- Define batch and interactive workflows for extracting and applying patch-ready corrections from workgroup technical-corrections reports.
+- Document source-only edit boundaries, context matching, error collection, quick build validation, and optional Git branch/commit handling.
+
+Reason: Standardize how reviewed FHIR technical corrections are selected, applied, validated, and prepared for contribution while protecting generated output files from direct edits.

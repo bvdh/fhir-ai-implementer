@@ -1,42 +1,47 @@
 # Non-Technical FHIR Review Report
 
 ## Metadata
-- Review ID: extensibility-examples-page-review-2026-08-17
 - Date: 2026-08-17
 - Mode: page
 - Target input: extensibility-examples.html
-- Resolved output page: fhir-repo/publish/extensibility-examples.html
-- Status: ready
+- Resolved output page: /home/nly98977/SwArchives/bvdh/fhir-ai-implementer/fhir-repo/publish/extensibility-examples.html
+- Status: READY-FOR-RULE-AGENTS
 
 ## Build Evidence
-- Build check command: `./.github/skills/build-fhir/scripts/build-if-needed.sh --repo ./fhir-repo --mode check`
-- Build check result: `BUILD_NEEDED: no`
+- Build check command: ./.github/skills/build-fhir/scripts/build-if-needed.sh --repo ./fhir-repo --mode check
+- Build check result: BUILD_NEEDED: no
 
 ## Inputs Used
-- Source files: fhir-repo/source/extensibility-examples.html
-- Output files: fhir-repo/publish/extensibility-examples.html
-- Deterministic scan: rendered body text, headings, links, and source/output comparison.
+- Output file:
+  - /home/nly98977/SwArchives/bvdh/fhir-ai-implementer/fhir-repo/publish/extensibility-examples.html
+- Source context files:
+  - Resolve and record under fhir-repo/source/** during agent review.
+
+## Agent Input Payload
+- target_input: extensibility-examples.html
+- resolved_output_page: /home/nly98977/SwArchives/bvdh/fhir-ai-implementer/fhir-repo/publish/extensibility-examples.html
+- source_context_hint: fhir-repo/source/**
 
 ## Rule 1 Findings: Normative Language on Informative Pages
-- None. Two uppercase conformance-term occurrences were classified as explanatory examples.
+- None yet.
 
 ## Rule 2 Findings: Normative Language in note/summary/comment Fields
-- None.
+- None yet.
 
 ## Rule 3 Findings: Regulatory Expressions vs Description
-- None.
+- None yet.
 
 ## Rule 4 Findings: FHIRPath Expressions vs Description
-- None.
+- None yet.
 
 ## Rule 5 Findings: Contradictions on Page
-- None found by the page-level consistency pass.
+- None yet.
 
 ## Rule 6 Findings: subject Field Requires patient and/or subject Search Parameter
-- None. subject context scan: 0 occurrences. Search parameters observed: none.
+- None yet.
 
 ## Cross-Rule Synthesis
-- No blocking non-technical correction was identified. Two missing local links are recorded in the technical report.
+- None yet.
 
 ## Blocking Issues
 - None.

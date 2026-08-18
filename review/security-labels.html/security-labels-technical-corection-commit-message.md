@@ -1,0 +1,58 @@
+Fix security-labels technical corrections
+
+- CHG-001: Add missing preposition in local agreements sentence
+  - File: `fhir-repo/source/security-labels.html`
+  - Change: `for the use security labels` -> `for the use of security labels`
+  - Reason: Correct incomplete prepositional phrase.
+- CHG-002: Correct grammar and hyphenation in common-labels paragraph
+  - File: `fhir-repo/source/security-labels.html`
+  - Change: `use cases trading partners, and a wider array of security labels` -> `use cases for trading partners, and a wider array of security labels`; `much finer grained management` -> `much finer-grained management`
+  - Reason: Correct grammar and hyphenation.
+- CHG-003: Remove duplicated preposition in guidance opening
+  - File: `fhir-repo/source/security-labels.html`
+  - Change: `security vocabulary for appropriate for use with FHIR systems` -> `security vocabulary appropriate for use with FHIR systems`
+  - Reason: Remove duplicated preposition.
+- CHG-004: Improve punctuation around operationalization clause
+  - File: `fhir-repo/source/security-labels.html`
+  - Change: `how they are operationalized - their use and interpretation - is subject` -> `how they are operationalized, including their use and interpretation, is subject`
+  - Reason: Improve punctuation and readability.
+- CHG-005: Standardize metadata terminology
+  - File: `fhir-repo/source/security-labels.html`
+  - Change: `Meta Data: ... security/privacy meta` -> `Metadata: ... security/privacy metadata`
+  - Reason: Use consistent terminology.
+- CHG-006: Correct bundle paragraph capitalization and sentence structure
+  - File: `fhir-repo/source/security-labels.html`
+  - Change: `Bundle: A bundle is a container for a collection of data. Some uses of bundle are for communicating search results, sending data, or persisting data (See Bundle).` -> `Bundle: A bundle is a container for a collection of data. Some uses of Bundle are communicating search results, sending data, or persisting data (see Bundle).`
+  - Reason: Correct capitalization and sentence construction.
+- CHG-007: Fix quote/hyphen in high-water mark phrase
+  - File: `fhir-repo/source/security-labels.html`
+  - Change: `confidentiality 'high water" mark` -> `confidentiality 'high-water' mark`
+  - Reason: Balance quotation marks and hyphenate compound modifier.
+- CHG-008: Replace awkward comparative phrase
+  - File: `fhir-repo/source/security-labels.html`
+  - Change: `the most high confidentiality` -> `the highest confidentiality level`
+  - Reason: Use idiomatic comparative wording.
+- CHG-009: Correct event-example value set grammar
+  - File: `fhir-repo/source/security-labels.html`
+  - Change: `valueSet contains of some security-label codes` -> `value set contains security-label codes`
+  - Reason: Correct grammar and terminology styling.
+- CHG-010: Correct data-example value set grammar
+  - File: `fhir-repo/source/security-labels.html`
+  - Change: `valueSet contains of some security-label codes` -> `value set contains security-label codes`
+  - Reason: Correct repeated grammar issue.
+- CHG-011: Fix subject-verb agreement in Purpose of Use row
+  - File: `fhir-repo/source/security-labels.html`
+  - Change: `These <a href="https://terminology.hl7.org/ValueSet-v3-PurposeOfUse.html">Purpose of Use</a>` -> `The <a href="https://terminology.hl7.org/ValueSet-v3-PurposeOfUse.html">Purpose of Use</a>`
+  - Reason: Correct subject-verb agreement.
+- CHG-012: Fix subject-verb agreement in Confidentiality row
+  - File: `fhir-repo/source/security-labels.html`
+  - Change: `These <a href="https://terminology.hl7.org/ValueSet-v3-Confidentiality.html">confidentiality class</a>` -> `This <a href="https://terminology.hl7.org/ValueSet-v3-Confidentiality.html">confidentiality class</a>`
+  - Reason: Correct subject-verb agreement.
+- CHG-013: Correct preposition in Delete After Use note
+  - File: `fhir-repo/source/security-labels.html`
+  - Change: `a prohibition not storing the resource` -> `a prohibition on storing the resource`
+  - Reason: Correct preposition.
+- CHG-014: Align Test Data link label with ActReason target
+  - File: `fhir-repo/source/security-labels.html`
+  - Change: `>Purpose Of Use</a>.<a href="https://terminology.hl7.org/CodeSystem-v3-ActReason.html#v3-ActReason-HTEST">HTEST` -> `>ActReason</a>.<a href="https://terminology.hl7.org/CodeSystem-v3-ActReason.html#v3-ActReason-HTEST">HTEST`
+  - Reason: Align first link label with ActReason target for HTEST.

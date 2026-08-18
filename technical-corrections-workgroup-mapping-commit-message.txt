@@ -1,0 +1,6 @@
+Document technical-corrections files by FHIR workgroup
+
+- Add the complete mapping of technical-corrections review files to their FHIR workgroups.
+- Include workgroup counts, file paths, unmapped pages, and workgroup descriptions for batch selection.
+
+Reason: Provide an authoritative index for filtering and applying technical corrections by workgroup through the review-tc-applies workflow.

@@ -1,6 +1,6 @@
 ---
 name: review-fhir
-description: 'Review a single FHIR page for non-technical and technical corrections, including six rule checks, W3C style checks, link validation, and spelling checks.'
+description: 'Review a single FHIR page for non-technical and technical corrections, including seven rule checks, W3C style checks, link validation, and spelling checks.'
 argument-hint: 'Target page (for example patient.html or fhir-repo/output/patient.html); optional scope notes'
 user-invocable: true
 ---
@@ -23,6 +23,7 @@ Outputs are written under `review/`:
 - You want a non-technical correction pass focused on language and consistency rules.
 - You need regulatory and FHIRPath expression checks against same-page descriptions.
 - You need to confirm that resources with a `subject` field expose a `patient` and/or `subject` search parameter.
+- You need to confirm that normative resources only bind to normative `ValueSet`s and `CodeSystem`s.
 - You need W3C style checks, link target checks, link-text alignment checks, and spelling checks.
 
 ## Inputs
@@ -42,6 +43,7 @@ Outputs are written under `review/`:
 4. FHIRPath expressions must align with corresponding same-page descriptions.
 5. Page prose must not contain contradictions.
 6. If a resource has a `subject` field, the page must define a `patient` and/or `subject` search parameter.
+7. When a resource is normative, every element's bound `ValueSet` and each `CodeSystem` it draws from must also be normative.
 
 ## Workflow
 1. Resolve target to local files.
@@ -59,8 +61,8 @@ Outputs are written under `review/`:
      - `source_context_hint`
    - Agents must use this payload and must not perform target resolution themselves.
 4. Determine the target page's page-level Standards Status from the resolved rendered page or source context. When the page is informative, run the Rule 1 normative-language scan against the rendered body and source context before aggregating the rule results. When the page is normative, do not apply the informative-page prohibition; still report normative terms as evidence when relevant to another finding.
-5. Invoke six rule agents and aggregate findings.
-   - Deterministic aggregation order: Rule 1 through Rule 6.
+5. Invoke seven rule agents and aggregate findings.
+   - Deterministic aggregation order: Rule 1 through Rule 7.
 6. Invoke technical-correction checks on the same resolved target.
    - W3C style checks (sections 7.2, 7.3, 11, 13)
    - Link target existence checks
@@ -82,7 +84,7 @@ The non-technical report must include:
 - Metadata and target
 - Build evidence
 - Input files used
-- Findings grouped by Rule 1 to Rule 6
+- Findings grouped by Rule 1 to Rule 7
 - For Rule 1 on informative pages: the page-level Standards Status, scan scope/exclusions, total occurrence count, each occurrence's location and evidence, and a disposition distinguishing normative statements from quotations, definitions, examples, or other non-normative uses
 - Cross-rule synthesis
 - Blocking issues
@@ -101,6 +103,10 @@ Rule 6 findings must also include:
 - Detected `subject` element context
 - Observed search-parameter inventory on the page
 
+Rule 7 findings must also include:
+- Element path and binding strength
+- Resource, ValueSet, and CodeSystem Standards Status values
+
 The technical-corrections report must include:
 - Metadata and target
 - Build evidence
@@ -116,8 +122,9 @@ The technical-corrections report must include:
 ## Quality Criteria
 A run is complete only when all are true:
 - Build freshness gate passed or explicit BLOCKED report was written.
-- All six rule sections are present in the report.
+- All seven rule sections are present in the report.
 - Rule 6 was evaluated with explicit subject/search-parameter evidence.
+- Rule 7 was evaluated with explicit ValueSet/CodeSystem normative-status evidence (or explicitly skipped for non-normative resources).
 - Technical-correction sections are present in the technical report.
 - No source files were edited by this skill.
 
@@ -130,7 +137,7 @@ bash ./.github/skills/review-fhir/scripts/review-page.sh <target-page>
 
 If build output is stale, the runner asks whether to rebuild now.
 
-Then execute the six rule-agent checks and populate findings.
+Then execute the seven rule-agent checks and populate findings.
 
 ## Example Prompts
 - `/review-fhir patient.html`
