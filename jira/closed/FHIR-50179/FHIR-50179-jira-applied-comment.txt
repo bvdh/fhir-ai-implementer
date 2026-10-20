@@ -1,0 +1,6 @@
+Verified the requested punctuation and spacing in the current Summary source and the cited R6 ballot-2 Summary page:
+https://hl7.org/fhir/6.0.0-ballot2/summary.html#2.1.20
+
+Both already contain the intended en dashes and the correctly spaced phrase "on implementability." The reported character corruption appears in the exported ticket description but was not reproduced in either specification artifact checked.
+
+No specification source change was necessary, so no new fhir-repo commit was required and there is no implementation commit link to include. No build was run because the source was unchanged.

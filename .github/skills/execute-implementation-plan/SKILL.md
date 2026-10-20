@@ -1,6 +1,6 @@
 ---
 name: execute-implementation-plan
-description: 'Execute a ticket implementation plan by applying approved source edits in fhir-repo/source/, validating results, and writing commit-message and change-log files in jira/active/<ticket>/. Use for FHIR technical correction implementation after planning.'
+description: 'Execute a ticket implementation plan by applying approved source edits in fhir-repo/source/, validating results, and writing commit-message, change-log, and suggested Jira Applied comment files in jira/active/<ticket>/. Use for FHIR technical correction implementation after planning.'
 argument-hint: 'FHIR-XXXXX or path to <ticket>-implementation-plan.md'
 user-invocable: true
 ---
@@ -30,6 +30,8 @@ Execute an approved implementation plan for a FHIR Jira ticket, make minimal sou
   - `jira/active/<ticket>/<ticket>-commit-message-fhir-extensions-fork.txt` (when `fhir-extensions-fork` is touched)
 - Change log file in ticket directory:
   - `jira/active/<ticket>/<ticket>-implementation-change-log.md`
+- Suggested Jira comment, generated after validation; for `fhir-repo` source changes, finalized with actual commit links after commit and push:
+  - `jira/active/<ticket>/<ticket>-jira-applied-comment.txt`
 - Pattern proposal in the change log when a new reusable `fhir-repo` editing pattern is observed:
   - Describe the pattern and where it appeared.
   - Propose concrete instruction text for `.github/instructions/fhir-repo.instructions.md`.
@@ -84,8 +86,9 @@ Execute an approved implementation plan for a FHIR Jira ticket, make minimal sou
   - `Suggested addition to .github/instructions/fhir-repo.instructions.md:` <ready-to-paste bullets>
 12. Invoke `create-commit-message` to generate repository-scoped commit message file(s).
 13. Write implementation change log file.
-14. Do not commit automatically unless explicitly requested.
-15. Confirm completion criteria.
+14. Once the required validation and plan-conformance checks pass, generate a suggested Jira comment for the user to add when marking the ticket as Applied, following the Jira Applied Comment Artifact Format below. For `fhir-repo` source changes, finalize it with actual commit links only after those commits have been committed and pushed; until then, label it as a draft in the completion response.
+15. Do not commit, post the comment, or change Jira status automatically unless explicitly requested.
+16. Confirm completion criteria and link the suggested Jira comment in the completion response.
 
 ## Plan Conformance Guardrails (Required)
 
@@ -150,6 +153,20 @@ Guidance:
 - Keep subject concise, action-oriented, and repository-scoped.
 - Bullet points summarize only implemented items in that repository.
 
+## Jira Applied Comment Artifact Format
+
+Write `jira/active/<ticket>/<ticket>-jira-applied-comment.txt` as concise, ready-to-paste plain text, without an internal heading or instructions to the user.
+
+- Summarize the implemented resolution and affected specification page or artifact.
+- State the validation performed and any relevant limitations; do not claim a build ran if it did not.
+- For a plan-permitted verification-only outcome, explicitly state that the requested result is already present, identify the evidence checked, and explain why no source edit was necessary. Do not describe this as a newly applied source correction.
+- For `fhir-repo` source changes, include links to every actual pushed `fhir-repo` commit implementing this ticket. Verify each commit's ticket scope and remote availability before including its URL. Do not substitute a PR URL, a commit-message file link, or an outer-repository commit link.
+- If the relevant `fhir-repo` commits have not yet been committed and pushed, the comment remains a draft, not ready to paste when marking Applied. Refresh it with verified commit URLs after an explicitly requested commit/push workflow; generating this artifact does not authorize committing or pushing.
+- For a verification-only outcome with no `fhir-repo` source change, explicitly state that no new `fhir-repo` commit was required; do not manufacture a commit solely to provide a link. This case does not require commit links.
+- Do not invent links, include local paths, or claim changes are committed, merged, published, or that Jira status has changed without evidence.
+- Generate this artifact only when the plan's required checks pass. If implementation or validation is blocked or incomplete, report the blocker instead of suggesting the ticket is ready for Applied.
+- This is a suggested comment for a later user-driven status transition, not authorization to bypass PR/merge requirements in the repository workflow.
+
 ## Change Log File Format
 
 Write `jira/active/<ticket>/<ticket>-implementation-change-log.md` with:
@@ -197,6 +214,7 @@ Execution is complete only if all are true:
 - Validation checks are documented with outcomes.
 - Repository-scoped commit message file(s) exist in `jira/active/<ticket>/` for each touched repository.
 - Implementation change log file exists in `jira/active/<ticket>/`.
+- Suggested Jira Applied comment file exists in `jira/active/<ticket>/` and accurately reflects the verified outcome without unsupported readiness, merge, or publication claims. For `fhir-repo` source changes, it contains verified links to the actual pushed implementation commits, or is explicitly reported as a draft awaiting commit and push.
 
 ## Quick Invocation Examples
 

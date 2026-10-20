@@ -60,12 +60,16 @@ Each batch period covers exactly one month (or less for the final batch). The ba
 
 ## Behavior
 
+- Exclude tickets whose Work Group is `HL7 Europe` from this repository. All download modes exclude them in JQL, and the HTML importer also rejects them from broader exports. Preserve tickets with an empty Work Group.
+- Apply the same exclusion to any ad hoc assignment/backfill downloads: add `AND ("Work Group" NOT IN ("HL7 Europe") OR "Work Group" IS EMPTY)` to the query.
 - Downloads a fresh Jira full-content HTML export to a temp file.
 - Parses the HTML directly with `scripts/sync-jira-from-html.mjs` (cheerio).
 - Extracts key, summary, dates, fields, description, and comments per issue.
+- Reads every label/value pair in field rows, including Jira's shared Reporter/Assignee row.
 - Updates ticket markdown under `jira/open/`, `jira/active/`, `jira/closed/`, and `jira/assigned/`.
-- Tickets assigned to Jira user `bvdh` (display name `Bas van den Heuvel`) go to `jira/assigned/`, even when closed or listed in `currentTickets.md`. Matching is case-insensitive and checks the assignee text and profile-link identity.
-- For all other tickets, `currentTickets.md` at repository root controls `jira/active/`; remaining tickets go to `jira/open/` or `jira/closed/` according to status and resolution.
+- Tickets listed in `currentTickets.md` at repository root always go to `jira/active/`, including tickets assigned to you.
+- Other tickets assigned to Jira user `bvdh` (display name `Bas van den Heuvel`) go to `jira/assigned/`, even when closed. Matching is case-insensitive and checks the assignee text and profile-link identity.
+- Remaining tickets go to `jira/open/` or `jira/closed/` according to status and resolution.
 - Reassigned tickets move out of `jira/assigned/` when included in a subsequent export. Incremental syncs leave tickets absent from the export untouched; full sync pruning also covers `jira/assigned/`.
 - The temp HTML file is removed after parsing (nothing is written to `jira/*.html`).
 

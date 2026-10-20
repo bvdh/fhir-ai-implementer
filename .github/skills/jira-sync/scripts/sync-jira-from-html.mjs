@@ -280,22 +280,23 @@ function parseTicketsFromHtml(html) {
       }
 
       if (node.type === 'tag' && node.name === 'table') {
-        // Field rows: <td><b>Label:</b></td><td>value</td>
+        // Jira can place multiple label/value pairs in the same row.
         $node.find('tr').each((__, tr) => {
           const $cells = $(tr).children('td');
-          if ($cells.length >= 2) {
-            const labelCell = $cells.eq(0);
+          for (let i = 0; i + 1 < $cells.length; i += 2) {
+            const labelCell = $cells.eq(i);
+            const valueCell = $cells.eq(i + 1);
             const boldLabel = labelCell.find('b').first();
             if (boldLabel.length && /:$/.test(normalize(boldLabel.text()))) {
               const label = normalize(boldLabel.text());
-              const value = normalize($cells.eq(1).text());
+              const value = normalize(valueCell.text());
               setField(label, value);
               const ln = label.replace(/:$/, '').toLowerCase();
               if (ln === 'status') status = value;
               if (ln === 'resolution') resolution = value;
               if (ln === 'assignee') {
                 const identities = [value];
-                $cells.eq(1).find('a').each((___, a) => {
+                valueCell.find('a').each((___, a) => {
                   const link = $(a);
                   identities.push(link.text(), link.attr('data-username'), link.attr('rel'));
                   const href = link.attr('href');
@@ -371,6 +372,11 @@ function main() {
   // De-duplicate by key (keep first occurrence, which is the primary listing).
   const tickets = new Map();
   for (const ticket of parsed) {
+    const workGroup = [...ticket.metadata].find(([label]) => normKey(label) === 'work group')?.[1];
+    if (normKey(workGroup) === 'hl7 europe') {
+      console.log(`Excluded ${ticket.key}: Work Group is HL7 Europe.`);
+      continue;
+    }
     if (!tickets.has(ticket.key)) {
       tickets.set(ticket.key, ticket);
     }
@@ -395,10 +401,10 @@ function main() {
 
   for (const ticket of tickets.values()) {
     const ticketKeyUpper = ticket.key.toUpperCase();
-    const state = ticket.assignedToMe
-      ? 'assigned'
-      : currentTicketsSet.has(ticketKeyUpper)
-        ? 'active'
+    const state = currentTicketsSet.has(ticketKeyUpper)
+      ? 'active'
+      : ticket.assignedToMe
+        ? 'assigned'
         : classifyTicket(ticket.status, ticket.resolution);
     const targetDir = path.join(jiraDir, state, ticket.key);
 

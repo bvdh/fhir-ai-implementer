@@ -440,6 +440,12 @@ function main() {
 
   for (const ticket of tickets.values()) {
     finalizeMetadata(ticket);
+    const workGroup = Object.entries(ticket.metadata).find(([label]) => normKey(label) === 'work group')?.[1];
+    if (normKey(workGroup) === 'hl7 europe') {
+      console.log(`Excluded ${ticket.key}: Work Group is HL7 Europe.`);
+      tickets.delete(ticket.key);
+      continue;
+    }
     delete ticket.metadataValues;
     delete ticket.metadataFieldByNorm;
   }

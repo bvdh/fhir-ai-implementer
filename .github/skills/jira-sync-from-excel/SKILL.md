@@ -18,6 +18,8 @@ If no new local Excel export is available, the sync script fetches a fresh expor
 
 `jira/active/` is controlled strictly by `currentTickets.md` at repository root.
 
+Tickets whose Work Group is `HL7 Europe` are excluded from this repository, including when importing a broader Excel export. Tickets with an empty Work Group remain eligible. The fallback download already selects only FHIR Infrastructure.
+
 Each ticket is written to a subdirectory named after its key:
 - `jira/<state>/FHIR-XXXXX/FHIR-XXXXX.md`
 

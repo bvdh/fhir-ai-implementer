@@ -1,47 +1,31 @@
 # PR / Jira discrepancies
 
-Generated: 2026-10-20T12:18:45.660Z
+Generated: 2026-10-20T14:47:38.287Z
 
 Scope: PRs authored by bvdh in HL7/fhir. Ticket keys are extracted from PR titles and descriptions, not comments. Draft PRs count as open.
 
 The discrepancy tables use local Jira Markdown snapshots, not live Jira data. Open the search links for current results. No Jira tickets are modified.
 
-Linked tickets: 169; open-PR scope: 17; closed/merged-only scope: 152.
+Linked tickets: 171; open-PR scope: 19; closed/merged-only scope: 152.
 
 ## Jira search links
 
-1. [Add AwaitingMerge](https://jira.hl7.org/issues/?jql=project%20%3D%20FHIR%20AND%20key%20IN%20(FHIR-46564%2C%20FHIR-50572%2C%20FHIR-51041%2C%20FHIR-51160%2C%20FHIR-53909%2C%20FHIR-54000%2C%20FHIR-54053%2C%20FHIR-54055%2C%20FHIR-54057%2C%20FHIR-55150%2C%20FHIR-55151%2C%20FHIR-55154%2C%20FHIR-55155%2C%20FHIR-55156%2C%20FHIR-55462%2C%20FHIR-57565%2C%20FHIR-57567)%20AND%20(Grouping%20NOT%20IN%20(%22AwaitingMerge%22)%20OR%20Grouping%20IS%20EMPTY)%20ORDER%20BY%20key%20ASC)
+1. [Add AwaitingMerge](https://jira.hl7.org/issues/?jql=project%20%3D%20FHIR%20AND%20key%20IN%20(FHIR-42961%2C%20FHIR-46564%2C%20FHIR-50572%2C%20FHIR-51041%2C%20FHIR-51160%2C%20FHIR-53909%2C%20FHIR-54000%2C%20FHIR-54053%2C%20FHIR-54055%2C%20FHIR-54057%2C%20FHIR-54535%2C%20FHIR-55150%2C%20FHIR-55151%2C%20FHIR-55154%2C%20FHIR-55155%2C%20FHIR-55156%2C%20FHIR-55462%2C%20FHIR-57565%2C%20FHIR-57567)%20AND%20(Grouping%20NOT%20IN%20(%22AwaitingMerge%22)%20OR%20Grouping%20IS%20EMPTY)%20ORDER%20BY%20key%20ASC)
 
 ```jql
-project = FHIR AND key IN (FHIR-46564, FHIR-50572, FHIR-51041, FHIR-51160, FHIR-53909, FHIR-54000, FHIR-54053, FHIR-54055, FHIR-54057, FHIR-55150, FHIR-55151, FHIR-55154, FHIR-55155, FHIR-55156, FHIR-55462, FHIR-57565, FHIR-57567) AND (Grouping NOT IN ("AwaitingMerge") OR Grouping IS EMPTY) ORDER BY key ASC
+project = FHIR AND key IN (FHIR-42961, FHIR-46564, FHIR-50572, FHIR-51041, FHIR-51160, FHIR-53909, FHIR-54000, FHIR-54053, FHIR-54055, FHIR-54057, FHIR-54535, FHIR-55150, FHIR-55151, FHIR-55154, FHIR-55155, FHIR-55156, FHIR-55462, FHIR-57565, FHIR-57567) AND (Grouping NOT IN ("AwaitingMerge") OR Grouping IS EMPTY) ORDER BY key ASC
 ```
 
-### Add AwaitingMerge: 17 local discrepancies
+### Add AwaitingMerge: 1 local discrepancies
 
 | Ticket | Local status | Local grouping | PRs |
 |---|---|---|---|
-| [FHIR-46564](https://jira.hl7.org/browse/FHIR-46564) | Applied | (empty) | [HL7/fhir#4127](https://github.com/HL7/fhir/pull/4127) |
-| [FHIR-50572](https://jira.hl7.org/browse/FHIR-50572) | Applied | (empty) | [HL7/fhir#4136](https://github.com/HL7/fhir/pull/4136) |
-| [FHIR-51041](https://jira.hl7.org/browse/FHIR-51041) | Applied | (empty) | [HL7/fhir#4136](https://github.com/HL7/fhir/pull/4136) |
-| [FHIR-51160](https://jira.hl7.org/browse/FHIR-51160) | Applied | (empty) | [HL7/fhir#4129](https://github.com/HL7/fhir/pull/4129) |
-| [FHIR-53909](https://jira.hl7.org/browse/FHIR-53909) | Applied | (empty) | [HL7/fhir#4136](https://github.com/HL7/fhir/pull/4136) |
-| [FHIR-54000](https://jira.hl7.org/browse/FHIR-54000) | Applied | (empty) | [HL7/fhir#4136](https://github.com/HL7/fhir/pull/4136) |
-| [FHIR-54053](https://jira.hl7.org/browse/FHIR-54053) | Applied | (empty) | [HL7/fhir#4129](https://github.com/HL7/fhir/pull/4129) |
-| [FHIR-54055](https://jira.hl7.org/browse/FHIR-54055) | Applied | (empty) | [HL7/fhir#4136](https://github.com/HL7/fhir/pull/4136) |
-| [FHIR-54057](https://jira.hl7.org/browse/FHIR-54057) | Applied | (empty) | [HL7/fhir#4129](https://github.com/HL7/fhir/pull/4129) |
-| [FHIR-55150](https://jira.hl7.org/browse/FHIR-55150) | Applied | (empty) | [HL7/fhir#4129](https://github.com/HL7/fhir/pull/4129) |
-| [FHIR-55151](https://jira.hl7.org/browse/FHIR-55151) | Applied | (empty) | [HL7/fhir#4129](https://github.com/HL7/fhir/pull/4129) |
-| [FHIR-55154](https://jira.hl7.org/browse/FHIR-55154) | Applied | (empty) | [HL7/fhir#4129](https://github.com/HL7/fhir/pull/4129) |
-| [FHIR-55155](https://jira.hl7.org/browse/FHIR-55155) | Applied | (empty) | [HL7/fhir#4129](https://github.com/HL7/fhir/pull/4129) |
-| [FHIR-55156](https://jira.hl7.org/browse/FHIR-55156) | Applied | (empty) | [HL7/fhir#4129](https://github.com/HL7/fhir/pull/4129) |
-| [FHIR-55462](https://jira.hl7.org/browse/FHIR-55462) | Applied | (empty) | [HL7/fhir#4136](https://github.com/HL7/fhir/pull/4136) |
-| [FHIR-57565](https://jira.hl7.org/browse/FHIR-57565) | Applied | (empty) | [HL7/fhir#4136](https://github.com/HL7/fhir/pull/4136) |
 | [FHIR-57567](https://jira.hl7.org/browse/FHIR-57567) | Resolved - change required | (empty) | [HL7/fhir#4136](https://github.com/HL7/fhir/pull/4136) |
 
-2. [Set status to Applied](https://jira.hl7.org/issues/?jql=project%20%3D%20FHIR%20AND%20key%20IN%20(FHIR-46564%2C%20FHIR-50572%2C%20FHIR-51041%2C%20FHIR-51160%2C%20FHIR-53909%2C%20FHIR-54000%2C%20FHIR-54053%2C%20FHIR-54055%2C%20FHIR-54057%2C%20FHIR-55150%2C%20FHIR-55151%2C%20FHIR-55154%2C%20FHIR-55155%2C%20FHIR-55156%2C%20FHIR-55462%2C%20FHIR-57565%2C%20FHIR-57567)%20AND%20status%20!%3D%20%22Applied%22%20ORDER%20BY%20key%20ASC)
+2. [Set status to Applied](https://jira.hl7.org/issues/?jql=project%20%3D%20FHIR%20AND%20key%20IN%20(FHIR-42961%2C%20FHIR-46564%2C%20FHIR-50572%2C%20FHIR-51041%2C%20FHIR-51160%2C%20FHIR-53909%2C%20FHIR-54000%2C%20FHIR-54053%2C%20FHIR-54055%2C%20FHIR-54057%2C%20FHIR-54535%2C%20FHIR-55150%2C%20FHIR-55151%2C%20FHIR-55154%2C%20FHIR-55155%2C%20FHIR-55156%2C%20FHIR-55462%2C%20FHIR-57565%2C%20FHIR-57567)%20AND%20status%20!%3D%20%22Applied%22%20ORDER%20BY%20key%20ASC)
 
 ```jql
-project = FHIR AND key IN (FHIR-46564, FHIR-50572, FHIR-51041, FHIR-51160, FHIR-53909, FHIR-54000, FHIR-54053, FHIR-54055, FHIR-54057, FHIR-55150, FHIR-55151, FHIR-55154, FHIR-55155, FHIR-55156, FHIR-55462, FHIR-57565, FHIR-57567) AND status != "Applied" ORDER BY key ASC
+project = FHIR AND key IN (FHIR-42961, FHIR-46564, FHIR-50572, FHIR-51041, FHIR-51160, FHIR-53909, FHIR-54000, FHIR-54053, FHIR-54055, FHIR-54057, FHIR-54535, FHIR-55150, FHIR-55151, FHIR-55154, FHIR-55155, FHIR-55156, FHIR-55462, FHIR-57565, FHIR-57567) AND status != "Applied" ORDER BY key ASC
 ```
 
 ### Set status to Applied: 1 local discrepancies
@@ -84,8 +68,23 @@ None found in available local records.
 - FHIR-40514: no unique local ticket record; [HL7/fhir#2891](https://github.com/HL7/fhir/pull/2891)
 - FHIR-40624: no unique local ticket record; [HL7/fhir#2891](https://github.com/HL7/fhir/pull/2891)
 - FHIR-40755: no unique local ticket record; [HL7/fhir#2916](https://github.com/HL7/fhir/pull/2916)
+- FHIR-43646: no unique local ticket record; [HL7/fhir#3192](https://github.com/HL7/fhir/pull/3192)
+- FHIR-43647: no unique local ticket record; [HL7/fhir#3192](https://github.com/HL7/fhir/pull/3192)
+- FHIR-47043: no unique local ticket record; [HL7/fhir#3192](https://github.com/HL7/fhir/pull/3192)
+- FHIR-47046: no unique local ticket record; [HL7/fhir#3192](https://github.com/HL7/fhir/pull/3192)
+- FHIR-47049: no unique local ticket record; [HL7/fhir#4116](https://github.com/HL7/fhir/pull/4116), [HL7/fhir#3192](https://github.com/HL7/fhir/pull/3192)
+- FHIR-47271: no unique local ticket record; [HL7/fhir#3192](https://github.com/HL7/fhir/pull/3192)
+- FHIR-47273: no unique local ticket record; [HL7/fhir#3192](https://github.com/HL7/fhir/pull/3192)
+- FHIR-47276: no unique local ticket record; [HL7/fhir#3211](https://github.com/HL7/fhir/pull/3211)
+- FHIR-47278: no unique local ticket record; [HL7/fhir#3213](https://github.com/HL7/fhir/pull/3213)
+- FHIR-47468: no unique local ticket record; [HL7/fhir#3214](https://github.com/HL7/fhir/pull/3214)
+- FHIR-47469: no unique local ticket record; [HL7/fhir#3215](https://github.com/HL7/fhir/pull/3215)
+- FHIR-47629: no unique local ticket record; [HL7/fhir#3181](https://github.com/HL7/fhir/pull/3181)
+- FHIR-47643: no unique local ticket record; [HL7/fhir#3181](https://github.com/HL7/fhir/pull/3181)
 - FHIR-47994: no unique local ticket record; [HL7/fhir#3163](https://github.com/HL7/fhir/pull/3163)
 - FHIR-53534: no unique local ticket record; [HL7/fhir#4116](https://github.com/HL7/fhir/pull/4116)
+- FHIR-55078: no unique local ticket record; [HL7/fhir#4116](https://github.com/HL7/fhir/pull/4116)
+- FHIR-55187: no unique local ticket record; [HL7/fhir#4116](https://github.com/HL7/fhir/pull/4116)
 - FHIR-55983: no unique local ticket record; [HL7/fhir#4116](https://github.com/HL7/fhir/pull/4116)
 
 ## Tickets in both open and finished PRs

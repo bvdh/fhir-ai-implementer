@@ -1,0 +1,5 @@
+FHIR-50179: Document verified Summary text
+
+- Record verification of the current Summary source and cited R6 ballot page.
+- Document that the reported mojibake is confined to the ticket export and that no FHIR source change was needed.
+- Add a suggested Jira Applied comment describing the verification-only outcome.

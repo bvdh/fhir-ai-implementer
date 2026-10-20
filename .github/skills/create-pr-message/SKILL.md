@@ -1,6 +1,6 @@
 ---
 name: create-pr-message
-description: 'Generate a pull request message for FHIR ticket batches. Use when you need a PR body from currentTickets.md that lists each ticket and a one-line summary of what changed, and verifies fhir-repo branch commit coverage per ticket.'
+description: 'Generate a pull request message for FHIR ticket batches, verify fhir-repo commit coverage, and detect tickets with no specification change. When a no-change ticket has no branch commit, recommend removing it from PR and active scope and ask for confirmation before moving it.'
 argument-hint: 'Optional: ticket source file (default currentTickets.md). Outputs are written under jira/pullrequest/<fhir-repo-branch>/ by default.'
 user-invocable: true
 disable-model-invocation: false
@@ -59,8 +59,12 @@ Build a PR message for the current FHIR batch that:
 1. Collect ticket keys from any commit subject in the PR commit range on `fhir-repo` (prefer `merge-base(default-branch, HEAD)..HEAD`), using pattern `FHIR-12345`.
 2. Compare commit ticket keys against `currentTickets.md`.
 3. If a commit ticket key is not in `currentTickets.md`, ask whether to add it to `currentTickets.md` and include it in PR scope.
-4. For any ticket in `currentTickets.md` with no matching branch commit, check whether ticket execution is explicitly verification-only/no-op/already applied.
-5. If commit is missing and no no-op evidence exists, flag as missing implementation commit and include in validation notes.
+4. For each ticket in `currentTickets.md` with no matching commit in the current `fhir-repo` PR range, inspect its execution artifacts and current source-change status:
+   - If the artifacts explicitly confirm verification-only/no-op, that the requested specification change is already present, or that the change was already applied outside this branch and no specification edit is needed for this PR, tell the user that the ticket has no associated commit and recommend removing it from both this PR scope and the active batch.
+   - Use the interactive `ask_user` tool to ask the user to confirm removal before changing ticket state. If confirmed, remove the ticket from `currentTickets.md`, move its directory from `jira/active/<ticket>/` to `jira/open/<ticket>/` while preserving its artifacts, update the branch-scoped ticket snapshot, and regenerate the PR messages without that ticket. Do not delete ticket artifacts.
+   - If the user declines, leave the ticket and its files unchanged. Do not present it as addressed; identify it as having no specification change/commit and awaiting scope decision in the full report.
+   - Do not recommend removal merely because a commit is missing when the ticket still requires a source change. Flag that ticket as a missing implementation commit and a PR-readiness blocker.
+5. If commit is missing and there is no explicit no-change/already-applied evidence, flag as missing implementation commit and include in validation notes.
 6. Build PR markdown with these sections:
 1. `## Scope`
 2. `## Tickets Addressed` (bullet list with each ticket key hyperlinked to Jira)
@@ -88,8 +92,9 @@ Build a PR message for the current FHIR batch that:
 2. Every ticket has exactly one summary line.
 3. Overlap notes are explicit and reference both ticket keys.
 4. Every ticket requiring source change has a corresponding `fhir-repo` ticket commit.
-5. Tickets without commits are explicitly marked verification-only/no-op, or flagged for follow-up.
-6. Missing-artifact tickets are listed in validation notes.
+5. Tickets explicitly requiring no source change are not included in the final PR scope after the user confirms removal; if removal is declined, report them as awaiting a scope decision and do not claim they are addressed.
+6. Tickets with missing implementation commits are flagged for follow-up and are not treated as no-ops without evidence.
+7. Missing-artifact tickets are listed in validation notes.
 
 ## Extension Repo PR Template
 When generating a PR message for `fhir-extensions-fork`, include the following template (repeat per extension if answers differ):

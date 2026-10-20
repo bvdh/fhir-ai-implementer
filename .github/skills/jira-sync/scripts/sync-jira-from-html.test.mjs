@@ -48,9 +48,20 @@ function workspace(t) {
   };
 }
 
-test('matches own assignee identities and prioritizes assigned over active and closed', (t) => {
+test('keeps assigned tickets listed in currentTickets.md in active', (t) => {
   const w = workspace(t);
-  fs.writeFileSync(path.join(w.root, 'currentTickets.md'), 'FHIR-1\nFHIR-2');
+  fs.writeFileSync(path.join(w.root, 'currentTickets.md'), '- FHIR-1');
+  w.seed('assigned', 'FHIR-1', { 'plan.md': 'keep' });
+  const result = w.sync(issue('FHIR-1', 'bvdh', 'Applied', 'Resolved') + issue('FHIR-2', 'bvdh'));
+  assert.ok(fs.existsSync(w.ticket('active', 'FHIR-1')));
+  assert.ok(!fs.existsSync(path.dirname(w.ticket('assigned', 'FHIR-1'))));
+  assert.equal(fs.readFileSync(path.join(path.dirname(w.ticket('active', 'FHIR-1')), 'plan.md'), 'utf8'), 'keep');
+  assert.ok(fs.existsSync(w.ticket('assigned', 'FHIR-2')));
+  assert.match(result.stdout, /Active: 1/);
+});
+
+test('matches own assignee identities and prioritizes assigned over closed', (t) => {
+  const w = workspace(t);
   const identities = [
     'Bas van den Heuvel',
     ' BVDH ',
@@ -90,6 +101,33 @@ test('preserves routing for other assignees, unassigned and missing assignee fie
   }
 });
 
+test('reads all field pairs in Jira four-cell rows without confusing reporter and assignee', (t) => {
+  const w = workspace(t);
+  function pairedIssue(key, reporter, assignee) {
+    return issue(key).replace(
+      '<tr><td><b>Assignee:</b></td><td></td></tr>',
+      `<tr><td><b>Reporter:</b></td><td>${reporter}</td>
+        <td><b>Assignee:</b></td><td>${assignee}</td></tr>
+       <tr><td><b>Priority:</b></td><td>Minor</td>
+        <td><b>Custom field:</b></td><td>Additional metadata</td></tr>`
+    );
+  }
+  w.sync(
+    pairedIssue('FHIR-54535', 'Another User',
+      '<a class="user-hover" rel="bvdh" href="/secure/ViewProfile.jspa?name=bvdh">Bas van den Heuvel</a>') +
+    pairedIssue('FHIR-2', 'Bas van den Heuvel', 'Another User').replace(
+      '<tr><td><b>Status:</b></td><td>Submitted</td></tr>',
+      '<tr><td><b>Project:</b></td><td>FHIR</td><td><b>Status:</b></td><td>Applied</td></tr>'
+    )
+  );
+  const assigned = fs.readFileSync(w.ticket('assigned', 'FHIR-54535'), 'utf8');
+  assert.match(assigned, /\*\*Reporter\*\*: Another User/);
+  assert.match(assigned, /\*\*Assignee\*\*: Bas van den Heuvel/);
+  assert.match(assigned, /\*\*Custom field\*\*: Additional metadata/);
+  assert.ok(fs.existsSync(w.ticket('closed', 'FHIR-2')));
+  assert.ok(!fs.existsSync(w.ticket('assigned', 'FHIR-2')));
+});
+
 test('moves tickets into assigned with artifacts and preserves absent incremental tickets', (t) => {
   const w = workspace(t);
   const states = ['open', 'active', 'closed'];
@@ -121,6 +159,28 @@ test('moves reassigned tickets out of assigned using existing routing', (t) => {
     assert.ok(fs.existsSync(w.ticket(state, key)));
     assert.equal(fs.readFileSync(path.join(path.dirname(w.ticket(state, key)), 'plan.md'), 'utf8'), key);
   });
+});
+
+test('excludes HL7 Europe from broader exports but retains other and missing work groups', (t) => {
+  const w = workspace(t);
+  const withGroup = (key, group) => issue(key, 'bvdh').replace(
+    '<tr><td><b>Resolution:</b></td>',
+    `<tr><td><b>Work Group:</b></td><td>${group}</td></tr><tr><td><b>Resolution:</b></td>`
+  );
+  const result = w.sync(
+    withGroup('FHIR-1', 'HL7 Europe') +
+    withGroup('FHIR-2', ' hl7 europe ') +
+    withGroup('FHIR-3', 'FHIR Infrastructure') +
+    issue('FHIR-4', 'bvdh')
+  );
+  for (const key of ['FHIR-1', 'FHIR-2']) {
+    for (const state of ['open', 'active', 'closed', 'assigned']) {
+      assert.ok(!fs.existsSync(w.ticket(state, key)));
+    }
+    assert.match(result.stdout, new RegExp(`Excluded ${key}`));
+  }
+  assert.ok(fs.existsSync(w.ticket('assigned', 'FHIR-3')));
+  assert.ok(fs.existsSync(w.ticket('assigned', 'FHIR-4')));
 });
 
 test('full sync prunes stale assigned tickets but retains extra artifacts', (t) => {
