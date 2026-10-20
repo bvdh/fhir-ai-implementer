@@ -1,0 +1,4 @@
+FHIR-42961: Correct Bundle signature notes
+
+- remove the obsolete claim that Bundle includes a signature element
+- link to the existing Provenance-based Bundle signing guidance

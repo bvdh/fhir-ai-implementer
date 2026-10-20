@@ -1,0 +1,5 @@
+FHIR-42961: Record Bundle signature text correction
+
+- update the implementation change log with the Bundle notes correction and build evidence
+- record the FHIR repository commit message for the source change
+- keep the worked example explicitly out of scope

@@ -1,5 +1,0 @@
-FHIR-42961: Record no-op implementation outcome
-
-- add implementation change log for FHIR-42961 execution
-- document that upstream source already satisfies the approved deprecation resolution
-- keep repository changes limited to ticket execution artifacts
