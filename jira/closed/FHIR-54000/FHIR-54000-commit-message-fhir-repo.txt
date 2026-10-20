@@ -1,0 +1,7 @@
+FHIR-54000: Reconcile additional-resource bindings with master
+
+- Retain extended-resource-types for SearchParameter.base and SearchParameter.target
+- Adopt master's extensible bindings and logical-model guidance for FHIR-51651
+- Resolve the PR 4136 conflicts while preserving other upstream merge changes
+
+Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>

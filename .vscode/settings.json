@@ -18,6 +18,10 @@
         "/^bash \\./\\.github/skills/review-fhir/scripts/review-page\\.sh fhir-repo/publish/ansi\\.html$/": {
             "approve": true,
             "matchCommandLine": true
+        },
+        "/^bash \\./\\.github/skills/jira-sync/scripts/sync-if-newer\\.sh$/": {
+            "approve": true,
+            "matchCommandLine": true
         }
     }
 }

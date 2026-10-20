@@ -8,6 +8,8 @@ import path from 'node:path';
 import process from 'node:process';
 import * as cheerio from 'cheerio';
 
+const assignedUserNames = new Set(['bvdh', 'bas van den heuvel']);
+
 function parseArgs(argv) {
   const args = { jiraDir: '', htmlFile: '', prune: false };
   for (let i = 2; i < argv.length; i += 1) {
@@ -257,6 +259,7 @@ function parseTicketsFromHtml(html) {
 
     let status = '';
     let resolution = '';
+    let assignedToMe = false;
     let description = '';
     const comments = [];
 
@@ -290,6 +293,18 @@ function parseTicketsFromHtml(html) {
               const ln = label.replace(/:$/, '').toLowerCase();
               if (ln === 'status') status = value;
               if (ln === 'resolution') resolution = value;
+              if (ln === 'assignee') {
+                const identities = [value];
+                $cells.eq(1).find('a').each((___, a) => {
+                  const link = $(a);
+                  identities.push(link.text(), link.attr('data-username'), link.attr('rel'));
+                  const href = link.attr('href');
+                  if (href) {
+                    identities.push(new URL(href, 'https://jira.hl7.org').searchParams.get('name'));
+                  }
+                });
+                assignedToMe = identities.some((identity) => assignedUserNames.has(normKey(identity)));
+              }
             }
           }
         });
@@ -321,7 +336,7 @@ function parseTicketsFromHtml(html) {
       setField('Description', description);
     }
 
-    tickets.push({ key, summary, status, resolution, metadata, comments });
+    tickets.push({ key, summary, status, resolution, assignedToMe, metadata, comments });
   });
 
   return tickets;
@@ -366,27 +381,32 @@ function main() {
   ensureDir(path.join(jiraDir, 'open'));
   ensureDir(path.join(jiraDir, 'active'));
   ensureDir(path.join(jiraDir, 'closed'));
+  ensureDir(path.join(jiraDir, 'assigned'));
 
   if (args.prune) {
     removeStaleTicketDirectories(path.join(jiraDir, 'open'), ticketKeysUpper);
     removeStaleTicketDirectories(path.join(jiraDir, 'active'), ticketKeysUpper);
     removeStaleTicketDirectories(path.join(jiraDir, 'closed'), ticketKeysUpper);
+    removeStaleTicketDirectories(path.join(jiraDir, 'assigned'), ticketKeysUpper);
     removeStaleTicketDirectories(jiraDir, ticketKeysUpper);
   }
 
-  const counts = { open: 0, active: 0, closed: 0 };
+  const counts = { open: 0, active: 0, closed: 0, assigned: 0 };
 
   for (const ticket of tickets.values()) {
     const ticketKeyUpper = ticket.key.toUpperCase();
-    const state = currentTicketsSet.has(ticketKeyUpper)
-      ? 'active'
-      : classifyTicket(ticket.status, ticket.resolution);
+    const state = ticket.assignedToMe
+      ? 'assigned'
+      : currentTicketsSet.has(ticketKeyUpper)
+        ? 'active'
+        : classifyTicket(ticket.status, ticket.resolution);
     const targetDir = path.join(jiraDir, state, ticket.key);
 
     const possibleOldLocations = [
       path.join(jiraDir, 'open', ticket.key),
       path.join(jiraDir, 'active', ticket.key),
       path.join(jiraDir, 'closed', ticket.key),
+      path.join(jiraDir, 'assigned', ticket.key),
       path.join(jiraDir, ticket.key)
     ];
 
@@ -409,6 +429,7 @@ function main() {
   console.log(`  - Open: ${counts.open}`);
   console.log(`  - Active: ${counts.active}`);
   console.log(`  - Closed: ${counts.closed}`);
+  console.log(`  - Assigned: ${counts.assigned}`);
   console.log(`Output directory: ${jiraDir}`);
 }
 

@@ -56,3 +56,15 @@
 - Risk: Binding text could drift from established language if not normalized against `CapabilityStatement`.
 - Assumption: `structuredefinition-SearchParameter.xml` is the authoritative source for these element constraints in this workflow.
 - Open question: whether downstream generated artifacts will need a separate regeneration pass after source merge (outside this planning step).
+
+## Approved PR 4136 Merge Follow-up (2026-10-20)
+
+- User approved a merge-resolution follow-up despite the ticket's local Applied/closed state.
+- Prepare the merge of master `5a1b865a60060794c71b2ace30105c97a69e0c56` into PR head `0a02380694d4110c080c7b6ca6d188811812fc98` in an isolated worktree; do not commit or push.
+- User approved bringing in upstream changes outside source as part of this merge, without modifying the original checkout's working files.
+- Resolve only `source/searchparameter/structuredefinition-SearchParameter.xml`, for `SearchParameter.base` and `SearchParameter.target`:
+  - Retain the PR's `extended-resource-types` ValueSet for FHIR-54000.
+  - Adopt master's `extensible` binding strength, binding description, copyright metadata, and removal of the old additional UI bindings.
+  - Preserve master's logical-model element definitions and the shared `uri` datatype.
+- Validate XML, both element bindings, ValueSet inclusion relationships, and absence of unresolved merge entries. Compare the resolved file against master: only the two ValueSet references should differ.
+- Save a standalone PR-comment rationale beside these ticket files.

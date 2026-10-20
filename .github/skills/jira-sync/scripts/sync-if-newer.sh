@@ -28,7 +28,7 @@ STATE_FILE="$SCRIPT_DIR/../.last-sync"
 
 # Base JQL (unencoded). The `updated >= ...` clause and ORDER BY are appended
 # dynamically so the query can be filtered incrementally.
-JQL_BASE='project = FHIR AND Specification = "FHIR Core (FHIR) [FHIR-core]" AND ((type = "Technical Correction" and status not in (Published)) OR status not in (Published, "Change Not Needed", "Resolved - No Change", Deferred )) AND "Work Group" = "FHIR Infrastructure [fhir-i]"'
+JQL_BASE='project = FHIR AND Specification = "FHIR Core (FHIR) [FHIR-core]" AND ((type = "Technical Correction" and status not in (Published)) OR status not in (Published, "Change Not Needed", "Resolved - No Change", Deferred ))'
 JQL_ORDER='ORDER BY status DESC'
 JIRA_BASE_URL="https://jira.hl7.org/sr/jira.issueviews:searchrequest-fullcontent/temp/SearchRequest.html"
 TEMP_MAX=1000

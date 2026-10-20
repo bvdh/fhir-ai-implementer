@@ -1,6 +1,6 @@
 ---
 name: jira-sync
-description: 'Synchronize Jira tickets by downloading a fresh full-content HTML export directly from Jira and parsing it, then aligning jira/open, jira/active, and jira/closed. Defaults to an incremental sync of issues updated since the last download. Does not use pre-existing local Excel files.'
+description: 'Synchronize Jira tickets by downloading a fresh full-content HTML export directly from Jira and parsing it, then aligning jira/open, jira/active, jira/closed, and jira/assigned. Defaults to an incremental sync of issues updated since the last download. Does not use pre-existing local Excel files.'
 argument-hint: '[--full|--all] [--week] [--month] [--since YYYY-MM-DD] [--all-batched]'
 ---
 
@@ -63,8 +63,10 @@ Each batch period covers exactly one month (or less for the final batch). The ba
 - Downloads a fresh Jira full-content HTML export to a temp file.
 - Parses the HTML directly with `scripts/sync-jira-from-html.mjs` (cheerio).
 - Extracts key, summary, dates, fields, description, and comments per issue.
-- Updates ticket markdown under `jira/open/`, `jira/active/`, and `jira/closed/`.
-- `jira/active/` is controlled strictly by `currentTickets.md` at repository root.
+- Updates ticket markdown under `jira/open/`, `jira/active/`, `jira/closed/`, and `jira/assigned/`.
+- Tickets assigned to Jira user `bvdh` (display name `Bas van den Heuvel`) go to `jira/assigned/`, even when closed or listed in `currentTickets.md`. Matching is case-insensitive and checks the assignee text and profile-link identity.
+- For all other tickets, `currentTickets.md` at repository root controls `jira/active/`; remaining tickets go to `jira/open/` or `jira/closed/` according to status and resolution.
+- Reassigned tickets move out of `jira/assigned/` when included in a subsequent export. Incremental syncs leave tickets absent from the export untouched; full sync pruning also covers `jira/assigned/`.
 - The temp HTML file is removed after parsing (nothing is written to `jira/*.html`).
 
 ## Auth For Jira Download
@@ -84,3 +86,11 @@ These environment variables apply to all sync operations.
 - Large full exports may take several minutes; incremental exports are much smaller and faster.
 - Batched downloads (with `--all-batched`) may take 15+ minutes depending on ticket volume; use it for large sync operations (>1000 tickets).
 - Use `jira-sync-from-excel` instead when you want to sync from an existing local Excel export.
+
+## Tests
+
+Run the parser's routing and migration tests without downloading from Jira:
+
+```bash
+node --test .github/skills/jira-sync/scripts/sync-jira-from-html.test.mjs
+```
