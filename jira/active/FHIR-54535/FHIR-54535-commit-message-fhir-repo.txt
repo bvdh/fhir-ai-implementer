@@ -1,0 +1,6 @@
+FHIR-54535: Clarify DocumentReference _content search behavior
+
+- Make searching decoded attachment data optional using MAY.
+- Remove the requirement to search attachment URLs.
+
+Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>
